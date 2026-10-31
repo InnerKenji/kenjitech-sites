@@ -1,7 +1,7 @@
 # Sites KENJITECH et SoftWEIGHT
 
-- `kenjitech/` : site KENJITECH (https://kenjitech.org, projet Vercel « kenjitech »)
-- `kenjitech/softweight/` : site SoftWEIGHT, servi sous https://kenjitech.org/softweight/
+- `kenjitech/` : site KENJITECH (https://www.kenjitech.org, projet Vercel « kenjitech »)
+- `kenjitech/softweight/` : site SoftWEIGHT, servi sous https://www.kenjitech.org/softweight/
 - `softweight-redirect/` : projet Vercel « softweight » ; redirige l'ancienne adresse
   softweight-kenjitech.vercel.app vers /softweight/ du site KENJITECH
 
