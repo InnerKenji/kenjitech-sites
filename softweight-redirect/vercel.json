@@ -1,0 +1,5 @@
+{
+  "redirects": [
+    { "source": "/(.*)", "destination": "https://kenjitech-cm.vercel.app/softweight/", "permanent": false }
+  ]
+}

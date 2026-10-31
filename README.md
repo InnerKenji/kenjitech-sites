@@ -1,9 +1,11 @@
 # Sites KENJITECH et SoftWEIGHT
 
-- `kenjitech/` : site KENJITECH (https://kenjitech-cm.vercel.app)
-- `softweight/` : site SoftWEIGHT (https://softweight-kenjitech.vercel.app)
+- `kenjitech/` : site KENJITECH (https://kenjitech.org, projet Vercel « kenjitech »)
+- `kenjitech/softweight/` : site SoftWEIGHT, servi sous https://kenjitech.org/softweight/
+- `softweight-redirect/` : projet Vercel « softweight » ; redirige l'ancienne adresse
+  softweight-kenjitech.vercel.app vers /softweight/ du site KENJITECH
 
-Sites statiques (HTML + assets). Chaque dossier est relié à un projet Vercel :
-toute modification poussée sur la branche `main` est mise en ligne automatiquement.
+Sites statiques (HTML + assets). Toute modification poussée sur la branche `main`
+est mise en ligne automatiquement.
 
-Pour modifier un site : éditer `kenjitech/index.html` ou `softweight/index.html`, puis pousser sur `main`.
+Pour modifier un site : éditer `kenjitech/index.html` ou `kenjitech/softweight/index.html`, puis pousser sur `main`.
