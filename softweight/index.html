@@ -1,0 +1,957 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#012a4c">
+<link rel="icon" type="image/svg+xml" href="assets/softweight.svg">
+<link rel="apple-touch-icon" href="assets/kenjitech-logo.png">
+<link rel="canonical" href="https://softweight-kenjitech.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KENJITECH SoftWEIGHT">
+<meta property="og:description" content="SoftWEIGHT, le logiciel de pesage et de traçabilité conçu par KENJITECH à Douala : ponts-bascules, ensacheuses, convoyeurs peseurs, bascules de circuit, VGM SOLAS, analyses labo, fonctionnement hors ligne et supervision en ligne.">
+<meta property="og:url" content="https://softweight-kenjitech.vercel.app/">
+<meta property="og:image" content="https://softweight-kenjitech.vercel.app/assets/kenjitech-logo.png">
+<meta property="og:locale" content="fr_FR">
+<title>KENJITECH SoftWEIGHT</title>
+<meta name="description" content="SoftWEIGHT, le logiciel de pesage et de traçabilité conçu par KENJITECH à Douala : ponts-bascules, ensacheuses, convoyeurs peseurs, bascules de circuit, VGM SOLAS, analyses labo, fonctionnement hors ligne et supervision en ligne.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=Share+Tech+Mono&display=swap">
+<style>
+/* Layout: a bright weighing hall. White ground, KENJITECH navy as the brand accent,
+instruments (indicators, LCDs) stay dark like the real devices. Amber = weighbridge light.
+Single light look on purpose, as requested by the client. */
+:root{
+--bg:#ffffff;
+--soft:#f4f7fa;       /* light steel bands */
+--panel:#eaf0f6;
+--edge:#d6e0ea;
+--navy:#023d6e;       /* logo */
+--navy-2:#0b5a9e;
+--ink:#0f1d2b;
+--dim:#4b5e71;
+--amber:#f5a71b;
+--amber-ink:#a86a00;  /* amber readable on white */
+--go:#1d8a52;         /* green readable on white */
+--lcd:#7dffb0;
+--lcd-bg:#04110a;
+--dev:#0d1a26;        /* device housings */
+--red:#d4483d;
+--h:#023d6e;          /* heading colour, flips to white on blue blocks */
+--deep:#012a4c;
+--f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+--f-body:"IBM Plex Sans",system-ui,"Segoe UI",sans-serif;
+--f-mono:"Share Tech Mono",ui-monospace,Consolas,monospace;
+color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:16px/1.65 var(--f-body);margin:0;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--deep)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);line-height:.95;margin:0;text-wrap:balance;font-weight:800}
+h2{font-size:clamp(2.5rem,5.6vw,4.6rem);text-transform:uppercase;color:var(--h)}
+h3{font-size:1.45rem;font-weight:800;text-transform:uppercase;letter-spacing:.02em}
+p{margin:0}
+.eyebrow{font:500 .8rem/1 var(--f-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--amber-ink)}
+.lead{color:var(--dim);font-size:1.1rem;max-width:64ch}
+.txt{color:var(--dim);max-width:64ch}
+.txt+.txt{margin-top:12px}
+section{padding-block:clamp(72px,10vw,128px);position:relative;scroll-margin-top:60px}
+.band{background:var(--soft);border-block:1px solid var(--edge)}
+.sec-head{display:grid;gap:18px;margin-bottom:46px;position:relative;z-index:1}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 1rem/1 var(--f-body);padding:15px 22px;border-radius:999px;text-decoration:none;border:0;cursor:pointer}
+.btn-amber{background:var(--amber);color:#1c1200}
+.btn-amber:hover{background:#ffbd45}
+.btn-line{color:var(--navy);box-shadow:inset 0 0 0 1.5px var(--navy);background:transparent}
+.btn-line:hover{background:var(--navy);color:#fff}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
+/* blue blocks: tokens flip, white cards inside keep the light tokens */
+.blue{background:linear-gradient(180deg,var(--navy),#03345e);color:#fff;--h:#ffffff;--ink:#ffffff;--dim:#bcd0e3;--edge:#ffffff2e;--amber-ink:var(--amber);--go:#5fe39c;--soft:#0a4a80}
+.blue .box,.blue .inst,.blue .rule-wrap,.blue .yard,.blue .eqc,.blue .ver-fig,.blue form.demo{--h:#023d6e;--ink:#0f1d2b;--dim:#4b5e71;--edge:#d6e0ea;--amber-ink:#a86a00;--go:#1d8a52;--soft:#f4f7fa;color:var(--ink)}
+.blue .ghost{-webkit-text-stroke-color:#ffffff1f}
+.blue .btn-line{color:#fff;box-shadow:inset 0 0 0 1.5px #ffffff88}
+.blue .btn-line:hover{background:#fff;color:var(--navy)}
+/* KENJITECH logo as a watermark on white blocks */
+.wm{overflow:clip}
+.wm::after{content:"";position:absolute;width:min(46vw,560px);aspect-ratio:1;right:-6vw;top:50%;margin-top:calc(min(46vw,560px) / -2);background:url("assets/kenjitech-logo.png") center/contain no-repeat;opacity:.05;pointer-events:none;z-index:0;translate:0 var(--wm-y,0px)}
+.wm.left::after{right:auto;left:-6vw}
+.wm>.wrap{position:relative;z-index:1}
+@media (max-width:700px){.wm::after{width:80vw;margin-top:-40vw;opacity:.04}}
+/* parallax ghost words */
+.ghost{position:absolute;left:0;right:0;top:40px;text-align:center;font:900 clamp(5rem,16vw,15rem)/1 var(--f-display);text-transform:uppercase;color:transparent;-webkit-text-stroke:1.5px #023d6e14;white-space:nowrap;pointer-events:none;z-index:0;overflow:hidden}
+.band .ghost{-webkit-text-stroke-color:#023d6e1c}
+/* boot */
+#boot{position:fixed;inset:0;z-index:100;background:radial-gradient(60% 60% at 50% 45%,#0b5a9e,var(--deep));display:grid;place-items:center;animation:bootOut .5s ease 1.9s forwards}
+#boot .scr{background:var(--lcd-bg);border-radius:14px;padding:22px 30px;box-shadow:0 20px 60px #000a,inset 0 0 0 1px #ffffff1a}
+#boot .lcd{font:clamp(2.4rem,9vw,5.4rem)/1 var(--f-mono);color:var(--lcd);text-shadow:0 0 18px #7dffb066;letter-spacing:.08em}
+#boot small{display:block;text-align:center;font:500 .75rem/1 var(--f-mono);letter-spacing:.3em;color:#bcd0e3;margin-top:18px}
+@keyframes bootOut{to{opacity:0;visibility:hidden}}
+/* cursor */
+#cur{position:fixed;left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border:1.5px solid var(--navy);border-radius:50%;pointer-events:none;z-index:90;opacity:0;transition:width .2s,height .2s,margin .2s,background .2s;display:none}
+#cur::before,#cur::after{content:"";position:absolute;background:var(--navy);left:50%;top:50%}
+#cur::before{width:1.5px;height:8px;transform:translate(-50%,-50%)}
+#cur::after{width:8px;height:1.5px;transform:translate(-50%,-50%)}
+#cur.big{width:64px;height:64px;margin:-32px 0 0 -32px;background:#f5a71b22;border-color:var(--amber)}
+@media (pointer:fine){#cur{display:block}}
+/* header */
+header.top{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;background:var(--deep);border-bottom:1px solid #ffffff1f;transition:box-shadow .3s}
+header.top.solid{box-shadow:0 8px 24px #0f1d2b40}
+.top .wrap{display:flex;align-items:center;gap:22px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 1.45rem/1 var(--f-display);letter-spacing:.06em;color:#fff}
+.brand .disc{width:42px;height:42px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none}
+.brand img{width:34px;height:34px}
+nav.menu{display:flex;gap:4px;margin-left:auto;font-size:.9rem}
+nav.menu a{text-decoration:none;color:#c9d9e8;padding:8px 10px;border-radius:6px;white-space:nowrap}
+nav.menu a:hover{color:#fff;background:#ffffff14}
+nav.menu a.ext{color:var(--amber)}
+nav.menu a.on{color:#1c1200;background:var(--amber)}
+.burger{display:none;margin-left:auto;width:46px;height:42px;border-radius:8px;border:1px solid #ffffff40;background:transparent;cursor:pointer;place-items:center}
+.burger i,.burger i::before,.burger i::after{display:block;width:20px;height:2px;background:#fff;border-radius:2px;position:relative;transition:transform .25s,background .25s}
+.burger i::before,.burger i::after{content:"";position:absolute;left:0}
+.burger i::before{top:-6px}.burger i::after{top:6px}
+.burger[aria-expanded="true"] i{background:transparent}
+.burger[aria-expanded="true"] i::before{transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] i::after{transform:translateY(-6px) rotate(-45deg)}
+.top .btn{flex:none;white-space:nowrap}
+@media (max-width:1300px){.top .btn{display:none}}
+@media (max-width:1080px){
+nav.menu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--deep);border-top:1px solid #ffffff1f;padding:8px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px));box-shadow:0 20px 30px #0f1d2b55}
+nav.menu.open{display:flex}
+nav.menu a{padding:14px 8px;border-bottom:1px solid #ffffff14;border-radius:0;font-size:1.05rem}
+.burger{display:grid}
+}
+/* HERO */
+.hero{padding-block:130px 80px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+radial-gradient(50% 45% at 80% 30%,#0b5a9e,transparent 70%),
+repeating-linear-gradient(90deg,transparent 0 79px,#ffffff0d 79px 80px),
+repeating-linear-gradient(0deg,transparent 0 79px,#ffffff0d 79px 80px);pointer-events:none}
+.hero .wrap{position:relative;display:grid;gap:30px}
+.kicker{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+.swmark{width:34px;height:34px;flex:none;background:#fff;border-radius:8px;padding:3px}
+.giant{font-family:var(--f-display);font-weight:900;font-size:clamp(4.2rem,17vw,15rem);line-height:.82;text-transform:uppercase;display:flex;flex-wrap:wrap;align-items:flex-end}
+.giant .soft{color:#fff}
+.giant .weight{color:var(--amber);display:inline-flex}
+.giant .weight span{display:inline-block;transform-origin:50% 100%;transition:transform .5s cubic-bezier(.3,1.6,.5,1)}
+.plate{height:14px;border-radius:3px;background:linear-gradient(180deg,#c5d3e0,#7f97ae);box-shadow:0 16px 30px #0008;position:relative;transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
+.plate::before,.plate::after{content:"";position:absolute;bottom:-24px;width:16px;height:24px;background:#7f97ae;border-radius:0 0 3px 3px}
+.plate::before{left:8%}.plate::after{right:8%}
+.hero-row{display:grid;grid-template-columns:1.2fr .8fr;gap:44px;align-items:end;margin-top:36px}
+.hero-row h1{font-size:clamp(2rem,4.2vw,3.4rem);text-transform:uppercase;color:var(--ink)}
+.hero-row .lead{margin-top:16px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+@media (max-width:860px){.hero-row{grid-template-columns:1fr}}
+.indicator{background:var(--dev);color:#e8f0f7;border-radius:14px;padding:18px;box-shadow:0 24px 50px #0f1d2b40;min-width:0}
+.ind-head{display:flex;justify-content:space-between;gap:10px;font:.72rem/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:#93a9bf}
+.lcd-box{margin-top:12px;background:var(--lcd-bg);border-radius:8px;padding:14px 18px;display:flex;align-items:baseline;justify-content:flex-end;gap:10px;font-family:var(--f-mono);color:var(--lcd);text-shadow:0 0 12px #7dffb055;box-shadow:inset 0 0 30px #000}
+.lcd-box .val{font-size:clamp(2.8rem,6.5vw,4.2rem);line-height:1;letter-spacing:.08em}
+.lcd-box .unit{font-size:1.2rem}
+.leds{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:12px;font:.72rem/1 var(--f-mono);color:#93a9bf;letter-spacing:.1em}
+.led{display:inline-flex;align-items:center;gap:6px}
+.led i{width:9px;height:9px;border-radius:50%;background:#2a3846;transition:background .2s,box-shadow .2s}
+.led.on i{background:var(--lcd);box-shadow:0 0 10px var(--lcd)}
+.led.amb.on i{background:var(--amber);box-shadow:0 0 10px var(--amber)}
+.hint{margin-top:10px;font:.78rem/1.4 var(--f-mono);color:#93a9bf}
+/* marquee */
+.marquee{border-block:1px solid var(--edge);overflow:hidden;padding-block:22px;background:var(--soft)}
+.mq-track{display:flex;width:max-content;animation:mq 40s linear infinite}
+.mq-track span{font:900 clamp(2.2rem,5vw,4rem)/1 var(--f-display);text-transform:uppercase;padding-inline:28px;white-space:nowrap;color:transparent;-webkit-text-stroke:1.2px #7f97ae}
+.mq-track span:nth-child(3n+1){color:var(--navy);-webkit-text-stroke:0}
+.mq-track span::after{content:"◆";color:var(--amber);-webkit-text-stroke:0;font-size:.4em;vertical-align:middle;margin-left:56px}
+.marquee:hover .mq-track{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* EQUIPMENT */
+.eq-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;position:relative;z-index:1}
+.eqc{background:#fff;border:1px solid var(--edge);border-radius:12px;padding:22px;display:grid;gap:10px;align-content:start;transition:transform .3s,box-shadow .3s,border-color .3s}
+.eqc:hover{transform:translateY(-4px);box-shadow:0 18px 36px #0f1d2b14;border-color:var(--navy-2)}
+.eqc svg{width:56px;height:40px}
+.eqc h3{font-size:1.3rem;color:var(--h)}
+.eqc p{color:var(--dim);font-size:.94rem}
+.eqc .ex{font:.78rem/1.4 var(--f-mono);color:var(--amber-ink)}
+@media (max-width:980px){.eq-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:540px){.eq-grid{grid-template-columns:1fr}}
+/* SCENE */
+.scene{height:420vh;padding:0}
+.scene .stick{position:sticky;top:0;height:100svh;display:grid;align-content:center;overflow:hidden}
+.scene-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:center}
+.steps{display:grid;gap:6px}
+.step{display:grid;grid-template-columns:44px 1fr;gap:4px 14px;padding:13px 0;border-top:1px solid var(--edge);opacity:.38;transition:opacity .35s}
+.step.on{opacity:1}
+.step b{font:800 2rem/1 var(--f-display);color:var(--amber-ink);grid-row:span 2}
+.step h3{font-size:1.3rem;color:var(--h)}
+.step p{color:var(--dim);font-size:.94rem;grid-column:2}
+.yard{background:var(--soft);border:1px solid var(--edge);border-radius:16px;padding:14px;min-width:0}
+.yard svg{width:100%;height:auto;display:block}
+.yard text{font-family:var(--f-mono)}
+.scene-bar{height:3px;background:var(--edge);margin-top:12px;border-radius:3px;overflow:hidden}
+.scene-bar i{display:block;height:100%;width:0;background:var(--amber)}
+@media (max-width:860px){
+.scene{height:380vh}
+.scene-grid{grid-template-columns:1fr;gap:12px}
+.step{display:none;border:0;padding:0}.step.on{display:grid}
+.scene .sec-head{margin-bottom:12px}.scene h2{font-size:2.2rem}
+.scene .lead{display:none}
+}
+/* VERSIONS */
+.ver{display:grid;grid-template-columns:1fr 1fr;gap:56px;position:relative;z-index:1}
+.ver-text{display:grid;gap:0}
+.vpanel{min-height:72vh;display:grid;align-content:center;gap:14px;padding-block:30px;opacity:.35;transition:opacity .4s}
+.vpanel.on{opacity:1}
+.vpanel .num{font:900 5rem/1 var(--f-display);color:transparent;-webkit-text-stroke:1.5px var(--h)}
+.vpanel h3{font-size:2.2rem;color:var(--h)}
+.vpanel ul{margin:4px 0 0;padding-left:20px;color:var(--dim)}
+.vpanel li{margin-block:4px}
+.vpanel .for{font:.82rem/1.5 var(--f-mono);color:var(--amber-ink);text-transform:uppercase;letter-spacing:.06em}
+.ver-fig{position:sticky;top:110px;align-self:start;background:#fff;border:1px solid var(--edge);border-radius:16px;padding:16px;box-shadow:0 20px 40px #0f1d2b10}
+.ver-fig svg{width:100%;height:auto;display:block}
+.ver-fig text{font-family:var(--f-body)}
+.vg{transition:opacity .5s,transform .5s;opacity:0}
+.vg.show{opacity:1}
+.ver-cap{display:flex;justify-content:space-between;gap:10px;margin-top:10px;font:.8rem/1.3 var(--f-mono);color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+.ver-cap b{color:var(--navy)}
+.ver-note{margin-top:30px;background:var(--deep);color:#eaf2fa;border-radius:14px;padding:22px 26px;display:flex;flex-wrap:wrap;gap:12px 30px;align-items:center;justify-content:space-between;position:relative;z-index:1}
+.ver-note b{font:800 1.6rem/1.05 var(--f-display);text-transform:uppercase}
+.ver-note p{color:#c5d6e7;max-width:60ch}
+@media (max-width:860px){
+.ver{grid-template-columns:1fr;gap:0}
+.ver-fig{top:66px;order:-1;z-index:2;padding:8px}
+.ver-fig svg{max-height:30vh}
+.vpanel{min-height:auto;padding-block:40px;opacity:1}
+.vpanel .num{font-size:3.4rem}
+}
+/* NETWORK */
+.net{display:grid;grid-template-columns:1fr 150px 1fr;align-items:stretch;position:relative;z-index:1}
+.box{background:#fff;border:1px solid var(--edge);border-radius:14px;padding:22px;display:grid;gap:16px;align-content:start;min-width:0}
+.box-h{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.box-h h3{font-size:1.3rem;color:var(--h)}
+.tagx{font:.72rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;padding:6px 9px;border-radius:99px;border:1px solid var(--edge);white-space:nowrap}
+.tagx.ok{color:var(--go);border-color:#9fd3b6;background:#eefaf3}
+.tagx.bad{color:var(--red);border-color:#f0b6b0;background:#fdf0ee}
+.equip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.eq{background:var(--soft);border-radius:8px;padding:10px;font-size:.82rem;line-height:1.25;display:grid;gap:6px;border:1px solid var(--edge);transition:border-color .2s,background .2s}
+.eq .w{font:1rem/1 var(--f-mono);color:var(--go)}
+.eq.flash{border-color:var(--go);background:#e6f7ee}
+.lan-core{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.node{border:1px dashed #9fb2c4;border-radius:8px;padding:10px;font-size:.82rem;line-height:1.3;color:var(--dim)}
+.node b{display:block;color:var(--ink);font-weight:600}
+.queue{display:flex;justify-content:space-between;align-items:center;background:var(--dev);color:#e8f0f7;border-radius:8px;padding:10px 12px;font:.9rem/1.2 var(--f-mono)}
+.queue b{font-size:1.4rem;color:var(--amber)}
+.link{position:relative;display:grid;place-items:center}
+.wire{position:absolute;left:0;right:0;top:50%;height:4px;margin-top:-2px;background:repeating-linear-gradient(90deg,var(--go) 0 10px,transparent 10px 16px);border-radius:2px}
+.link.cut .wire{background:repeating-linear-gradient(90deg,var(--red) 0 6px,transparent 6px 22px)}
+.pk{position:absolute;top:50%;left:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--go);box-shadow:0 0 10px #1d8a5299;animation:pk 1.4s linear forwards}
+@keyframes pk{to{left:100%}}
+.link-label{position:relative;background:#fff;padding:8px 10px;border-radius:99px;border:1px solid #9fd3b6;font:.72rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--go);text-align:center}
+.link.cut .link-label{color:var(--red);border-color:#f0b6b0}
+.viewers{display:grid;gap:8px}
+.viewer{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;background:var(--soft);border-radius:8px;padding:10px 12px;font-size:.88rem}
+.viewer .flag{grid-row:span 2;width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font:.7rem/1 var(--f-mono)}
+.viewer span{color:var(--dim);font-size:.8rem}
+.log{display:grid;gap:4px;font:.8rem/1.4 var(--f-mono);color:var(--dim);max-height:132px;overflow:hidden}
+.log div{display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid var(--edge);padding-bottom:4px}
+.log div:first-child{color:var(--go)}
+.net-ctrl{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;margin-top:26px;position:relative;z-index:1}
+.switch{display:inline-flex;align-items:center;gap:12px;cursor:pointer;font-weight:600;background:none;border:0;color:var(--ink);font-size:1rem;padding:0}
+.switch .sw{width:58px;height:32px;border-radius:99px;background:#1d8a52;position:relative;transition:background .2s}
+.switch .sw::after{content:"";position:absolute;top:4px;left:30px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .2s}
+.switch[aria-pressed="true"] .sw{background:var(--red)}
+.switch[aria-pressed="true"] .sw::after{left:4px}
+.net-note{color:var(--dim);font-size:.95rem;max-width:62ch}
+.states{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:40px;position:relative;z-index:1}
+.st{border-top:3px solid #3ddc84;padding-top:14px;display:grid;gap:8px;align-content:start}
+.st.off{border-color:#ff7a6e}.st.back{border-color:var(--amber)}
+.st .k{font:.75rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.st h3{color:var(--h);font-size:1.3rem}
+.st p{color:var(--dim);font-size:.95rem}
+@media (max-width:980px){
+.net{grid-template-columns:1fr;grid-template-rows:auto 110px auto}
+.wire{left:50%;right:auto;top:0;bottom:0;width:4px;height:auto;margin:0 0 0 -2px;background:repeating-linear-gradient(180deg,var(--go) 0 10px,transparent 10px 16px)}
+.link.cut .wire{background:repeating-linear-gradient(180deg,var(--red) 0 6px,transparent 6px 22px)}
+.pk{left:50%!important;top:0;margin:-5px 0 0 -5px;animation:pkv 1.4s linear forwards}
+@keyframes pkv{to{top:100%}}
+.states{grid-template-columns:1fr}
+}
+@media (max-width:520px){.equip,.lan-core{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* SIZE */
+.rule-wrap{background:#fff;border:1px solid var(--edge);border-radius:14px;padding:clamp(18px,3vw,34px);position:relative;z-index:1}
+.ruler{position:relative;height:64px;margin:6px 8px 0;background:
+repeating-linear-gradient(90deg,#9fb2c4 0 1px,transparent 1px 2%) bottom/100% 14px no-repeat,
+repeating-linear-gradient(90deg,#4b5e71 0 2px,transparent 2px 10%) bottom/100% 28px no-repeat;border-bottom:2px solid #4b5e71}
+#size{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.slider-weight{position:absolute;bottom:30px;width:64px;height:46px;margin-left:-32px;background:linear-gradient(180deg,#ffc04d,#d48400);border-radius:8px 8px 4px 4px;box-shadow:0 8px 18px #0f1d2b40;transition:left .35s cubic-bezier(.3,1.4,.5,1);pointer-events:none;display:grid;place-items:center;font:800 1rem/1 var(--f-display);color:#1c1200}
+.slider-weight::before{content:"";position:absolute;top:-12px;left:50%;width:22px;height:14px;margin-left:-11px;border:4px solid #d48400;border-bottom:0;border-radius:12px 12px 0 0}
+.ticks{display:flex;justify-content:space-between;margin:12px 8px 0;font:.72rem/1.2 var(--f-mono);color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+.ticks span{width:20%;text-align:center}
+.ticks span:first-child{text-align:left}.ticks span:last-child{text-align:right}
+.ticks span.on{color:var(--amber-ink);font-weight:600}
+.size-out{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:34px}
+.size-out h3{font-size:clamp(2rem,4vw,3rem);color:var(--h)}
+.size-out .who{color:var(--dim);margin-top:10px}
+.cfg{display:grid;gap:8px;align-content:start}
+.cfg div{display:grid;grid-template-columns:130px 1fr;gap:12px;border-bottom:1px solid var(--edge);padding-bottom:8px;font-size:.95rem}
+.cfg span{color:var(--dim);font:.8rem/1.6 var(--f-mono);text-transform:uppercase;letter-spacing:.06em}
+@media (max-width:760px){.size-out{grid-template-columns:1fr}.ticks span{font-size:.6rem}.cfg div{grid-template-columns:1fr;gap:2px}}
+/* LAB + VGM */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:22px;position:relative;z-index:1}
+.inst{background:#fff;border:1px solid var(--edge);border-radius:14px;padding:clamp(18px,3vw,30px);display:grid;gap:18px;align-content:start;min-width:0}
+.inst h3{color:var(--h)}
+.inst p.d{color:var(--dim)}
+.field{display:grid;gap:6px}
+.field label{display:flex;justify-content:space-between;font:.8rem/1 var(--f-mono);color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+.field label output{color:var(--ink)}
+input[type=range]{width:100%;accent-color:var(--amber)}
+.num{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border-bottom:1px solid var(--edge);padding-bottom:8px}
+.num label{font-size:.95rem}
+.num label small{display:block;color:var(--dim);font-size:.78rem}
+.num input,.num select{width:150px;font:1.05rem var(--f-mono);background:var(--lcd-bg);color:var(--lcd);border:1px solid var(--edge);border-radius:6px;padding:8px 10px;text-align:right}
+.result{background:var(--lcd-bg);border-radius:10px;padding:16px 18px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.result span{font:.8rem/1 var(--f-mono);color:#93a9bf;text-transform:uppercase;letter-spacing:.12em}
+.result b{font:clamp(2rem,4.4vw,2.8rem)/1 var(--f-mono);color:var(--lcd);text-shadow:0 0 12px #7dffb055;font-weight:400}
+.breakdown{display:grid;gap:4px;font:.88rem/1.5 var(--f-mono);color:var(--dim)}
+.breakdown div{display:flex;justify-content:space-between}
+.breakdown .minus{color:var(--red)}
+@media (max-width:860px){.duo{grid-template-columns:1fr}}
+.sol-badge{display:inline-flex;align-items:center;gap:12px;margin-top:22px;text-decoration:none;border:1.5px solid var(--amber);border-radius:12px;padding:8px 14px 8px 8px;background:#ffffff10}
+.sol-badge b{font:900 1.1rem/1 var(--f-display);letter-spacing:.06em;background:var(--amber);color:#1c1200;border-radius:8px;padding:8px 10px}
+.sol-badge span{font-size:.9rem;color:#e8f0f7;line-height:1.35}
+.sol-badge:hover{background:#ffffff1c}
+.sol-head{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,48px);align-items:center;margin-bottom:40px;position:relative;z-index:1}
+.stamp{width:clamp(110px,16vw,190px);color:var(--amber);transform:rotate(-8deg);filter:drop-shadow(0 6px 18px #0006)}
+.sol-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-bottom:22px;position:relative;z-index:1}
+.sol{background:#fff;border-radius:14px;padding:24px;display:grid;gap:10px;align-content:start}
+.sol h3{color:#023d6e}
+.sol p,.sol li{color:#4b5e71;font-size:.95rem}
+.mgrp[hidden]{display:none}
+.sol .tag{justify-self:start;font:.74rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;border-radius:99px;background:#fff1d6;color:#7a4c00}
+.sol .tag.ok{background:#dff5e8;color:#16643c}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.checks li{padding-left:26px;position:relative}
+.checks li::before{content:"";position:absolute;left:0;top:.3em;width:16px;height:16px;border-radius:50%;background:#1d8a52 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.2l2.6 2.6L12 5.4' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E") center/16px no-repeat}
+.mseg{display:flex;flex-wrap:wrap;gap:4px;padding:4px;border-radius:99px;background:var(--soft)}
+.mseg button{flex:1 1 auto;border:0;border-radius:99px;padding:10px 14px;background:transparent;color:var(--dim);font:600 .88rem/1.2 var(--f-body);cursor:pointer}
+.mseg button[aria-pressed="true"]{background:var(--navy);color:#fff}
+.mgrp{display:grid;gap:12px}
+.cert{background:#fffdf6;color:#1b2733;border-radius:6px;padding:clamp(18px,3vw,28px);display:grid;gap:14px;align-content:start;box-shadow:0 24px 50px #0006;border-top:6px solid var(--amber);position:relative;min-width:0}
+.cert-h{display:flex;gap:12px;align-items:center;border-bottom:1.5px solid #1b2733;padding-bottom:12px}
+.cert-h b{display:block;font:800 1.25rem/1.05 var(--f-display);text-transform:uppercase;color:#023d6e}
+.cert-h span{font:.74rem/1.3 var(--f-mono);color:#5d6b78}
+.cert dl{margin:0;display:grid;gap:0}
+.cert dl div{display:grid;grid-template-columns:120px 1fr;gap:10px;padding:7px 0;border-bottom:1px dashed #c9d3dc;font-size:.92rem}
+.cert dt{font:.74rem/1.6 var(--f-mono);text-transform:uppercase;letter-spacing:.06em;color:#5d6b78}
+.cert dd{margin:0;font-weight:600}
+.cert-v{display:flex;justify-content:space-between;align-items:baseline;gap:10px;background:#023d6e;color:#fff;border-radius:6px;padding:12px 16px}
+.cert-v span{font:.8rem/1 var(--f-mono);letter-spacing:.14em}
+.cert-v b{font:400 clamp(1.8rem,3.6vw,2.4rem)/1 var(--f-mono);color:#ffd27a}
+.cert-f{display:flex;justify-content:space-between;align-items:end;gap:12px}
+.cert-f small{display:block;font:.72rem var(--f-mono);color:#5d6b78;text-transform:uppercase}
+.cert-f b{font:1.05rem/1.4 var(--f-mono);letter-spacing:.06em;border-bottom:1px solid #1b2733}
+.qr{width:64px;height:64px;flex:none}
+.cert-n{font-size:.78rem;color:#5d6b78;font-style:italic}
+.lab-row{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;margin-top:70px;position:relative;z-index:1}
+@media (max-width:960px){.sol-grid{grid-template-columns:1fr}.lab-row{grid-template-columns:1fr}}
+@media (max-width:620px){.sol-head{grid-template-columns:1fr}.cert dl div{grid-template-columns:96px 1fr}}
+/* ORBIT */
+.orbit-area{display:grid;grid-template-columns:.85fr 1.15fr;gap:30px;align-items:center;position:relative;z-index:1}
+.orbit{position:relative;aspect-ratio:1;max-width:560px;width:100%;justify-self:center}
+.ring{position:absolute;border:1px dashed #9fb2c4;border-radius:50%;animation:spin 70s linear infinite}
+.ring.r1{inset:25%}
+.ring.r2{inset:9%;animation-duration:110s;animation-direction:reverse}
+.orbit:hover .ring,.orbit:hover .chip{animation-play-state:paused}
+.chip{position:absolute;transform-origin:0 0;animation:spin 70s linear infinite reverse}
+.r2 .chip{animation-duration:110s;animation-direction:normal}
+.chip span{display:block;transform:translate(-50%,-50%);white-space:nowrap;background:#fff;border:1px solid var(--edge);border-radius:99px;padding:6px 11px;font-size:.8rem;box-shadow:0 4px 10px #0f1d2b10}
+.r1 .chip span{background:#fff6e4;border-color:#f3cf8a}
+.core{position:absolute;inset:40%;border-radius:50%;background:radial-gradient(circle,#0b5a9e,#023d6e 70%);color:#fff;display:grid;place-items:center;text-align:center;font:900 clamp(1rem,2.4vw,1.5rem)/1 var(--f-display);text-transform:uppercase;box-shadow:0 0 50px #0b5a9e55}
+@keyframes spin{to{transform:rotate(360deg)}}
+.legend{display:grid;gap:10px;margin-top:6px}
+.legend div{display:flex;gap:12px;align-items:center}
+.legend i{flex:none;width:14px;height:14px;border-radius:50%}
+@media (max-width:860px){.orbit-area{grid-template-columns:1fr}.chip span{font-size:.66rem;padding:4px 8px}}
+/* REFERENCES */
+.refs{border-top:1px solid var(--edge);position:relative;z-index:1}
+.ref{display:grid;grid-template-columns:1fr auto;gap:6px 20px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--edge)}
+.ref b{font:900 clamp(2rem,5.4vw,4.2rem)/1 var(--f-display);text-transform:uppercase;color:var(--h);transition:color .25s,transform .35s;transform-origin:0 50%}
+.ref .sec{font:.8rem/1.3 var(--f-mono);color:var(--dim);text-transform:uppercase;letter-spacing:.08em;text-align:right}
+.ref .what{grid-column:1/-1;color:var(--dim);max-height:0;overflow:hidden;transition:max-height .35s}
+.ref:hover b{color:var(--amber);transform:translateX(14px)}
+.ref:hover .what{max-height:60px}
+.more{font:800 clamp(1.6rem,3.6vw,2.6rem)/1 var(--f-display);text-transform:uppercase;color:var(--amber);padding-top:26px;margin:0}
+.ref .badge{font:.7rem/1 var(--f-mono);color:var(--go);border:1px solid currentColor;border-radius:99px;padding:4px 8px;margin-left:10px;white-space:nowrap}
+@media (hover:none),(max-width:700px){.ref .what{max-height:none}.ref{grid-template-columns:1fr}.ref .sec{text-align:left}}
+/* coverage + services */
+.cover-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;position:relative;z-index:1}
+.countries{display:flex;flex-wrap:wrap;gap:10px}
+.countries span{border:1px solid var(--edge);border-radius:99px;padding:9px 16px;font-weight:500;background:#fff}
+.countries span.hq{background:var(--amber);color:#1c1200;border-color:var(--amber)}
+.svc{display:grid;gap:6px;padding:16px 0;border-top:1px solid var(--edge)}
+.svc h3{color:var(--h)}
+.svc p{color:var(--dim)}
+@media (max-width:860px){.cover-grid{grid-template-columns:1fr}}
+/* contact: the one navy band */
+.contact{background:linear-gradient(180deg,var(--navy),var(--deep));color:#eaf2fa}
+.contact h2{color:#fff}
+.contact .eyebrow{color:var(--amber)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.coord{display:grid;gap:4px;padding:14px 0;border-top:1px solid #ffffff2a}
+.coord span{font:.75rem/1 var(--f-mono);color:#9fc0de;text-transform:uppercase;letter-spacing:.14em}
+.coord b{font-size:1.25rem;font-weight:600;user-select:all}
+form.demo{background:#fff;color:var(--ink);border-radius:14px;padding:24px;display:grid;gap:14px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+form.demo label{display:grid;gap:6px;font-size:.85rem;color:var(--dim)}
+form.demo input,form.demo select,form.demo textarea{font:inherit;font-size:1rem;padding:11px 12px;border:1px solid var(--edge);border-radius:8px;background:var(--soft);color:var(--ink);width:100%}
+textarea{min-height:100px;resize:vertical}
+.sent{background:#e6f7ee;border-radius:8px;padding:12px 14px;color:var(--go)}
+@media (max-width:860px){.contact-grid{grid-template-columns:1fr}.f2{grid-template-columns:1fr}}
+footer{color:var(--dim);font-size:.88rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;padding-block:26px}
+footer b{color:var(--navy)}
+.rv{transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .8s}
+.js .rv.pre{transform:translateY(28px);opacity:.15}
+</style>
+</head>
+<body>
+<div id="boot" aria-hidden="true"><div><img src="assets/softweight.svg" alt="" style="display:block;width:46px;height:46px;margin:0 auto 16px;background:#fff;border-radius:10px;padding:4px"><div class="scr"><div class="lcd" id="bootLcd">00000</div></div><small>SOFTWEIGHT · MISE SOUS TENSION</small></div></div>
+<div id="cur" aria-hidden="true"></div>
+<header class="top" id="top">
+<div class="wrap">
+<a class="brand" href="#accueil"><span class="disc"><img src="assets/kenjitech-logo.png" alt="Logo KENJITECH"></span>KENJITECH</a>
+<button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><i></i></button>
+<nav class="menu" id="menu" aria-label="Navigation principale">
+<a href="#accueil">Accueil</a>
+<a href="#equipements">Équipements</a>
+<a href="#pesee">Une pesée</a>
+<a href="#versions">Versions</a>
+<a href="#reseau">Hors ligne</a>
+<a href="#labo">SOLAS · Labo</a>
+<a href="#references">Références</a>
+<a href="#contact">Contact</a>
+<a class="ext" href="https://kenjitech-cm.vercel.app" target="_blank" rel="noopener">KENJITECH ↗</a>
+</nav>
+<a class="btn btn-amber" href="#contact">Demander une démo</a>
+</div>
+</header>
+<main>
+<!-- HERO -->
+<section class="hero blue" id="accueil">
+<div class="wrap">
+<div class="kicker" data-speed="-.06"><img class="swmark" src="assets/softweight.svg" alt="Logo SoftWEIGHT" width="34" height="34"><span class="eyebrow">Logiciel de pesage et de traçabilité</span><span class="eyebrow" style="color:var(--dim)">Conçu à Douala · déployé en Afrique</span></div>
+<div data-speed="-.1">
+<div class="giant" aria-label="SoftWEIGHT"><span class="soft">Soft</span><span class="weight" aria-hidden="true"><span>W</span><span>E</span><span>I</span><span>G</span><span>H</span><span>T</span></span></div>
+<div class="plate" id="plate"></div>
+</div>
+<div class="hero-row">
+<div data-speed=".04">
+<h1>Chaque pesée tracée. Même quand Internet coupe.</h1>
+<p class="lead">SoftWEIGHT enregistre et trace toutes vos pesées, quel que soit l'équipement : ponts-bascules, ensacheuses, convoyeurs peseurs, bascules de circuit, pesage ferroviaire, pèse-essieux, pèse-palettes et balances. Il calcule vos analyses de laboratoire, imprime vos tickets, pilote feux, barrières et caméras, et synchronise tout vers le cloud.</p>
+<div class="ctas"><a class="btn btn-amber" href="#contact">Demander une démo</a><a class="btn btn-line" href="#versions">Choisir ma version</a></div>
+<a class="sol-badge" href="#labo"><b>SOLAS</b><span>Conforme à la convention SOLAS : VGM des conteneurs, méthodes 1 et 2</span></a>
+</div>
+<div class="indicator" data-speed="-.08">
+<div class="ind-head"><span>Pont 1 · Entrée</span><span>RS232 · Modbus</span></div>
+<div class="lcd-box"><span class="val" id="heroVal">42360</span><span class="unit">kg</span></div>
+<div class="leds"><span class="led on" id="heroStable"><i></i>STABLE</span><span class="led"><i></i>ZÉRO</span><span class="led amb on"><i></i>FEU</span><span class="led on"><i></i>SYNCHRO</span></div>
+<p class="hint" id="heroHint">Déplacez la souris : vous chargez le pont.</p>
+</div>
+</div>
+</div>
+</section>
+<div class="marquee" aria-hidden="true">
+<div class="mq-track">
+<span>Ponts-bascules</span><span>Ensacheuses</span><span>Convoyeurs peseurs</span><span>Bascules de circuit</span><span>Pesage ferroviaire</span><span>Pèse-essieux</span><span>Pèse-palettes</span><span>Balances</span>
+<span>Ponts-bascules</span><span>Ensacheuses</span><span>Convoyeurs peseurs</span><span>Bascules de circuit</span><span>Pesage ferroviaire</span><span>Pèse-essieux</span><span>Pèse-palettes</span><span>Balances</span>
+</div>
+</div>
+<!-- EQUIPMENT -->
+<section id="equipements" class="wm">
+<div class="ghost" data-speed=".25" aria-hidden="true">Traçabilité</div>
+<div class="wrap">
+<div class="sec-head rv" data-speed="-.05"><p class="eyebrow">Ce que SoftWEIGHT trace</p><h2>Pas seulement les ponts-bascules</h2>
+<p class="lead">SoftWEIGHT n'est pas un simple logiciel de pont-bascule. Il assure la traçabilité de tous les instruments de pesage d'un site, dans une même base de données : chaque pesée garde son produit, son lot, son client, son opérateur, sa date et son heure.</p></div>
+<div class="eq-grid">
+<div class="eqc rv"><svg viewBox="0 0 56 40" aria-hidden="true"><rect x="4" y="28" width="48" height="5" rx="1.5" fill="#023d6e"/><rect x="10" y="12" width="26" height="14" rx="2" fill="#0b5a9e"/><rect x="36" y="16" width="10" height="10" rx="2" fill="#f5a71b"/></svg><h3>Ponts-bascules</h3><p>Pesée des camions et engins en entrée et en sortie, sur un ou plusieurs ponts, avec calcul automatique du poids net.</p><span class="ex">Carrières, usines, ports, BTP</span></div>
+<div class="eqc rv"><svg viewBox="0 0 56 40" aria-hidden="true"><path d="M16 4h24l-6 12H22z" fill="#0b5a9e"/><rect x="22" y="16" width="12" height="6" fill="#023d6e"/><rect x="18" y="24" width="20" height="12" rx="2" fill="#f5a71b"/></svg><h3>Ensacheuses</h3><p>Chaque sac est pesé, compté et rattaché à son lot de production. Les écarts de poids sont détectés et tracés.</p><span class="ex">Ciment, farine, sucre, engrais, cacao</span></div>
+<div class="eqc rv"><svg viewBox="0 0 56 40" aria-hidden="true"><rect x="2" y="22" width="52" height="5" rx="2.5" fill="#023d6e"/><circle cx="8" cy="30" r="4" fill="#0b5a9e"/><circle cx="48" cy="30" r="4" fill="#0b5a9e"/><rect x="14" y="12" width="10" height="10" rx="1" fill="#f5a71b"/><rect x="32" y="12" width="10" height="10" rx="1" fill="#f5a71b"/></svg><h3>Convoyeurs peseurs</h3><p>Pesage en continu des produits qui passent sur la bande, avec totalisation par lot, par poste et par période.</p><span class="ex">Lignes de conditionnement, export</span></div>
+<div class="eqc rv"><svg viewBox="0 0 56 40" aria-hidden="true"><path d="M8 6h40l-8 16H16z" fill="#0b5a9e"/><rect x="24" y="22" width="8" height="8" fill="#023d6e"/><path d="M26 30h4v6h-4z" fill="#f5a71b"/></svg><h3>Bascules de circuit</h3><p>Pesage des produits en vrac dans le circuit de production : trémies, silos et bascules intermédiaires.</p><span class="ex">Meuneries, huileries, grains</span></div>
+<div class="eqc rv"><svg viewBox="0 0 56 40" aria-hidden="true"><rect x="4" y="12" width="48" height="16" rx="2" fill="#0b5a9e"/><circle cx="14" cy="32" r="4" fill="#023d6e"/><circle cx="42" cy="32" r="4" fill="#023d6e"/><rect x="0" y="36" width="56" height="2" fill="#f5a71b"/></svg><h3>Pesage ferroviaire</h3><p>Pesée des wagons, identifiés automatiquement par RFID UHF et compteurs d'essieux, en mode automatique ou dégradé.</p><span class="ex">Ports, mines, logistique</span></div>
+<div class="eqc rv"><svg viewBox="0 0 56 40" aria-hidden="true"><rect x="6" y="10" width="44" height="14" rx="2" fill="#0b5a9e"/><circle cx="14" cy="28" r="5" fill="#023d6e"/><circle cx="40" cy="28" r="5" fill="#023d6e"/><rect x="8" y="34" width="12" height="3" fill="#f5a71b"/><rect x="34" y="34" width="12" height="3" fill="#f5a71b"/></svg><h3>Pèse-essieux</h3><p>Contrôle de la charge essieu par essieu, en statique ou en dynamique, avec alertes de surcharge.</p><span class="ex">Gestionnaires routiers, mines</span></div>
+<div class="eqc rv"><svg viewBox="0 0 56 40" aria-hidden="true"><rect x="10" y="30" width="36" height="4" fill="#023d6e"/><rect x="14" y="10" width="28" height="20" rx="2" fill="#f5a71b"/><path d="M14 18h28M14 24h28" stroke="#d48400" stroke-width="1.5"/></svg><h3>Pèse-palettes</h3><p>Pesage par lot des sacs, palettes et big bags, avec tares, analyses labo, conteneur, plomb et VGM.</p><span class="ex">Cacao, café, coton, export</span></div>
+<div class="eqc rv"><svg viewBox="0 0 56 40" aria-hidden="true"><rect x="12" y="26" width="32" height="8" rx="2" fill="#023d6e"/><rect x="16" y="22" width="24" height="4" fill="#0b5a9e"/><rect x="20" y="28" width="16" height="4" fill="#7dffb0"/></svg><h3>Balances</h3><p>Balances de simple pesée, pour les petites exploitations comme pour les laboratoires et les magasins.</p><span class="ex">Petits producteurs, magasins</span></div>
+</div>
+</div>
+</section>
+<!-- SCENE -->
+<section class="scene blue" id="pesee">
+<div class="stick">
+<div class="wrap">
+<div class="sec-head" style="margin-bottom:24px"><p class="eyebrow">Défilez · une pesée de bout en bout</p><h2>Du portail au cloud en 4 temps</h2><p class="lead">Voici ce qui se passe sur un pont-bascule équipé de SoftWEIGHT, sans aucune ressaisie : l'identification, la pesée, le ticket, l'ouverture de la barrière et l'envoi des données sont automatiques.</p></div>
+<div class="scene-grid">
+<div class="steps" id="steps">
+<div class="step on"><b>01</b><h3>Arrivée et identification</h3><p>La caméra LAPI lit la plaque du camion. Le feu passe au rouge et la barrière reste fermée.</p></div>
+<div class="step"><b>02</b><h3>Pesée stable</h3><p>SoftWEIGHT lit l'indicateur, attend que le poids soit stable, puis le verrouille : il ne peut plus être modifié.</p></div>
+<div class="step"><b>03</b><h3>Ticket et QR code</h3><p>Le ticket s'imprime avec son QR de vérification. Le feu passe au vert et la barrière se lève.</p></div>
+<div class="step"><b>04</b><h3>Synchronisation</h3><p>La pesée part vers le serveur en ligne. La direction la voit en temps réel, où qu'elle soit.</p></div>
+</div>
+<div class="yard">
+<svg viewBox="0 0 800 440" role="img" aria-label="Animation d'un camion pesé sur un pont-bascule">
+<defs><linearGradient id="gPlate" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fb2c4"/><stop offset="1" stop-color="#5f7890"/></linearGradient></defs>
+<rect x="0" y="352" width="800" height="88" fill="#e3eaf1"/>
+<line x1="0" y1="352" x2="800" y2="352" stroke="#c5d3e0" stroke-width="2"/>
+<rect x="200" y="344" width="330" height="14" rx="3" fill="url(#gPlate)"/>
+<text x="365" y="384" text-anchor="middle" font-size="12" fill="#4b5e71">PONT-BASCULE 60 T</text>
+<rect x="590" y="190" width="130" height="162" rx="6" fill="#ffffff" stroke="#c5d3e0"/>
+<rect x="604" y="206" width="102" height="44" rx="4" fill="#04110a"/>
+<text id="yVal" x="698" y="237" text-anchor="end" font-size="22" fill="#7dffb0">0</text>
+<text x="612" y="270" font-size="10" fill="#4b5e71">POSTE DE PESAGE</text>
+<circle id="yStable" cx="616" cy="286" r="5" fill="#c5d3e0"/><text x="626" y="290" font-size="10" fill="#4b5e71">STABLE</text>
+<rect x="624" y="300" width="64" height="12" rx="2" fill="#0d1a26"/>
+<clipPath id="tclip"><rect x="630" y="312" width="52" height="0" id="tclipR"/></clipPath>
+<g clip-path="url(#tclip)"><rect x="630" y="312" width="52" height="70" fill="#ffffff" stroke="#c5d3e0"/>
+<line x1="636" y1="322" x2="676" y2="322" stroke="#333" stroke-width="2"/><line x1="636" y1="330" x2="668" y2="330" stroke="#999" stroke-width="2"/><line x1="636" y1="338" x2="672" y2="338" stroke="#999" stroke-width="2"/>
+<rect x="636" y="346" width="18" height="18" fill="#111"/><rect x="640" y="350" width="10" height="10" fill="#fff"/><rect x="658" y="346" width="18" height="6" fill="#111"/><rect x="658" y="356" width="8" height="8" fill="#111"/></g>
+<rect x="160" y="200" width="22" height="52" rx="5" fill="#0d1a26"/>
+<circle id="lRed" cx="171" cy="214" r="7" fill="#4a2522"/><circle id="lGreen" cx="171" cy="238" r="7" fill="#173d2a"/>
+<line x1="171" y1="252" x2="171" y2="352" stroke="#5f7890" stroke-width="4"/>
+<rect x="120" y="150" width="40" height="18" rx="3" fill="#0d1a26"/><rect x="156" y="154" width="10" height="10" rx="2" fill="#5f7890"/><line x1="140" y1="168" x2="140" y2="352" stroke="#5f7890" stroke-width="3"/>
+<polygon id="beam" points="166,159 330,290 330,330" fill="#1d8a52" opacity="0"/>
+<rect x="548" y="300" width="16" height="52" fill="#0d1a26"/>
+<g id="arm"><rect x="556" y="301" width="150" height="10" rx="3" fill="#f5a71b"/><rect x="590" y="301" width="18" height="10" fill="#fff"/><rect x="626" y="301" width="18" height="10" fill="#fff"/><rect x="662" y="301" width="18" height="10" fill="#fff"/></g>
+<g id="truck" transform="translate(-320 0)">
+<rect x="0" y="262" width="190" height="78" rx="4" fill="#023d6e"/>
+<rect x="0" y="262" width="190" height="10" fill="#0b5a9e"/>
+<text x="95" y="308" text-anchor="middle" font-size="13" fill="#dbe7f3">CONTENEUR 20'</text>
+<path d="M196 284 h44 l26 26 v30 h-70 z" fill="#ffffff" stroke="#9fb2c4"/>
+<path d="M206 290 h28 l18 18 h-46 z" fill="#0d1a26"/>
+<rect x="232" y="318" width="34" height="12" rx="2" fill="#f5a71b"/>
+<text x="249" y="327.5" text-anchor="middle" font-size="7.5" fill="#1c1200">LT 482 AB</text>
+<rect id="plateBox" x="228" y="314" width="42" height="20" fill="none" stroke="#1d8a52" stroke-width="2" opacity="0"/>
+<circle cx="40" cy="342" r="14" fill="#1a2027" stroke="#5f7890" stroke-width="4"/><circle cx="78" cy="342" r="14" fill="#1a2027" stroke="#5f7890" stroke-width="4"/><circle cx="226" cy="342" r="14" fill="#1a2027" stroke="#5f7890" stroke-width="4"/>
+</g>
+<g id="cloud" opacity=".3"><path d="M650 92 a26 26 0 0 1 50 -10 a20 20 0 1 1 6 40 h-62 a16 16 0 0 1 6 -30z" fill="#ffffff" stroke="#1d8a52" stroke-width="2"/><text x="680" y="150" text-anchor="middle" font-size="11" fill="#4b5e71">SERVEUR EN LIGNE</text></g>
+<line id="syncLine" x1="655" y1="190" x2="670" y2="132" stroke="#1d8a52" stroke-width="2" stroke-dasharray="4 6" opacity="0"/>
+<circle id="syncDot" cx="655" cy="190" r="5" fill="#1d8a52" opacity="0"/>
+<text id="plateRead" x="250" y="245" font-size="13" fill="#1d8a52" opacity="0">LAPI : LT 482 AB ✓</text>
+</svg>
+<div class="scene-bar"><i id="sceneBar"></i></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- VERSIONS -->
+<section id="versions" class="wm left">
+<div class="ghost" data-speed=".22" aria-hidden="true">Versions</div>
+<div class="wrap">
+<div class="sec-head rv" data-speed="-.05"><p class="eyebrow">Les versions de SoftWEIGHT</p><h2>Une version pour chaque installation</h2>
+<p class="lead">SoftWEIGHT se configure selon la taille de votre site. On peut démarrer avec un seul poste et évoluer vers plusieurs postes, plusieurs ponts ou l'option web, sans changer de logiciel ni perdre l'historique.</p></div>
+<div class="ver">
+<div class="ver-text">
+<div class="vpanel on" data-v="1"><span class="num">01</span><h3>Monoposte local</h3>
+<p class="txt">Un équipement de pesage, un ordinateur, une base de données locale. Toute l'activité est enregistrée et tracée sur le poste de pesage : tickets, états, analyses, exports.</p>
+<ul><li>Installation rapide, aucun réseau nécessaire</li><li>Idéal pour démarrer ou pour un site isolé</li></ul>
+<p class="for">Petites exploitations, huileries, magasins</p></div>
+<div class="vpanel" data-v="2"><span class="num">02</span><h3>Multiposte</h3>
+<p class="txt">Au poste de pesage s'ajoutent des postes de consultation dans les bureaux du site : direction, comptabilité, qualité ou logistique consultent les pesées, éditent les états et traitent les données, sans déranger l'opérateur.</p>
+<ul><li>Postes de consultation en réseau local</li><li>Droits d'accès par utilisateur et par rôle</li></ul>
+<p class="for">PME, usines, magasins de stockage</p></div>
+<div class="vpanel" data-v="3"><span class="num">03</span><h3>Multipont et multi-équipements</h3>
+<p class="txt">Plusieurs ponts-bascules, ensacheuses, bascules de circuit, pèse-essieux ou pèse-palettes sont gérés dans la même base de données centrale, sur le réseau local. Un camion peut entrer sur un pont et sortir sur un autre : la pesée se clôture automatiquement.</p>
+<ul><li>Base centrale unique pour tout le site</li><li>Postes de pesage, de supervision et de consultation</li></ul>
+<p class="for">Grands sites industriels, ports, mines</p></div>
+<div class="vpanel" data-v="4"><span class="num">04</span><h3>Option web et synchronisation</h3>
+<p class="txt">À chaque pesée, SoftWEIGHT synchronise les données vers le serveur en ligne. Un directeur à l'étranger, le siège ou un client autorisé consultent et traitent les données depuis Internet, sur ordinateur ou téléphone. Si la connexion du site est coupée, les opérations continuent normalement et tout se synchronise au retour.</p>
+<ul><li>Consultation et traitements partout dans le monde</li><li>Plusieurs sites et pays consolidés</li></ul>
+<p class="for">Groupes multisites, directions à distance</p></div>
+</div>
+<div class="ver-fig" aria-label="Schéma de l'installation selon la version">
+<svg viewBox="0 0 520 420" role="img">
+<rect x="10" y="10" width="330" height="400" rx="14" fill="#f4f7fa" stroke="#d6e0ea"/>
+<text x="26" y="34" font-size="12" fill="#4b5e71" letter-spacing="1.5">SITE · RÉSEAU LOCAL</text>
+<!-- level 1 -->
+<g class="vg show" data-l="1">
+<rect x="30" y="300" width="130" height="20" rx="4" fill="#5f7890"/><rect x="50" y="276" width="70" height="24" rx="3" fill="#023d6e"/><rect x="120" y="282" width="22" height="18" rx="3" fill="#f5a71b"/>
+<text x="95" y="340" text-anchor="middle" font-size="12" fill="#0f1d2b">Pont-bascule 1</text>
+<rect x="200" y="250" width="110" height="74" rx="8" fill="#ffffff" stroke="#023d6e" stroke-width="2"/>
+<rect x="214" y="262" width="82" height="34" rx="3" fill="#04110a"/><text x="290" y="285" text-anchor="end" font-family="monospace" font-size="15" fill="#7dffb0">42360</text>
+<text x="255" y="314" text-anchor="middle" font-size="11" fill="#0f1d2b">Poste de pesage</text>
+<line x1="160" y1="300" x2="200" y2="290" stroke="#023d6e" stroke-width="2"/>
+<rect x="214" y="336" width="82" height="22" rx="11" fill="#023d6e"/><text x="255" y="351" text-anchor="middle" font-size="10.5" fill="#fff">Base de données</text>
+</g>
+<!-- level 2 -->
+<g class="vg" data-l="2">
+<line x1="255" y1="250" x2="255" y2="196" stroke="#0b5a9e" stroke-width="2" stroke-dasharray="5 5"/>
+<line x1="170" y1="196" x2="320" y2="196" stroke="#0b5a9e" stroke-width="2" stroke-dasharray="5 5"/>
+<rect x="200" y="150" width="56" height="38" rx="5" fill="#fff" stroke="#0b5a9e" stroke-width="2"/><rect x="208" y="157" width="40" height="22" rx="2" fill="#dbe7f3"/>
+<rect x="268" y="150" width="56" height="38" rx="5" fill="#fff" stroke="#0b5a9e" stroke-width="2"/><rect x="276" y="157" width="40" height="22" rx="2" fill="#dbe7f3"/>
+<text x="262" y="140" text-anchor="middle" font-size="11" fill="#0f1d2b">Postes de consultation</text>
+</g>
+<!-- level 3 -->
+<g class="vg" data-l="3">
+<rect x="30" y="196" width="130" height="16" rx="4" fill="#5f7890"/><rect x="50" y="176" width="70" height="20" rx="3" fill="#023d6e"/>
+<text x="95" y="230" text-anchor="middle" font-size="11" fill="#0f1d2b">Pont-bascule 2</text>
+<path d="M34 62h44l-10 20H44z" fill="#0b5a9e"/><rect x="48" y="82" width="16" height="16" rx="2" fill="#f5a71b"/>
+<text x="56" y="116" text-anchor="middle" font-size="11" fill="#0f1d2b">Ensacheuse</text>
+<path d="M118 58h50l-12 22h-26z" fill="#0b5a9e"/><rect x="136" y="80" width="14" height="14" fill="#023d6e"/>
+<text x="143" y="116" text-anchor="middle" font-size="11" fill="#0f1d2b">Bascule de circuit</text>
+<path d="M160 204 C185 214,190 250,200 262" stroke="#023d6e" stroke-width="2" fill="none"/>
+<path d="M64 122 C80 190,170 230,206 256" stroke="#023d6e" stroke-width="1.5" fill="none" stroke-dasharray="3 4"/>
+<path d="M150 122 C160 180,200 220,214 250" stroke="#023d6e" stroke-width="1.5" fill="none" stroke-dasharray="3 4"/>
+<text x="255" y="378" text-anchor="middle" font-size="10" fill="#023d6e">base centrale du site</text>
+</g>
+<!-- level 4 -->
+<g class="vg" data-l="4">
+<path d="M300 347 C352 340,352 150,404 112" stroke="#1d8a52" stroke-width="2.5" fill="none" stroke-dasharray="6 6" id="wanPath"/>
+<path d="M398 92 a22 22 0 0 1 42 -8 a17 17 0 1 1 5 34 h-52 a14 14 0 0 1 5 -26z" fill="#fff" stroke="#1d8a52" stroke-width="2"/>
+<text x="430" y="142" text-anchor="middle" font-size="11" fill="#0f1d2b">Serveur en ligne</text>
+<path d="M430 150 V196" stroke="#1d8a52" stroke-width="2" stroke-dasharray="4 4"/>
+<rect x="394" y="200" width="64" height="40" rx="4" fill="#fff" stroke="#1d8a52" stroke-width="2"/><rect x="386" y="240" width="80" height="6" rx="2" fill="#1d8a52"/>
+<rect x="474" y="196" width="30" height="52" rx="6" fill="#fff" stroke="#1d8a52" stroke-width="2"/>
+<text x="448" y="272" text-anchor="middle" font-size="11" fill="#0f1d2b">Direction, siège, clients</text>
+<text x="448" y="288" text-anchor="middle" font-size="10" fill="#4b5e71">partout dans le monde</text>
+<circle r="5" fill="#1d8a52"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#wanPath"/></animateMotion></circle>
+</g>
+</svg>
+<div class="ver-cap"><span>Version affichée</span><b id="verName">01 · Monoposte local</b></div>
+</div>
+</div>
+<div class="ver-note rv"><b>On commence petit,<br>on grandit sans changer.</b><p>Passer du monoposte au multiposte, ajouter un pont ou activer l'option web se fait sur la même installation. Les données et l'historique sont conservés.</p></div>
+</div>
+</section>
+<!-- NETWORK -->
+<section id="reseau" class="blue">
+<div class="ghost" data-speed=".22" aria-hidden="true">Hors ligne</div>
+<div class="wrap">
+<div class="sec-head rv" data-speed="-.05"><p class="eyebrow">Option web · essayez-la</p><h2>Le site travaille. Le cloud suit.</h2>
+<p class="lead">Sur le site, les équipements, les postes de pesage et de supervision et les postes de consultation sont reliés en réseau local. Les pesées ne dépendent jamais d'Internet. Internet sert seulement à envoyer les données vers le serveur en ligne, pour ceux qui consultent à distance.</p></div>
+<div class="net rv" id="net">
+<div class="box">
+<div class="box-h"><h3>Site industriel · réseau local</h3><span class="tagx ok">En production</span></div>
+<div class="equip" id="equip">
+<div class="eq"><span>Pont-bascule</span><span class="w">0 kg</span></div>
+<div class="eq"><span>Ensacheuse</span><span class="w">0 kg</span></div>
+<div class="eq"><span>Convoyeur peseur</span><span class="w">0 kg</span></div>
+<div class="eq"><span>Bascule de circuit</span><span class="w">0 kg</span></div>
+<div class="eq"><span>Pèse-essieu</span><span class="w">0 kg</span></div>
+<div class="eq"><span>Pèse-palette</span><span class="w">0 kg</span></div>
+</div>
+<div class="lan-core">
+<div class="node"><b>Poste de pesage</b>et supervision</div>
+<div class="node"><b>Base centrale</b>SoftWEIGHT</div>
+<div class="node"><b>Consultation</b>bureaux du site</div>
+</div>
+<div class="queue"><span>En attente de synchro</span><b id="queue">0</b></div>
+</div>
+<div class="link" id="link"><div class="wire"></div><span class="link-label" id="linkLabel">Internet<br>actif</span></div>
+<div class="box">
+<div class="box-h"><h3>Serveur en ligne</h3><span class="tagx ok" id="cloudTag">À jour</span></div>
+<div class="viewers">
+<div class="viewer"><span class="flag">DG</span><b>Directeur général</b><span>En mission à Paris · tableau de bord</span></div>
+<div class="viewer"><span class="flag">CF</span><b>Contrôle financier</b><span>Siège à Douala · facturation</span></div>
+<div class="viewer"><span class="flag">CL</span><b>Client acheteur</b><span>Abidjan · suivi de ses lots</span></div>
+</div>
+<div class="log" id="log" aria-live="polite"></div>
+</div>
+</div>
+<div class="net-ctrl">
+<button class="switch" id="cutBtn" type="button" aria-pressed="false"><span class="sw"></span><span id="cutTxt">Couper Internet</span></button>
+<p class="net-note" id="netNote">Essayez : coupez Internet et regardez les pesées continuer sur le site.</p>
+</div>
+<div class="states">
+<div class="st rv"><span class="k">Internet actif</span><h3>Synchro à chaque pesée</h3><p>Chaque enregistrement part vers le serveur en ligne en quelques secondes. La direction voit l'activité en temps réel.</p></div>
+<div class="st off rv"><span class="k">Internet coupé</span><h3>Le site ne s'arrête pas</h3><p>Pesées, tickets, feux et barrières fonctionnent normalement. Les données attendent en local, sans aucune perte.</p></div>
+<div class="st back rv"><span class="k">Retour de la connexion</span><h3>Tout se rattrape seul</h3><p>SoftWEIGHT synchronise automatiquement tout ce qui était en attente. Personne n'a rien à ressaisir.</p></div>
+</div>
+</div>
+</section>
+<!-- SIZE -->
+<section id="taille" class="wm">
+<div class="ghost" data-speed=".22" aria-hidden="true">Pour qui</div>
+<div class="wrap">
+<div class="sec-head rv" data-speed="-.05"><p class="eyebrow">Pour qui</p><h2>Du petit producteur à l'aciérie</h2><p class="lead">L'une des grandes forces de SoftWEIGHT : le même logiciel sert une petite huilerie comme un gestionnaire routier national. Faites glisser le poids pour voir la configuration type.</p></div>
+<div class="rule-wrap rv">
+<div class="ruler"><div class="slider-weight" id="sw">S</div><input type="range" id="size" min="0" max="4" step="1" value="1" aria-label="Taille de l'exploitation"></div>
+<div class="ticks" id="ticks"><span>Très petit</span><span>Petit</span><span>Moyen</span><span>Grand</span><span>Très grand</span></div>
+<div class="size-out"><div><h3 id="szTitle">Petite unité</h3><p class="who" id="szWho"></p></div><div class="cfg" id="szCfg"></div></div>
+</div>
+</div>
+</section>
+<!-- SOLAS + LAB -->
+<section id="labo" class="blue">
+<div class="ghost" data-speed=".22" aria-hidden="true">SOLAS · VGM</div>
+<div class="wrap">
+<div class="sol-head rv" id="solas" data-speed="-.04">
+<svg class="stamp" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="ring" d="M100 100m-74 0a74 74 0 1 1 148 0a74 74 0 1 1-148 0"/></defs><circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" stroke-width="2"/><text font-family="Share Tech Mono,monospace" font-size="15" letter-spacing="3" fill="currentColor"><textPath href="#ring">CONVENTION SOLAS · CHAPITRE VI · RÈGLE 2 ·</textPath></text><text x="100" y="104" text-anchor="middle" font-family="Big Shoulders Display,Arial Narrow,sans-serif" font-weight="900" font-size="44" fill="currentColor">VGM</text><text x="100" y="128" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="13" letter-spacing="2" fill="currentColor">CONFORME</text></svg>
+<div class="sec-head" style="margin:0"><p class="eyebrow">Convention SOLAS de l'OMI · chapitre VI, règle 2</p><h2>Conforme SOLAS : le VGM de chaque conteneur</h2>
+<p class="lead">Depuis le 1<sup>er</sup> juillet 2016, la convention internationale SOLAS interdit d'embarquer un conteneur plein sans sa masse brute vérifiée, le VGM (Verified Gross Mass), déclarée par le chargeur. SoftWEIGHT applique les deux méthodes reconnues par les directives de l'OMI (circulaire MSC.1/Circ.1475) et édite le document VGM à remettre à l'armateur et au terminal.</p></div>
+</div>
+<div class="sol-grid">
+<div class="sol card rv"><span class="tag">Méthode 1</span><h3>Peser le conteneur plein</h3><p>Après empotage et plombage, le conteneur est pesé sur pont-bascule. SoftWEIGHT déduit la tare du tracteur et de la remorque, et le carburant, comme le prévoient les directives de l'OMI. Chaque conteneur est pesé séparément, jamais par moyenne.</p></div>
+<div class="sol card rv"><span class="tag">Méthode 2</span><h3>Additionner ce qui est chargé</h3><p>Toute la marchandise est pesée lot par lot, avec les palettes, le calage et l'arrimage, puis SoftWEIGHT ajoute la tare inscrite sur le conteneur et le poids de son habillage (kraft, bâches, dessiccants). Cette méthode relève de la certification fixée par l'autorité compétente du pays d'empotage.</p></div>
+<div class="sol card rv"><span class="tag ok">Ce que SoftWEIGHT garantit</span><ul class="checks"><li>La mention « VGM » clairement portée sur le document</li><li>Numéros de conteneur, de plomb et de réservation</li><li>Signature du responsable habilité, ou son nom en capitales</li><li>Pesée sur un instrument vérifié selon les règles du pays</li><li>Chaque VGM archivé, tracé et retrouvable</li></ul></div>
+</div>
+<div class="duo">
+<div class="inst rv">
+<div><p class="eyebrow" style="color:var(--go)">Calcul du VGM</p><h3 style="margin-top:8px">Choisissez votre méthode</h3></div>
+<div class="mseg" role="group" aria-label="Méthode SOLAS"><button type="button" data-m="1" aria-pressed="false">Méthode 1 · pont-bascule</button><button type="button" data-m="2" aria-pressed="true">Méthode 2 · lots pesés</button></div>
+<div class="mgrp" data-g="1" hidden>
+<div class="num"><label for="w1">Camion avec conteneur<small>pesée sur pont-bascule</small></label><input id="w1" type="number" inputmode="numeric" value="41860" min="0" step="10"></div>
+<div class="num"><label for="w2">Tare tracteur et remorque<small>selon la carte grise</small></label><input id="w2" type="number" inputmode="numeric" value="13500" min="0" step="10"></div>
+<div class="num"><label for="w3">Carburant du tracteur</label><input id="w3" type="number" inputmode="numeric" value="350" min="0" step="10"></div>
+</div>
+<div class="mgrp" data-g="2">
+<div class="num"><label for="v1">Marchandise pesée<small>lots pesés sur pèse-palette</small></label><input id="v1" type="number" inputmode="numeric" value="25600" min="0" step="10"></div>
+<div class="num"><label for="v2">Palettes, calage et arrimage</label><input id="v2" type="number" inputmode="numeric" value="420" min="0" step="10"></div>
+<div class="num"><label for="v3">Habillage du conteneur<small>kraft, bâches, dessiccants</small></label><input id="v3" type="number" inputmode="numeric" value="85" min="0" step="5"></div>
+<div class="num"><label for="v4">Tare du conteneur<small>inscrite sur les portes</small></label><select id="v4"><option value="2230">20' · 2 230</option><option value="3750">40' · 3 750</option><option value="3900">40' HC · 3 900</option></select></div>
+</div>
+<div class="result"><span>VGM</span><b id="vgmOut">28 335 kg</b></div>
+</div>
+<div class="cert rv" aria-label="Exemple de document VGM édité par SoftWEIGHT">
+<div class="cert-h"><img src="assets/softweight.svg" alt="" width="34" height="34"><div><b>Masse brute vérifiée · Verified Gross Mass (VGM)</b><span>SOLAS chapitre VI, règle 2 · MSC.1/Circ.1475</span></div></div>
+<dl>
+<div><dt>Chargeur</dt><dd>Société exportatrice</dd></div>
+<div><dt>Conteneur</dt><dd id="cCt">KJTU 204815 6 · 20'</dd></div>
+<div><dt>Plomb</dt><dd>KT 004512</dd></div>
+<div><dt>Réservation</dt><dd>BK-2026-0418</dd></div>
+<div><dt>Méthode</dt><dd id="cMe">Méthode 2 · somme des lots pesés + tare</dd></div>
+<div><dt>Instrument</dt><dd id="cIn">Pèse-palette n° 2 · vérifié</dd></div>
+<div><dt>Date</dt><dd id="cDt"></dd></div>
+</dl>
+<div class="cert-v"><span>VGM</span><b id="cVgm">28 335 kg</b></div>
+<div class="cert-f"><div><small>Signataire habilité</small><b>NOM EN CAPITALES</b></div><svg viewBox="0 0 21 21" class="qr" aria-hidden="true" id="cQr"></svg></div>
+<p class="cert-n">Exemple de document. La mise en page s'adapte à votre entreprise.</p>
+</div>
+</div>
+<div class="lab-row">
+<div class="sec-head rv" style="margin:0" data-speed="-.04"><p class="eyebrow">Calculs tracés</p><h2 style="font-size:clamp(2rem,4vw,3.2rem)">Le labo dans le même logiciel</h2>
+<p class="lead">Humidité, réfraction, grainage, taux de défauts : tous les calculs d'analyses de laboratoire peuvent être faits et tracés dans SoftWEIGHT, lot par lot. Le poids marchand est calculé automatiquement et figure sur les tickets et les états. Les règles se paramètrent par produit et par client.</p></div>
+<div class="inst rv">
+<div><p class="eyebrow" style="color:var(--go)">Analyse labo · cacao</p><h3 style="margin-top:8px">Poids marchand calculé</h3></div>
+<p class="d">Bougez les curseurs : SoftWEIGHT déduit l'excès d'humidité et la réfraction du poids reçu.</p>
+<div class="field"><label for="hum">Humidité mesurée <output id="humO">9,5 %</output></label><input type="range" id="hum" min="6" max="14" step="0.1" value="9.5"></div>
+<div class="field"><label for="ref">Réfraction (défauts) <output id="refO">2,1 %</output></label><input type="range" id="ref" min="0" max="8" step="0.1" value="2.1"></div>
+<div class="breakdown" id="labBd"></div>
+<div class="result"><span>Poids marchand</span><b id="labOut">9 640 kg</b></div>
+<p class="d" style="font-size:.85rem">Exemple sur 10 000 kg reçus, humidité de référence 8 %.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CONNECTIONS -->
+<section class="wm left" style="overflow:hidden">
+<div class="wrap orbit-area">
+<div class="sec-head rv" style="margin:0" data-speed="-.05"><p class="eyebrow">Connexions</p><h2>Il parle à vos logiciels et pilote vos machines</h2>
+<p class="txt">SoftWEIGHT s'interface avec Sage, SAP et vos autres logiciels de gestion : les pesées, les tiers et les produits circulent sans ressaisie.</p>
+<p class="txt">Quel que soit le système, il pilote vos automates et cartes d'entrées/sorties, lit vos capteurs de niveau et barrières optiques, commande feux et barrières, et enregistre les images des caméras, y compris les caméras LAPI qui lisent les plaques.</p>
+<p class="txt">Selon votre activité, il gère aussi la facturation des pesées et la gestion comptable.</p>
+<div class="legend"><div><i style="background:#f3cf8a"></i><span>Logiciels et gestion</span></div><div><i style="background:#d6e0ea"></i><span>Équipements pilotés</span></div></div>
+</div>
+<div class="orbit" data-speed=".06" aria-label="Logiciels et équipements connectés à SoftWEIGHT">
+<div class="ring r2" id="r2"></div><div class="ring r1" id="r1"></div>
+<div class="core"><span><img src="assets/softweight.svg" alt="" style="width:30%;display:block;margin:0 auto 6px;background:#fff;border-radius:6px;padding:2px">Soft<br>WEIGHT</span></div>
+</div>
+</div>
+</section>
+<!-- REFERENCES -->
+<section id="references" class="blue">
+<div class="ghost" data-speed=".22" aria-hidden="true">Références</div>
+<div class="wrap">
+<div class="sec-head rv" data-speed="-.05"><p class="eyebrow">Références</p><h2>Ils nous font confiance</h2><p class="lead">Utilisateurs de SoftWEIGHT et clients de KENJITECH : industrie, ports, mines, agro-industrie, bois, BTP, aviation civile et maritime, au Cameroun et au Tchad.</p></div>
+<div class="refs">
+<div class="ref rv"><b>SNCD</b><span class="sec">Industrie</span><p class="what">Utilisateur de SoftWEIGHT.</p></div>
+<div class="ref rv"><b>Sun Press</b><span class="sec">Industrie</span><p class="what">Utilisateur de SoftWEIGHT.</p></div>
+<div class="ref rv"><b>DPWS</b><span class="sec">Port de Douala · pèse-essieu</span><p class="what">Pesage sur pèse-essieu avec SoftWEIGHT.</p></div>
+<div class="ref rv"><b>Sonemic</b><span class="sec">Mines · Tchad</span><p class="what">SoftWEIGHT, supervision et plateforme web. <span class="badge">PV sans réserve</span></p></div>
+<div class="ref rv"><b>Canabois</b><span class="sec">Bois</span><p class="what">Trois sites et module grumes. <span class="badge">PV sans réserve</span></p></div>
+<div class="ref rv"><b>Pizzarotti</b><span class="sec">BTP</span><p class="what">Deux sites, tickets avec QR code. <span class="badge">PV sans réserve</span></p></div>
+<div class="ref rv"><b>Cadyst Grain</b><span class="sec">Meunerie</span><p class="what">Pesage sur pont-bascule.</p></div>
+<div class="ref rv"><b>Ecotrade United</b><span class="sec">Cacao, café</span><p class="what">Pesage par lot, analyses et VGM à l'export.</p></div>
+<div class="ref rv"><b>CCAA</b><span class="sec">Aviation civile · KENJITECH</span><p class="what">Électricité des scanners RX des aéroports.</p></div>
+<div class="ref rv"><b>RDD PAD</b><span class="sec">Port Autonome de Douala · KENJITECH</span><p class="what">Surveillance marine et équipements.</p></div>
+<p class="more rv">Et bien d'autres.</p>
+</div>
+</div>
+</section>
+<!-- COVERAGE + SERVICES -->
+<section class="wm">
+<div class="wrap cover-grid">
+<div class="rv" data-speed="-.04"><p class="eyebrow">Zone d'intervention</p><h2 style="margin:16px 0 22px">Partout au Cameroun et en Afrique</h2>
+<p class="lead" style="margin-bottom:22px">L'équipe KENJITECH se déploie partout au Cameroun et en Afrique, notamment dans la sous-région Afrique centrale, pour l'installation, la formation et la maintenance. L'assistance à distance est assurée au quotidien.</p>
+<div class="countries"><span class="hq">Cameroun · Douala</span><span>Tchad</span><span>Gabon</span><span>Congo</span><span>Guinée équatoriale</span><span>Centrafrique</span><span>Et toute l'Afrique</span></div>
+</div>
+<div class="rv" data-speed=".04"><p class="eyebrow">KENJITECH</p><h2 style="margin:16px 0 10px">Plus qu'un logiciel</h2>
+<p class="lead" style="margin-bottom:14px">KENJITECH est un intégrateur de solutions : il conçoit le matériel, les cartes et les logiciels, puis les intègre sur vos sites.</p>
+<div class="svc"><h3>Supervision industrielle</h3><p>Cartes d'entrées/sorties et logiciels de supervision : capteurs de température, pression, poids, humidité, commande des actionneurs.</p></div>
+<div class="svc"><h3>Systèmes de péage</h3><p>Capteurs, coffrets électriques et de commande, périphériques et logiciel de gestion, en péage manuel, semi-automatique ou automatique.</p></div>
+<div class="svc"><h3>Métrologie, pesage et thermométrie</h3><p>Ponts-bascules, pèse-essieux, pèse-palettes, instruments de température : conception, installation, maintenance.</p></div>
+<div class="svc"><h3>Contrôles, électricité et fournitures</h3><p>Thermographie infrarouge, épaisseur par ultrasons, installations électriques, équipements marins et industriels.</p></div>
+<a class="btn btn-amber" style="margin-top:18px" href="https://kenjitech-cm.vercel.app" target="_blank" rel="noopener">Découvrir KENJITECH ↗</a>
+</div>
+</div>
+</section>
+<!-- CONTACT -->
+<section class="contact blue" id="contact">
+<div class="wrap contact-grid">
+<div>
+<p class="eyebrow">Contact</p><h2 style="margin:16px 0 18px">Pesons votre projet</h2>
+<p class="lead" style="color:#c5d6e7;margin-bottom:22px">Décrivez votre site. Nous revenons vers vous avec une démonstration et la version adaptée à votre installation.</p>
+<div class="coord"><span>Téléphone et WhatsApp</span><b>+237 697 78 74 75</b></div>
+<div class="coord"><span>E-mail</span><b>kenjikarim@gmail.com</b></div>
+<div class="coord"><span>Adresse</span><b>Akwa, Douala, Cameroun</b></div>
+<a class="btn btn-amber" href="https://wa.me/237697787475" target="_blank" rel="noopener" style="margin-top:18px">Écrire sur WhatsApp</a>
+</div>
+<form class="demo" id="demoForm" novalidate>
+<div class="f2"><label for="f-nom">Nom<input id="f-nom" name="nom" autocomplete="name"></label><label for="f-ste">Entreprise<input id="f-ste" name="entreprise" autocomplete="organization"></label></div>
+<div class="f2"><label for="f-tel">Téléphone<input id="f-tel" name="tel" type="tel" autocomplete="tel"></label><label for="f-pays">Pays<input id="f-pays" name="pays" value="Cameroun"></label></div>
+<div class="f2"><label for="f-eq">Équipement principal<select id="f-eq" name="equipement"><option>Pont-bascule</option><option>Ensacheuse</option><option>Convoyeur peseur</option><option>Bascule de circuit</option><option>Pèse-essieu</option><option>Pèse-palette / VGM</option><option>Pesage ferroviaire</option><option>Balance</option><option>Autre projet</option></select></label>
+<label for="f-ver">Version envisagée<select id="f-ver" name="version"><option>Monoposte local</option><option>Multiposte</option><option>Multipont / multi-équipements</option><option>Option web et synchronisation</option><option>Je ne sais pas encore</option></select></label></div>
+<label for="f-msg">Votre installation<textarea id="f-msg" name="message" placeholder="Nombre de postes, marque de l'indicateur, nombre de sites, logiciel de gestion (Sage, SAP…)"></textarea></label>
+<button class="btn btn-amber" type="submit" style="justify-self:start">Envoyer la demande</button>
+<p class="sent" id="sent" hidden>Merci. Pour une réponse rapide, envoyez aussi votre demande par WhatsApp au +237 697 78 74 75.</p>
+</form>
+</div>
+</section>
+</main>
+<footer><div class="wrap"><span><b>ETS KENJITECH</b> · Akwa, Douala, Cameroun · RCCM RC/DLA/2021/A/2021</span><span style="display:inline-flex;align-items:center;gap:8px"><img src="assets/softweight.svg" alt="" width="20" height="20">SoftWEIGHT est un logiciel conçu et développé par&nbsp;<a href="https://kenjitech-cm.vercel.app" target="_blank" rel="noopener" style="color:var(--navy);font-weight:600">KENJITECH ↗</a></span></div></footer>
+<script>
+document.documentElement.classList.add('js');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fmt=n=>Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ');
+const $=s=>document.querySelector(s);
+(function(){const el=$('#bootLcd'),boot=$('#boot');if(reduce){boot.remove();return}
+let t=0;const id=setInterval(()=>{t++;el.textContent=t<14?String(Math.floor(Math.random()*99999)).padStart(5,'0'):'SOFTWEIGHT'.slice(0,Math.min(10,t-13)).padEnd(5,' ');if(t>24)clearInterval(id)},55);
+setTimeout(()=>boot.remove(),2500)})();
+(function(){const b=$('#burger'),m=$('#menu');
+b.addEventListener('click',()=>{const o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',o);m.classList.toggle('open',o);b.setAttribute('aria-label',o?'Fermer le menu':'Ouvrir le menu')});
+m.addEventListener('click',e=>{if(e.target.closest('a')){b.setAttribute('aria-expanded','false');m.classList.remove('open')}});
+const links=[...m.querySelectorAll('a[href^="#"]')],secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+function spy(){let k=0;secs.forEach((s,i)=>{if(s&&s.getBoundingClientRect().top<innerHeight*.35)k=i});links.forEach((a,i)=>a.classList.toggle('on',i===k))}
+addEventListener('scroll',spy,{passive:true});spy()})();
+const hdr=$('#top');addEventListener('scroll',()=>hdr.classList.toggle('solid',scrollY>40),{passive:true});
+(function(){const c=$('#cur');if(!matchMedia('(pointer:fine)').matches)return;
+addEventListener('pointermove',e=>{c.style.opacity=1;c.style.transform=`translate(${e.clientX}px,${e.clientY}px)`},{passive:true});
+document.addEventListener('pointerover',e=>c.classList.toggle('big',!!e.target.closest('a,button,input,select,textarea,.ref,.eqc')))})();
+/* hero indicator follows the pointer */
+(function(){
+const val=$('#heroVal'),stable=$('#heroStable'),letters=[...document.querySelectorAll('.weight span')],plate=$('#plate');
+let target=42360,shown=42360,still;
+function set(w){target=w;stable.classList.remove('on');clearTimeout(still);still=setTimeout(()=>stable.classList.add('on'),450)}
+if(matchMedia('(pointer:fine)').matches&&!reduce){
+$('#accueil').addEventListener('pointermove',e=>{const r=e.currentTarget.getBoundingClientRect(),x=(e.clientX-r.left)/r.width;
+set(Math.round(x*60000/20)*20);const sink=x*10;letters.forEach((l,i)=>l.style.transform=`translateY(${sink*(0.6+i*.12)}px) scaleY(${1-x*.06})`);plate.style.transform=`translateY(${sink}px)`});
+}else{$('#heroHint').textContent='Lecture en direct de l\'indicateur.';if(!reduce)setInterval(()=>set(Math.round((15000+Math.random()*40000)/20)*20),3200)}
+(function tick(){shown+=(target-shown)*.18;if(Math.abs(target-shown)<10)shown=target;val.textContent=String(Math.round(shown));requestAnimationFrame(tick)})();
+})();
+/* parallax: independent `translate` so it never fights with transforms */
+(function(){
+if(reduce)return;
+const els=[...document.querySelectorAll('[data-speed]')],wms=[...document.querySelectorAll('.wm')];
+let raf=0;
+function run(){const vh=innerHeight;els.forEach(el=>{const r=el.getBoundingClientRect();if(r.bottom<-200||r.top>vh+200)return;
+const mid=r.top+r.height/2-vh/2;const s=+el.dataset.speed*(innerWidth<700?.5:1);el.style.translate=`0 ${(-mid*s).toFixed(1)}px`});
+wms.forEach(w=>{const r=w.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;w.style.setProperty('--wm-y',((r.top+r.height/2-vh/2)*-.15).toFixed(1)+'px')})}
+addEventListener('scroll',()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(run)},{passive:true});addEventListener('resize',run);run();
+})();
+/* scroll scene */
+(function(){
+const sec=$('#pesee'),truck=$('#truck'),yVal=$('#yVal'),yStable=$('#yStable'),tclip=$('#tclipR'),arm=$('#arm'),
+lR=$('#lRed'),lG=$('#lGreen'),beam=$('#beam'),plateBox=$('#plateBox'),plateRead=$('#plateRead'),
+cloud=$('#cloud'),syncLine=$('#syncLine'),syncDot=$('#syncDot'),bar=$('#sceneBar'),steps=[...document.querySelectorAll('#steps .step')];
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)),seg=(p,a,b)=>clamp((p-a)/(b-a));
+function draw(p){
+truck.setAttribute('transform',`translate(${-320+seg(p,0,.22)*520+seg(p,.78,1)*520} 0)`);
+const read=seg(p,.12,.24);beam.setAttribute('opacity',read>0&&read<1?.16:0);plateBox.setAttribute('opacity',read>.5&&p<.5?1:0);plateRead.setAttribute('opacity',p>.2&&p<.5?1:0);
+const w=seg(p,.24,.42);const jitter=w<1&&w>0?Math.round((Math.sin(p*400)*(1-w))*30)*20:0;
+yVal.textContent=p<.22||p>.9?'0':String(Math.round(42360*Math.min(1,w*1.05)+jitter));
+yStable.setAttribute('fill',w>=1&&p<.85?'#1d8a52':'#c5d3e0');
+tclip.setAttribute('height',seg(p,.46,.6)*70);
+const go=p>.62;lR.setAttribute('fill',go?'#4a2522':'#ff5a4e');lG.setAttribute('fill',go?'#3ddc84':'#173d2a');
+arm.setAttribute('transform',`rotate(${-80*seg(p,.62,.74)} 556 306)`);
+const s=seg(p,.66,.86);cloud.setAttribute('opacity',.3+s*.7);syncLine.setAttribute('opacity',s>0?1:0);
+syncDot.setAttribute('opacity',s>0&&s<1?1:0);syncDot.setAttribute('cx',655+15*((s*3)%1));syncDot.setAttribute('cy',190-58*((s*3)%1));
+bar.style.width=(p*100)+'%';
+const k=p<.24?0:p<.46?1:p<.66?2:3;steps.forEach((st,i)=>st.classList.toggle('on',i===k));
+}
+if(reduce){draw(.6);return}
+let raf=0;function on(){cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{const r=sec.getBoundingClientRect();draw(clamp(-r.top/(r.height-innerHeight)))})}
+addEventListener('scroll',on,{passive:true});addEventListener('resize',on);on();
+})();
+/* versions: the schematic grows as each version is read */
+(function(){
+const panels=[...document.querySelectorAll('.vpanel')],groups=[...document.querySelectorAll('.vg')],name=$('#verName');
+const names=['01 · Monoposte local','02 · Multiposte','03 · Multipont et multi-équipements','04 · Option web et synchronisation'];
+function setV(v){groups.forEach(g=>g.classList.toggle('show',+g.dataset.l<=v));panels.forEach(p=>p.classList.toggle('on',+p.dataset.v===v));name.textContent=names[v-1]}
+function pick(){const mid=innerHeight*(innerWidth<860?.7:.5);let best=1,bd=1e9;panels.forEach(p=>{const r=p.getBoundingClientRect(),d=Math.abs(r.top+r.height/2-mid);if(d<bd){bd=d;best=+p.dataset.v}});setV(best)}
+let raf=0;addEventListener('scroll',()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(pick)},{passive:true});pick();
+})();
+/* network: offline + sync */
+(function(){
+const eqs=[...document.querySelectorAll('#equip .eq')],link=$('#link'),log=$('#log'),q=$('#queue'),btn=$('#cutBtn');
+const names=['Pont-bascule','Ensacheuse','Convoyeur peseur','Bascule de circuit','Pèse-essieu','Pèse-palette'];
+const ranges=[[14000,58000],[48,52],[900,2400],[3000,9000],[4000,13000],[300,1500]];
+let offline=false,pending=[],n=0;const clock=()=>new Date().toTimeString().slice(0,8);
+function addLog(t,x){const d=document.createElement('div');d.innerHTML=`<span>${t}</span><span>${x}</span>`;log.prepend(d);while(log.children.length>6)log.lastChild.remove()}
+function packet(){if(reduce)return;const p=document.createElement('i');p.className='pk';link.appendChild(p);setTimeout(()=>p.remove(),1500)}
+function weigh(){const i=n++%eqs.length,[a,b]=ranges[i],st=b>100?20:1,w=Math.round((a+Math.random()*(b-a))/st)*st;
+const eq=eqs[i];eq.querySelector('.w').textContent=fmt(w)+' kg';eq.classList.add('flash');setTimeout(()=>eq.classList.remove('flash'),600);
+const rec={t:clock(),txt:names[i]+' · '+fmt(w)+' kg'};
+if(offline){pending.push(rec);q.textContent=pending.length}else{packet();setTimeout(()=>addLog(rec.txt,rec.t),reduce?0:1400)}}
+function setOffline(v){offline=v;btn.setAttribute('aria-pressed',v);$('#cutTxt').textContent=v?'Rétablir Internet':'Couper Internet';
+link.classList.toggle('cut',v);$('#linkLabel').innerHTML=v?'Internet<br>coupé':'Internet<br>actif';
+const ct=$('#cloudTag');ct.textContent=v?'Dernière synchro '+clock():'À jour';ct.className='tagx '+(v?'bad':'ok');
+$('#netNote').textContent=v?'Internet est coupé : les pesées continuent et s\'accumulent en local, sans aucune perte.':'Connexion rétablie : SoftWEIGHT envoie automatiquement tout ce qui était en attente.';
+if(!v&&pending.length){const list=pending.slice();pending=[];list.forEach((r,k)=>setTimeout(()=>{packet();setTimeout(()=>addLog(r.txt,r.t),reduce?0:1400);q.textContent=Math.max(0,list.length-k-1)},k*180))}}
+btn.addEventListener('click',()=>setOffline(!offline));
+for(let k=0;k<4;k++)weigh();setInterval(weigh,1700);
+})();
+/* client size ruler */
+(function(){
+const data=[
+{t:'Très petite exploitation',s:'XS',who:'Usage personnel, petit producteur de cacao, café, riz, coton, haricot ou arachide, petite coopérative.',cfg:[['Équipement','Une balance ou un pèse-palette'],['Version','Monoposte local'],['Fonctions','Tickets, lots, humidité, états'],['Démarrage','Installation en une journée']]},
+{t:'Petite unité',s:'S',who:'Petite huilerie, unité de séchage ou d\'usinage, négociant local, produits semi-transformés et finis.',cfg:[['Équipement','Pont-bascule ou pèse-palette'],['Version','Monoposte ou multiposte'],['Fonctions','Analyses labo, facturation, VGM'],['Pilotage','Feux et barrière en option']]},
+{t:'PME industrielle',s:'M',who:'Usine de transformation, exportateur, carrière, BTP, logistique.',cfg:[['Équipement','Ponts, ensacheuses, bascules de circuit'],['Version','Multiposte, option web'],['Fonctions','Synchro cloud, Sage, comptabilité'],['Pilotage','Feux, barrières, caméras']]},
+{t:'Grand industriel',s:'L',who:'Agro-industrie, mines, ports et terminaux, importateurs et exportateurs.',cfg:[['Équipement','Multipont, convoyeurs peseurs, ferroviaire'],['Version','Multipont, multisite, option web'],['Fonctions','SAP, plateforme web, API'],['Pilotage','LAPI, RFID, automates, cartes I/O']]},
+{t:'Très grand compte',s:'XL',who:'Gestionnaires routiers nationaux et régionaux, aluminium, fer et acier, grands groupes agro-industriels.',cfg:[['Équipement','Pèse-essieux, ponts, réseaux de sites'],['Version','Plusieurs sites et pays consolidés'],['Fonctions','Supervision centrale, ERP, rapports'],['Pilotage','Capteurs de niveau, barrières optiques, LAPI']]}];
+const r=$('#size'),sw=$('#sw'),ticks=[...document.querySelectorAll('#ticks span')];
+function show(){const i=+r.value,d=data[i];sw.style.left=(i*25)+'%';sw.textContent=d.s;$('#szTitle').textContent=d.t;$('#szWho').textContent=d.who;
+$('#szCfg').innerHTML=d.cfg.map(([a,b])=>`<div><span>${a}</span><b style="font-weight:500">${b}</b></div>`).join('');ticks.forEach((t,k)=>t.classList.toggle('on',k===i))}
+r.addEventListener('input',show);show();
+})();
+(function(){const h=$('#hum'),f=$('#ref'),base=10000,href=8;
+function calc(){const hv=+h.value,fv=+f.value,dh=Math.max(0,hv-href)/100*base,df=fv/100*base;
+$('#humO').textContent=hv.toFixed(1).replace('.',',')+' %';$('#refO').textContent=fv.toFixed(1).replace('.',',')+' %';
+$('#labBd').innerHTML=`<div><span>Poids net reçu</span><span>${fmt(base)} kg</span></div><div class="minus"><span>Excès d'humidité (${Math.max(0,hv-href).toFixed(1).replace('.',',')} %)</span><span>− ${fmt(dh)} kg</span></div><div class="minus"><span>Réfraction</span><span>− ${fmt(df)} kg</span></div>`;
+$('#labOut').textContent=fmt(base-dh-df)+' kg'}
+h.addEventListener('input',calc);f.addEventListener('input',calc);calc()})();
+(function(){const g=i=>Math.max(0,+document.getElementById(i).value||0);let m=2;
+const M={1:['Méthode 1 · conteneur plein pesé, tare du véhicule déduite','Pont-bascule n° 1 · vérifié'],2:['Méthode 2 · somme des lots pesés + tare','Pèse-palette n° 2 · vérifié']};
+function calc(){const v=m===1?Math.max(0,g('w1')-g('w2')-g('w3')):g('v1')+g('v2')+g('v3')+g('v4'),t=fmt(v)+' kg';
+$('#vgmOut').textContent=t;$('#cVgm').textContent=t;$('#cMe').textContent=M[m][0];$('#cIn').textContent=M[m][1];
+$('#cCt').textContent='KJTU 204815 6 · '+(m===2?$('#v4').selectedOptions[0].textContent.split(' ·')[0]:"20'")}
+document.querySelectorAll('.mseg button').forEach(b=>b.addEventListener('click',()=>{m=+b.dataset.m;
+document.querySelectorAll('.mseg button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
+document.querySelectorAll('.mgrp').forEach(x=>x.hidden=+x.dataset.g!==m);calc()}));
+document.querySelectorAll('.mgrp input,.mgrp select').forEach(e=>e.addEventListener('input',calc));
+$('#cDt').textContent=new Date().toLocaleDateString('fr-FR');
+let q='',seed=7;const r=()=>(seed=(seed*9301+49297)%233280)/233280;
+for(let y=0;y<21;y++)for(let x=0;x<21;x++){const f=(a,b)=>x>=a&&x<a+7&&y>=b&&y<b+7,inF=f(0,0)||f(14,0)||f(0,14);
+const on=inF?(x%7===0||x%7===6||y%7===0||y%7===6||((x%7>1&&x%7<5)&&(y%7>1&&y%7<5))):r()<.5;if(on)q+=`<rect x="${x}" y="${y}" width="1" height="1"/>`}
+$('#cQr').innerHTML=q;calc()})();
+(function(){const inner=['Sage','SAP','ERP','Facturation','Comptabilité','API web','PDF · Excel'];
+const outer=['Automates','Cartes I/O','Capteurs de niveau','Barrières optiques','Feux','Barrières','Caméras','Caméras LAPI','RFID UHF','QR code','Indicateurs'];
+function place(ring,list){list.forEach((t,i)=>{const a=i/list.length*Math.PI*2-Math.PI/2,c=document.createElement('div');c.className='chip';
+c.style.left=`calc(50% + ${Math.cos(a)*50}%)`;c.style.top=`calc(50% + ${Math.sin(a)*50}%)`;c.innerHTML=`<span>${t}</span>`;ring.appendChild(c)})}
+place($('#r1'),inner);place($('#r2'),outer)})();
+(function(){if(reduce||!('IntersectionObserver'in window))return;
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rv').forEach(el=>{if(el.getBoundingClientRect().top>innerHeight){el.classList.add('pre');io.observe(el)}})})();
+$('#demoForm').addEventListener('submit',e=>{e.preventDefault();const f=e.target;if(!f.nom.value.trim()){f.nom.focus();return}
+const lines=[...f.querySelectorAll('input,select,textarea')].filter(x=>x.value.trim()).map(x=>{const l=x.closest('label');return (l?l.childNodes[0].textContent.trim():x.name)+' : '+x.value.trim()});
+const txt='Bonjour KENJITECH,\n'+lines.join('\n');window.open('https://wa.me/237697787475?text='+encodeURIComponent(txt),'_blank','noopener');
+const s=$('#sent');s.hidden=false;s.innerHTML='Merci. WhatsApp s\'ouvre avec votre demande déjà rédigée : il ne reste qu\'à l\'envoyer. Vous pouvez aussi écrire à <a href="mailto:kenjikarim@gmail.com?subject='+encodeURIComponent('Demande depuis le site')+'&body='+encodeURIComponent(txt)+'">kenjikarim@gmail.com</a>.'});
+</script>
+</body>
+</html>
