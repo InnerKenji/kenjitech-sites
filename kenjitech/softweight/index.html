@@ -8,13 +8,24 @@
 <link rel="apple-touch-icon" href="assets/kenjitech-logo.png">
 <link rel="canonical" href="https://www.kenjitech.org/softweight/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="KENJITECH SoftWEIGHT">
-<meta property="og:description" content="SoftWEIGHT, le logiciel de pesage leader en Afrique centrale, conçu au Cameroun par KENJITECH : ponts-bascules, ensacheuses, convoyeurs peseurs, bascules de circuit, VGM SOLAS, analyses labo, fonctionnement hors ligne et supervision en ligne.">
+<meta property="og:title" content="SoftWEIGHT – Logiciel de pesage et de traçabilité">
+<meta property="og:description" content="SoftWEIGHT, logiciel de pesage leader en Afrique centrale : ponts-bascules, pèse-essieux, pèse-palettes, VGM SOLAS, tickets, facturation, Sage/SAP. Fonctionne même sans Internet.">
 <meta property="og:url" content="https://www.kenjitech.org/softweight/">
-<meta property="og:image" content="https://www.kenjitech.org/softweight/assets/kenjitech-logo.png">
+<meta property="og:image" content="https://www.kenjitech.org/softweight/assets/og-softweight.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SoftWEIGHT, logiciel de pesage par KENJITECH">
+<meta property="og:site_name" content="KENJITECH">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SoftWEIGHT – Logiciel de pesage et de traçabilité">
+<meta name="twitter:description" content="SoftWEIGHT, logiciel de pesage leader en Afrique centrale : ponts-bascules, pèse-essieux, pèse-palettes, VGM SOLAS, tickets, facturation, Sage/SAP. Fonctionne même sans Internet.">
+<meta name="twitter:image" content="https://www.kenjitech.org/softweight/assets/og-softweight.jpg">
 <meta property="og:locale" content="fr_FR">
-<title>KENJITECH SoftWEIGHT</title>
-<meta name="description" content="SoftWEIGHT, le logiciel de pesage leader en Afrique centrale, conçu au Cameroun par KENJITECH : ponts-bascules, ensacheuses, convoyeurs peseurs, bascules de circuit, VGM SOLAS, analyses labo, fonctionnement hors ligne et supervision en ligne.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="geo.region" content="CM">
+<meta name="geo.placename" content="Douala, Cameroun">
+<title>SoftWEIGHT – Logiciel de pesage pont-bascule et VGM SOLAS | Cameroun, Afrique</title>
+<meta name="description" content="SoftWEIGHT, logiciel de pesage leader en Afrique centrale : ponts-bascules, pèse-essieux, pèse-palettes, VGM SOLAS, tickets, facturation, Sage/SAP. Fonctionne même sans Internet.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=Share+Tech+Mono&display=swap">
@@ -141,7 +152,7 @@ repeating-linear-gradient(0deg,transparent 0 79px,#ffffff0d 79px 80px);pointer-e
 .plate::before,.plate::after{content:"";position:absolute;bottom:-24px;width:16px;height:24px;background:#7f97ae;border-radius:0 0 3px 3px}
 .plate::before{left:8%}.plate::after{right:8%}
 .hero-row{display:grid;grid-template-columns:1.2fr .8fr;gap:44px;align-items:end;margin-top:36px}
-.hero-row h1{font-size:clamp(2rem,4.2vw,3.4rem);text-transform:uppercase;color:var(--ink)}
+.hero-row .tagline{font-size:clamp(2rem,4.2vw,3.4rem);text-transform:uppercase;color:var(--ink)}
 .hero-row .lead{margin-top:16px}
 .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 @media (max-width:860px){.hero-row{grid-template-columns:1fr}}
@@ -422,7 +433,182 @@ footer b{color:var(--navy)}
 @media (max-width:760px){.kpi-grid{grid-template-columns:1fr;gap:28px}.kpi{border-left:0;padding:0;padding-top:24px;border-top:1px solid var(--edge)}.kpi:first-child{border-top:0;padding-top:0}}
 .rv{transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .8s}
 .js .rv.pre{transform:translateY(28px);opacity:.15}
+.faq{display:grid;gap:12px;max-width:900px}
+.qa{border:1px solid var(--edge);border-radius:14px;background:#fff;padding:0 22px}
+.qa summary{cursor:pointer;list-style:none;font:600 1.12rem/1.35 var(--f-body,inherit);color:var(--navy);padding:18px 30px 18px 0;position:relative}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";position:absolute;right:0;top:14px;font:500 1.5rem/1 var(--f-mono);color:var(--amber-ink)}
+.qa[open] summary::after{content:"–"}
+.qa p{color:var(--dim);margin:0 0 18px;line-height:1.6}
 </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "SoftwareApplication",
+   "@id": "https://www.kenjitech.org/softweight/#software",
+   "name": "SoftWEIGHT",
+   "alternateName": [
+    "Soft Weight",
+    "SoftWeight",
+    "Logiciel SoftWEIGHT"
+   ],
+   "url": "https://www.kenjitech.org/softweight/",
+   "image": "https://www.kenjitech.org/softweight/assets/og-softweight.jpg",
+   "applicationCategory": "BusinessApplication",
+   "applicationSubCategory": "Logiciel de pesage et de traçabilité",
+   "description": "Logiciel de pesage et de traçabilité conçu au Cameroun par KENJITECH, leader en Afrique centrale : ponts-bascules, pèse-essieux, pesage ferroviaire, pèse-palettes, ensacheuses, convoyeurs peseurs, VGM SOLAS méthodes 1 et 2, tickets avec QR code, facturation, interface Sage/SAP, analyses de laboratoire, fonctionnement hors ligne avec synchronisation cloud.",
+   "featureList": [
+    "Pesage sur pont-bascule, pèse-essieu, pèse-palette, balance",
+    "Pesage ferroviaire, ensacheuses, convoyeurs peseurs, bascules de circuit",
+    "VGM SOLAS méthodes 1 et 2 avec certificat et signataire habilité",
+    "Fonctionnement hors ligne en réseau local et synchronisation cloud",
+    "Pilotage des feux, barrières, caméras et caméras LAPI",
+    "Interface Sage, SAP et autres ERP, facturation",
+    "Analyses de laboratoire tracées",
+    "Tickets A4, A5 et 80 mm avec QR code",
+    "Multiposte, multipont, multisite"
+   ],
+   "inLanguage": [
+    "fr",
+    "en"
+   ],
+   "countriesSupported": "CM, TD, GA, CG, GQ, CF",
+   "author": {
+    "@id": "https://www.kenjitech.org/#organization"
+   },
+   "publisher": {
+    "@id": "https://www.kenjitech.org/#organization"
+   },
+   "provider": {
+    "@id": "https://www.kenjitech.org/#organization"
+   }
+  },
+  {
+   "@type": [
+    "Organization",
+    "ProfessionalService"
+   ],
+   "@id": "https://www.kenjitech.org/#organization",
+   "name": "KENJITECH",
+   "alternateName": [
+    "Kenji Tech",
+    "Kenjitech"
+   ],
+   "url": "https://www.kenjitech.org/",
+   "logo": "https://www.kenjitech.org/assets/kenjitech-logo.png",
+   "telephone": "+237697787475",
+   "email": "kenjikarim@gmail.com",
+   "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Douala",
+    "addressCountry": "CM"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://www.kenjitech.org/softweight/#webpage",
+   "url": "https://www.kenjitech.org/softweight/",
+   "name": "SoftWEIGHT – Logiciel de pesage pont-bascule et VGM SOLAS",
+   "isPartOf": {
+    "@id": "https://www.kenjitech.org/#website"
+   },
+   "about": {
+    "@id": "https://www.kenjitech.org/softweight/#software"
+   },
+   "inLanguage": "fr"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "KENJITECH",
+     "item": "https://www.kenjitech.org/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "SoftWEIGHT",
+     "item": "https://www.kenjitech.org/softweight/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://www.kenjitech.org/softweight/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Qu'est-ce que SoftWEIGHT ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "SoftWEIGHT est un logiciel de pesage et de traçabilité conçu et développé au Cameroun par KENJITECH. C'est le logiciel de pesage leader en Afrique centrale : plus de 100 licences distribuées aux entreprises camerounaises et d'Afrique centrale, plus de 10 millions de pesées enregistrées et plus de 8 ans en exploitation sur le terrain."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Quels équipements de pesage SoftWEIGHT gère-t-il ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Ponts-bascules, pèse-essieux, pesage ferroviaire, pèse-palettes, balances simple pesée, bascules de circuit, ensacheuses et convoyeurs peseurs. Il se connecte aux indicateurs de pesage en RS232, RS485, USB, TCP/IP et Modbus, et pilote feux, barrières, barrières optiques, caméras et caméras de lecture de plaques (LAPI)."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "SoftWEIGHT est-il conforme à la convention SOLAS (VGM) ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Oui. SoftWEIGHT calcule la masse brute vérifiée (VGM) des conteneurs selon la convention SOLAS (chapitre VI, règle 2) : méthode 1, conteneur plein pesé sur pont-bascule avec déduction de la tare du véhicule, et méthode 2, somme des lots, du calage, de la tare et de l'habillage du conteneur. Il imprime le certificat VGM avec le signataire habilité."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Que se passe-t-il quand Internet coupe ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Rien ne s'arrête. SoftWEIGHT travaille en réseau local sur le site : pesées, tickets et barrières continuent normalement. À chaque pesée, les données sont synchronisées vers le serveur en ligne, et après une coupure tout se resynchronise automatiquement. Le directeur consulte ses pesées depuis n'importe où dans le monde."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "SoftWEIGHT se connecte-t-il à Sage, SAP ou à un autre ERP ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Oui. SoftWEIGHT s'interface avec Sage, SAP et d'autres ERP. Il gère aussi la facturation et la gestion comptable selon votre activité, ainsi que les analyses de laboratoire (humidité, réfraction et autres calculs)."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Pour quelles entreprises SoftWEIGHT est-il fait ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Pour toutes les tailles : petites huileries, producteurs de cacao, café, riz, coton ou arachide, unités de séchage, comme importateurs et exportateurs, ports, gestionnaires routiers, agro-industrie, mines, bois, BTP, aluminium et aciéries."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Où SoftWEIGHT est-il installé ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "SoftWEIGHT est installé au Cameroun et au Tchad. L'équipe KENJITECH, basée à Douala, se déploie partout en Afrique centrale et dans toute l'Afrique pour l'installation, la formation et la maintenance, avec une assistance à distance au quotidien."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Comment obtenir une démonstration ou un devis ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Appelez ou écrivez sur WhatsApp au +237 697 78 74 75, envoyez un e-mail à kenjikarim@gmail.com, ou remplissez le formulaire de contact de cette page. Nous vous proposons une démonstration et la version adaptée à votre installation : monoposte, multiposte, multipont ou option web."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <div id="boot" aria-hidden="true"><div><img src="assets/softweight.svg" alt="" style="display:block;width:46px;height:46px;margin:0 auto 16px;background:#fff;border-radius:10px;padding:4px"><div class="scr"><div class="lcd" id="bootLcd">00000</div></div><small>SOFTWEIGHT · MISE SOUS TENSION</small></div></div>
@@ -451,12 +637,12 @@ footer b{color:var(--navy)}
 <div class="wrap">
 <div class="kicker" data-speed="-.06"><img class="swmark" src="assets/softweight.svg" alt="Logo SoftWEIGHT" width="34" height="34"><span class="eyebrow">Logiciel de pesage et de traçabilité</span><span class="eyebrow" style="color:var(--dim)">Conçu au Cameroun · leader en Afrique centrale · déployé en Afrique</span></div>
 <div data-speed="-.1">
-<div class="giant" aria-label="SoftWEIGHT"><span class="soft">Soft</span><span class="weight" aria-hidden="true"><span>W</span><span>E</span><span>I</span><span>G</span><span>H</span><span>T</span></span></div>
+<h1 class="giant" aria-label="SoftWEIGHT, logiciel de pesage"><span class="soft">Soft</span><span class="weight" aria-hidden="true"><span>W</span><span>E</span><span>I</span><span>G</span><span>H</span><span>T</span></span></h1>
 <div class="plate" id="plate"></div>
 </div>
 <div class="hero-row">
 <div data-speed=".04">
-<h1>Chaque pesée tracée. Même quand Internet coupe.</h1>
+<h2 class="tagline">Chaque pesée tracée. Même quand Internet coupe.</h2>
 <p class="lead">SoftWEIGHT enregistre et trace toutes vos pesées, quel que soit l'équipement : ponts-bascules, ensacheuses, convoyeurs peseurs, bascules de circuit, pesage ferroviaire, pèse-essieux, pèse-palettes et balances. Il calcule vos analyses de laboratoire, imprime vos tickets, pilote feux, barrières et caméras, et synchronise tout vers le cloud.</p>
 <div class="ctas"><a class="btn btn-amber" href="#contact">Demander une démo</a><a class="btn btn-line" href="#versions">Choisir ma version</a></div>
 <a class="sol-badge" href="#labo"><b>SOLAS</b><span>Conforme à la convention SOLAS : VGM des conteneurs, méthodes 1 et 2</span></a>
@@ -832,6 +1018,22 @@ footer b{color:var(--navy)}
 <button class="btn btn-amber" type="submit" style="justify-self:start">Envoyer la demande</button>
 <p class="sent" id="sent" hidden>Merci. Pour une réponse rapide, envoyez aussi votre demande par WhatsApp au +237 697 78 74 75.</p>
 </form>
+</div>
+</section>
+<!-- FAQ -->
+<section class="wm left" id="faq">
+<div class="wrap">
+<div class="sec-head rv"><p class="eyebrow">Questions fréquentes</p><h2>SoftWEIGHT en questions</h2><p class="lead">Tout ce qu'on nous demande sur notre logiciel de pesage, de traçabilité et de VGM.</p></div>
+<div class="faq">
+<details class="qa"><summary>Qu&#39;est-ce que SoftWEIGHT ?</summary><p>SoftWEIGHT est un logiciel de pesage et de traçabilité conçu et développé au Cameroun par KENJITECH. C'est le logiciel de pesage leader en Afrique centrale : plus de 100 licences distribuées aux entreprises camerounaises et d'Afrique centrale, plus de 10 millions de pesées enregistrées et plus de 8 ans en exploitation sur le terrain.</p></details>
+<details class="qa"><summary>Quels équipements de pesage SoftWEIGHT gère-t-il ?</summary><p>Ponts-bascules, pèse-essieux, pesage ferroviaire, pèse-palettes, balances simple pesée, bascules de circuit, ensacheuses et convoyeurs peseurs. Il se connecte aux indicateurs de pesage en RS232, RS485, USB, TCP/IP et Modbus, et pilote feux, barrières, barrières optiques, caméras et caméras de lecture de plaques (LAPI).</p></details>
+<details class="qa"><summary>SoftWEIGHT est-il conforme à la convention SOLAS (VGM) ?</summary><p>Oui. SoftWEIGHT calcule la masse brute vérifiée (VGM) des conteneurs selon la convention SOLAS (chapitre VI, règle 2) : méthode 1, conteneur plein pesé sur pont-bascule avec déduction de la tare du véhicule, et méthode 2, somme des lots, du calage, de la tare et de l'habillage du conteneur. Il imprime le certificat VGM avec le signataire habilité.</p></details>
+<details class="qa"><summary>Que se passe-t-il quand Internet coupe ?</summary><p>Rien ne s'arrête. SoftWEIGHT travaille en réseau local sur le site : pesées, tickets et barrières continuent normalement. À chaque pesée, les données sont synchronisées vers le serveur en ligne, et après une coupure tout se resynchronise automatiquement. Le directeur consulte ses pesées depuis n'importe où dans le monde.</p></details>
+<details class="qa"><summary>SoftWEIGHT se connecte-t-il à Sage, SAP ou à un autre ERP ?</summary><p>Oui. SoftWEIGHT s'interface avec Sage, SAP et d'autres ERP. Il gère aussi la facturation et la gestion comptable selon votre activité, ainsi que les analyses de laboratoire (humidité, réfraction et autres calculs).</p></details>
+<details class="qa"><summary>Pour quelles entreprises SoftWEIGHT est-il fait ?</summary><p>Pour toutes les tailles : petites huileries, producteurs de cacao, café, riz, coton ou arachide, unités de séchage, comme importateurs et exportateurs, ports, gestionnaires routiers, agro-industrie, mines, bois, BTP, aluminium et aciéries.</p></details>
+<details class="qa"><summary>Où SoftWEIGHT est-il installé ?</summary><p>SoftWEIGHT est installé au Cameroun et au Tchad. L'équipe KENJITECH, basée à Douala, se déploie partout en Afrique centrale et dans toute l'Afrique pour l'installation, la formation et la maintenance, avec une assistance à distance au quotidien.</p></details>
+<details class="qa"><summary>Comment obtenir une démonstration ou un devis ?</summary><p>Appelez ou écrivez sur WhatsApp au +237 697 78 74 75, envoyez un e-mail à kenjikarim@gmail.com, ou remplissez le formulaire de contact de cette page. Nous vous proposons une démonstration et la version adaptée à votre installation : monoposte, multiposte, multipont ou option web.</p></details>
+</div>
 </div>
 </section>
 </main>

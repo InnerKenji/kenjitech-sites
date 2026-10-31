@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+ <url><loc>https://www.kenjitech.org/</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>1.0</priority>
+  <image:image><image:loc>https://www.kenjitech.org/assets/og-kenjitech.jpg</image:loc></image:image></url>
+ <url><loc>https://www.kenjitech.org/softweight/</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>1.0</priority>
+  <image:image><image:loc>https://www.kenjitech.org/softweight/assets/og-softweight.jpg</image:loc></image:image></url>
+</urlset>
