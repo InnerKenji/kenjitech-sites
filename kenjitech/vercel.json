@@ -1,5 +1,24 @@
 {
   "redirects": [
-    { "source": "/softweight", "destination": "/softweight/", "permanent": true }
+    {
+      "source": "/softweight",
+      "destination": "/softweight/",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/pont-bascule",
+      "destination": "/softweight/pont-bascule/",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/vgm-solas",
+      "destination": "/softweight/vgm-solas/",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/pesage-cacao-cafe",
+      "destination": "/softweight/pesage-cacao-cafe/",
+      "permanent": true
+    }
   ]
 }
