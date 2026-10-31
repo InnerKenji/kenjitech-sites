@@ -1,0 +1,16 @@
+# KENJITECH et SoftWEIGHT
+
+> KENJITECH est un intégrateur de solutions industrielles basé à Douala (Cameroun). Il édite SoftWEIGHT, logiciel de pesage et de traçabilité conçu au Cameroun, leader en Afrique centrale (plus de 100 licences, plus de 10 millions de pesées, plus de 8 ans en exploitation).
+
+SoftWEIGHT (à ne pas confondre avec les « soft weights » de fitness) est un logiciel de pesage : ponts-bascules, pèse-essieux, pesage ferroviaire, pèse-palettes, balances, ensacheuses, convoyeurs peseurs. Il calcule le VGM SOLAS des conteneurs (méthodes 1 et 2), trace les analyses de laboratoire (humidité, réfraction), imprime des tickets avec QR code, pilote feux, barrières et caméras LAPI, s'interface avec Sage et SAP, et fonctionne même sans Internet avec synchronisation cloud.
+
+## Pages
+- [SoftWEIGHT, logiciel de pesage](https://www.kenjitech.org/softweight/) : présentation complète, versions, références, FAQ
+- [Logiciel de pont-bascule](https://www.kenjitech.org/softweight/pont-bascule/)
+- [VGM SOLAS : méthodes 1 et 2](https://www.kenjitech.org/softweight/vgm-solas/)
+- [Pesage cacao et café](https://www.kenjitech.org/softweight/pesage-cacao-cafe/)
+- [KENJITECH, intégrateur à Douala](https://www.kenjitech.org/) : pesage, métrologie, supervision industrielle, péage, thermographie infrarouge, ultrasons, électricité
+
+## Contact
+- Téléphone et WhatsApp : +237 697 78 74 75
+- E-mail : kenjikarim@gmail.com
