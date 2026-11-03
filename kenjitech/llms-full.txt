@@ -9,7 +9,7 @@ Page : https://www.kenjitech.org/softweight/fonctionnalites/
 SoftWEIGHT est compatible avec tous les indicateurs de pesage du marché, quelle que soit leur marque ou leur origine : dès qu'un indicateur communique, SoftWEIGHT lit et décode ses données.
 
 - **Compatibilité** : Tous les indicateurs de pesage du marché, quelle que soit la marque ou l'origine. Dès qu'un indicateur communique, SoftWEIGHT lit et décode ses données.
-- **Marques** : Tous les indicateurs Mettler Toledo, Arpège Master K, Precia Molen, A12E, Dini Argeo, Bilanciai, Laumas, SIPI, Epelsa, Ohaus, EXA, Avery Weigh-Tronix, Rice Lake, Minebea Intec (ex-Sartorius), HBK (HBM), Flintec, Systec, Bizerba, Soehnle Industrial, Schenck Process, Cardinal, Fairbanks, Kern, Adam Equipment, A&D, CAS, DIGI, Yaohua, Keli, Utilcell, Giropes, Baxtran et Gram, et les autres marques.
+- **Marques** : Tous les indicateurs Mettler Toledo, Arpège Master K, Precia Molen, A12E, Dini Argeo, Bilanciai, Laumas, SIPI, Epelsa, Ohaus, EXA, Avery Weigh-Tronix, Rice Lake, Minebea Intec (ex-Sartorius), HBK (HBM), Flintec, Flintab, Systec, Bizerba, Soehnle Industrial, Schenck Process, Cardinal, Fairbanks, Kern, Adam Equipment, A&D, CAS, DIGI, Yaohua, Keli, Utilcell, Giropes, Baxtran et Gram, et les autres marques.
 - **Liaisons série** : RS232, RS422, RS485, USB.
 - **Sans fil** : Bluetooth et Wi-Fi.
 - **Réseau** : TCP/IP sur Ethernet et Wi-Fi, Modbus.
