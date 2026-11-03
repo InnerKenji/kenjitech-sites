@@ -4,6 +4,17 @@ SoftWEIGHT est un logiciel de pesage et de traçabilité conçu au Cameroun par 
 
 Page : https://www.kenjitech.org/softweight/fonctionnalites/
 
+## Compatible avec tous les indicateurs
+
+SoftWEIGHT est compatible avec tous les indicateurs de pesage du marché, quelle que soit leur marque ou leur origine : dès qu'un indicateur communique, SoftWEIGHT lit et décode ses données.
+
+- **Compatibilité** : Tous les indicateurs de pesage du marché, quelle que soit la marque ou l'origine. Dès qu'un indicateur communique, SoftWEIGHT lit et décode ses données.
+- **Marques** : Tous les indicateurs Mettler Toledo, Arpège Master K, Precia Molen, A12E, Dini Argeo, Bilanciai, Laumas, SIPI, Epelsa, Ohaus et EXA, et les autres marques.
+- **Liaisons série** : RS232, RS422, RS485, USB.
+- **Sans fil** : Bluetooth et Wi-Fi.
+- **Réseau** : TCP/IP sur Ethernet et Wi-Fi, Modbus.
+- **Protocoles** : Tous les protocoles de communication des indicateurs sont implémentés ; un indicateur existant se garde, pas besoin de le remplacer pour passer à SoftWEIGHT.
+
 ## Léger, rapide et sécurisé
 
 SoftWEIGHT est un logiciel de pesage puissant et très léger : il tourne sur un ordinateur ordinaire, sans serveur coûteux.
@@ -63,7 +74,7 @@ SoftWEIGHT commande les équipements autour de la pesée.
 - **Contrôle d'accès** : Feux, barrières, barrières optiques.
 - **Capteurs** : Capteurs de niveau, cartes d'entrées/sorties, automates.
 - **Identification** : Caméras, caméras LAPI de lecture de plaques, RFID UHF, compteurs d'essieux.
-- **Indicateurs de pesage** : Liaisons RS232, RS485, USB, TCP/IP et Modbus.
+- **Indicateurs de pesage** : Tous les indicateurs du marché (Mettler Toledo, Arpège Master K, Precia Molen, A12E, Dini Argeo, Bilanciai, Laumas, SIPI, Epelsa, Ohaus, EXA…), en série RS232, RS422, RS485, USB, Bluetooth, TCP/IP (Ethernet et Wi-Fi) et Modbus.
 
 ## Gestion, facturation et logiciels tiers
 
@@ -106,6 +117,7 @@ KENJITECH, éditeur de SoftWEIGHT, est basé à Douala (Cameroun).
 | Interface Sage, SAP, ERP | Oui |
 | Facturation, comptabilité, préfinancements | Oui |
 | Tickets avec QR code de vérification | Oui |
+| Compatible avec tous les indicateurs, toutes marques | Oui : Mettler Toledo, Arpège Master K, Precia Molen, A12E, Dini Argeo, Bilanciai, Laumas, SIPI, Epelsa, Ohaus, EXA et autres ; RS232, RS422, RS485, USB, Bluetooth, TCP/IP Ethernet et Wi-Fi, Modbus |
 | Léger : petit installateur, peu d'espace disque, peu de mémoire | Oui : installateur 150 Mo, 250 à 500 Mo sur le disque, 4 Go de RAM suffisent |
 | Rapide, même sur un ordinateur ordinaire | Oui, développé en C++ |
 | Données chiffrées | Oui, cryptographie des données |

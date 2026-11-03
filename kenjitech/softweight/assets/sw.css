@@ -409,3 +409,5 @@ footer b{color:var(--navy)}
 .qa[open] summary::after{content:"–"}
 .qa p{color:var(--dim);margin:0 0 18px;line-height:1.6}
 .pages-sw-l{display:flex;flex-wrap:wrap;gap:12px}.pages-sw-l a{border:1px solid var(--edge);border-radius:999px;padding:12px 20px;text-decoration:none;font-weight:600;color:var(--navy);background:#fff}.pages-sw-l a:hover{border-color:var(--amber)}
+
+.indic{margin-top:34px;border:1px solid var(--edge,#d6e0ea);border-left:4px solid var(--amber,#f5a71b);border-radius:16px;padding:24px;background:#fff;position:relative;z-index:1;display:grid;gap:10px}.indic h3{font-size:1.6rem}.indic p{color:var(--dim,#4b5e71);max-width:72ch}.indic .chips{display:flex;flex-wrap:wrap;gap:8px}.indic .chips span{border:1px solid var(--edge,#d6e0ea);border-radius:999px;padding:6px 14px;font-weight:600;color:var(--navy,#023d6e);font-size:.92rem}.indic .proto{font-family:var(--f-mono,monospace);font-size:.85rem;letter-spacing:.04em;color:var(--navy,#023d6e)}

@@ -107,6 +107,7 @@
 <div class="eqc rv"><svg viewBox="0 0 56 40" aria-hidden="true"><rect x="10" y="30" width="36" height="4" fill="#023d6e"/><rect x="14" y="10" width="28" height="20" rx="2" fill="#f5a71b"/><path d="M14 18h28M14 24h28" stroke="#d48400" stroke-width="1.5"/></svg><h3>Pèse-palettes</h3><p>Pesage par lot des sacs, palettes et big bags, avec tares, analyses labo, conteneur, plomb et VGM.</p><span class="ex">Cacao, café, coton, export</span></div>
 <div class="eqc rv"><svg viewBox="0 0 56 40" aria-hidden="true"><rect x="12" y="26" width="32" height="8" rx="2" fill="#023d6e"/><rect x="16" y="22" width="24" height="4" fill="#0b5a9e"/><rect x="20" y="28" width="16" height="4" fill="#7dffb0"/></svg><h3>Balances</h3><p>Balances de simple pesée, pour les petites exploitations comme pour les laboratoires et les magasins.</p><span class="ex">Petits producteurs, magasins</span></div>
 </div>
+<div class="indic rv" id="indicateurs"><p class="eyebrow">Indicateurs de pesage</p><h3>Compatible avec tous les indicateurs du marché</h3><p>Quelle que soit la marque ou l'origine de votre indicateur, dès qu'il communique, SoftWEIGHT lit et décode ses données. Vous gardez votre matériel.</p><div class="chips"><span>Mettler Toledo</span><span>Arpège Master K</span><span>Precia Molen</span><span>A12E</span><span>Dini Argeo</span><span>Bilanciai</span><span>Laumas</span><span>SIPI</span><span>Epelsa</span><span>Ohaus</span><span>EXA</span><span>et autres</span></div><p class="proto">RS232 · RS422 · RS485 · USB · Bluetooth · TCP/IP Ethernet et Wi-Fi · Modbus</p></div>
 </div>
 </section>
 <!-- SCENE -->
@@ -447,7 +448,8 @@
 <div class="sec-head rv"><p class="eyebrow">Questions fréquentes</p><h2>SoftWEIGHT en questions</h2><p class="lead">Tout ce qu'on nous demande sur notre logiciel de pesage, de traçabilité et de VGM.</p></div>
 <div class="faq">
 <details class="qa"><summary>Qu&#39;est-ce que SoftWEIGHT ?</summary><p>SoftWEIGHT est un logiciel de pesage et de traçabilité conçu et développé au Cameroun par KENJITECH. C'est le logiciel de pesage leader en Afrique centrale : plus de 100 licences distribuées aux entreprises camerounaises et d'Afrique centrale, plus de 10 millions de pesées enregistrées et plus de 8 ans en exploitation sur le terrain.</p></details>
-<details class="qa"><summary>Quels équipements de pesage SoftWEIGHT gère-t-il ?</summary><p>Ponts-bascules, pèse-essieux, pesage ferroviaire, pèse-palettes, balances simple pesée, bascules de circuit, ensacheuses et convoyeurs peseurs. Il se connecte aux indicateurs de pesage en RS232, RS485, USB, TCP/IP et Modbus, et pilote feux, barrières, barrières optiques, caméras et caméras de lecture de plaques (LAPI).</p></details>
+<details class="qa"><summary>Quels équipements de pesage SoftWEIGHT gère-t-il ?</summary><p>Ponts-bascules, pèse-essieux, pesage ferroviaire, pèse-palettes, balances simple pesée, bascules de circuit, ensacheuses et convoyeurs peseurs. Il est compatible avec tous les indicateurs de pesage du marché (Mettler Toledo, Arpège Master K, Precia Molen, A12E, Dini Argeo, Bilanciai, Laumas, SIPI, Epelsa, Ohaus, EXA…), en série RS232, RS422, RS485, USB, Bluetooth, TCP/IP (Ethernet et Wi-Fi) et Modbus, et pilote feux, barrières, barrières optiques, caméras et caméras de lecture de plaques (LAPI).</p></details>
+<details class="qa"><summary>SoftWEIGHT est-il compatible avec mon indicateur de pesage ?</summary><p>Oui. SoftWEIGHT est compatible avec tous les indicateurs de pesage du marché, quelle que soit leur marque ou leur origine (Mettler Toledo, Arpège Master K, Precia Molen, A12E, Dini Argeo, Bilanciai, Laumas, SIPI, Epelsa, Ohaus, EXA et autres), avec tous les protocoles de communication : série RS232, RS422, RS485, USB, Bluetooth, TCP/IP (Ethernet et Wi-Fi) et Modbus. Dès qu'un indicateur communique, SoftWEIGHT lit et décode ses données. <a href="fonctionnalites/#indicateurs">Voir la compatibilité</a>.</p></details>
 <details class="qa"><summary>SoftWEIGHT est-il conforme à la convention SOLAS (VGM) ?</summary><p>Oui. SoftWEIGHT calcule la masse brute vérifiée (VGM) des conteneurs selon la convention SOLAS (chapitre VI, règle 2) : méthode 1, conteneur plein pesé sur pont-bascule avec déduction de la tare du véhicule, et méthode 2, somme des lots, du calage, de la tare et de l'habillage du conteneur. Il imprime le certificat VGM avec le signataire habilité.</p></details>
 <details class="qa"><summary>Que se passe-t-il quand Internet coupe ?</summary><p>Rien ne s'arrête. SoftWEIGHT travaille en réseau local sur le site : pesées, tickets et barrières continuent normalement. À chaque pesée, les données sont synchronisées vers le serveur en ligne, et après une coupure tout se resynchronise automatiquement. Le directeur consulte ses pesées depuis n'importe où dans le monde.</p></details>
 <details class="qa"><summary>SoftWEIGHT se connecte-t-il à Sage, SAP ou à un autre ERP ?</summary><p>Oui. SoftWEIGHT s'interface avec Sage, SAP et d'autres ERP. Il gère aussi la facturation et la gestion comptable selon votre activité, ainsi que les analyses de laboratoire (humidité, réfraction et autres calculs).</p></details>
@@ -480,6 +482,8 @@
    "applicationSubCategory": "Logiciel de pesage et de traçabilité",
    "description": "Logiciel de pesage et de traçabilité conçu au Cameroun par KENJITECH, leader en Afrique centrale : ponts-bascules, pèse-essieux, pesage ferroviaire, pèse-palettes, ensacheuses, convoyeurs peseurs, VGM SOLAS méthodes 1 et 2, tickets avec QR code, facturation, interface Sage/SAP, analyses de laboratoire, fonctionnement hors ligne avec synchronisation cloud.",
    "featureList": [
+    "Compatible avec tous les indicateurs de pesage du marché : Mettler Toledo, Arpège Master K, Precia Molen, A12E, Dini Argeo, Bilanciai, Laumas, SIPI, Epelsa, Ohaus, EXA et autres",
+    "Tous les protocoles : RS232, RS422, RS485, USB, Bluetooth, TCP/IP Ethernet et Wi-Fi, Modbus",
     "Pesage sur pont-bascule, pèse-essieu, pèse-palette, balance",
     "Pesage ferroviaire, ensacheuses, convoyeurs peseurs, bascules de circuit",
     "VGM SOLAS méthodes 1 et 2 avec certificat et signataire habilité",
@@ -580,7 +584,15 @@
      "name": "Quels équipements de pesage SoftWEIGHT gère-t-il ?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Ponts-bascules, pèse-essieux, pesage ferroviaire, pèse-palettes, balances simple pesée, bascules de circuit, ensacheuses et convoyeurs peseurs. Il se connecte aux indicateurs de pesage en RS232, RS485, USB, TCP/IP et Modbus, et pilote feux, barrières, barrières optiques, caméras et caméras de lecture de plaques (LAPI)."
+      "text": "Ponts-bascules, pèse-essieux, pesage ferroviaire, pèse-palettes, balances simple pesée, bascules de circuit, ensacheuses et convoyeurs peseurs. Il est compatible avec tous les indicateurs de pesage du marché (Mettler Toledo, Arpège Master K, Precia Molen, A12E, Dini Argeo, Bilanciai, Laumas, SIPI, Epelsa, Ohaus, EXA…), en série RS232, RS422, RS485, USB, Bluetooth, TCP/IP (Ethernet et Wi-Fi) et Modbus, et pilote feux, barrières, barrières optiques, caméras et caméras de lecture de plaques (LAPI)."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "SoftWEIGHT est-il compatible avec mon indicateur de pesage ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Oui. SoftWEIGHT est compatible avec tous les indicateurs de pesage du marché, quelle que soit leur marque ou leur origine (Mettler Toledo, Arpège Master K, Precia Molen, A12E, Dini Argeo, Bilanciai, Laumas, SIPI, Epelsa, Ohaus, EXA et autres), avec tous les protocoles de communication : série RS232, RS422, RS485, USB, Bluetooth, TCP/IP (Ethernet et Wi-Fi) et Modbus. Dès qu'un indicateur communique, SoftWEIGHT lit et décode ses données."
      }
     },
     {
