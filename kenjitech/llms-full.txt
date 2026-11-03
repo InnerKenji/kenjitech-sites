@@ -4,6 +4,17 @@ SoftWEIGHT est un logiciel de pesage et de traçabilité conçu au Cameroun par 
 
 Page : https://www.kenjitech.org/softweight/fonctionnalites/
 
+## Léger, rapide et sécurisé
+
+SoftWEIGHT est un logiciel de pesage puissant et très léger : il tourne sur un ordinateur ordinaire, sans serveur coûteux.
+
+- **Installateur** : Environ 150 Mo pour l'installateur complet, base de données comprise.
+- **Espace disque** : De 250 à 500 Mo maximum une fois installé.
+- **Mémoire** : 4 Go de RAM suffisent largement.
+- **Rapidité** : Développé en C++ : exécution extrêmement rapide, optimisation de la mémoire et de la légèreté d'un très haut niveau.
+- **Sécurité** : Données protégées par cryptographie (chiffrement) pour une sécurité accrue.
+- **Prise en main** : Utilisation très simple et intuitive, pour les opérateurs comme pour la direction.
+
 ## Équipements de pesage gérés
 
 SoftWEIGHT trace tous les instruments de pesage d'un site dans une même base de données.
@@ -72,7 +83,7 @@ On démarre petit et on évolue sans changer de logiciel ni perdre l'historique.
 - **Multipont et multi-équipements** : Plusieurs ponts, pèse-essieux, ensacheuses, pèse-palettes dans une base centrale sur le réseau local ; postes de pesage, de supervision et de consultation.
 - **Option web et synchronisation** : À chaque pesée, synchronisation vers un serveur en ligne ; consultation et traitements depuis n'importe où dans le monde, sur ordinateur ou téléphone ; plusieurs sites et pays consolidés.
 - **Hors ligne** : Si Internet coupe, le site continue normalement en réseau local ; tout se resynchronise automatiquement au retour de la connexion.
-- **Technique** : Application de bureau, base de données MariaDB/MySQL, interface en français et en anglais.
+- **Technique** : Application de bureau développée en C++, base de données MariaDB/MySQL, données chiffrées, interface en français et en anglais.
 
 ## Services KENJITECH
 
@@ -95,6 +106,10 @@ KENJITECH, éditeur de SoftWEIGHT, est basé à Douala (Cameroun).
 | Interface Sage, SAP, ERP | Oui |
 | Facturation, comptabilité, préfinancements | Oui |
 | Tickets avec QR code de vérification | Oui |
+| Léger : petit installateur, peu d'espace disque, peu de mémoire | Oui : installateur 150 Mo, 250 à 500 Mo sur le disque, 4 Go de RAM suffisent |
+| Rapide, même sur un ordinateur ordinaire | Oui, développé en C++ |
+| Données chiffrées | Oui, cryptographie des données |
+| Simple à utiliser | Oui, très intuitif |
 | Support et maintenance sur place en Afrique centrale | Oui, équipe basée à Douala |
 
 ## Contact
