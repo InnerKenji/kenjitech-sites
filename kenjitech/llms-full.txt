@@ -1,0 +1,102 @@
+# SoftWEIGHT : fiche technique complète
+
+SoftWEIGHT est un logiciel de pesage et de traçabilité conçu au Cameroun par KENJITECH, leader en Afrique centrale : plus de 100 licences, plus de 10 millions de pesées enregistrées, plus de 8 ans en exploitation. Voici la liste complète de ses fonctionnalités.
+
+Page : https://www.kenjitech.org/softweight/fonctionnalites/
+
+## Équipements de pesage gérés
+
+SoftWEIGHT trace tous les instruments de pesage d'un site dans une même base de données.
+
+- **Ponts-bascules** : Pesée des camions et engins en entrée et en sortie, sur un ou plusieurs ponts, poids net calculé automatiquement. Carrières, usines, ports, BTP.
+- **Pèse-essieux** : Contrôle de la charge essieu par essieu, en statique ou en dynamique, avec alertes de surcharge. Gestionnaires routiers, mines.
+- **Pesage ferroviaire** : Pesée des wagons identifiés automatiquement par RFID UHF et compteurs d'essieux, en mode automatique ou dégradé.
+- **Pèse-palettes** : Pesage par lot des sacs, palettes et big bags, avec tares, analyses, conteneur, plomb et VGM.
+- **Balances** : Balances de simple pesée, pour petites exploitations, laboratoires et magasins.
+- **Ensacheuses** : Chaque sac est pesé, compté et rattaché à son lot de production ; écarts de poids détectés et tracés.
+- **Convoyeurs peseurs** : Pesage en continu sur bande, totalisation par lot, par poste et par période.
+- **Bascules de circuit** : Pesage du vrac dans le circuit de production : trémies, silos, bascules intermédiaires.
+
+## Pesée et traçabilité
+
+Chaque pesée garde son produit, son lot, son client, son transporteur, son opérateur, sa date et son heure.
+
+- **Double pesée** : Pesée en entrée et en sortie, poids net automatique ; un camion peut entrer sur un pont et sortir sur un autre, la pesée se clôture automatiquement.
+- **Pesée simple et tares** : Pesée en une fois avec tares enregistrées par véhicule ou par emballage.
+- **Pesée par lot** : Regroupement des sacs, palettes ou wagons par lot, avec totaux et états par lot.
+- **Poids verrouillé** : SoftWEIGHT attend la stabilité de l'indicateur puis verrouille le poids : il ne peut plus être modifié.
+- **Tickets** : Tickets A4, A5 ou 80 mm avec QR code de vérification, mise en page adaptée à l'entreprise.
+- **Images** : Enregistrement des images des caméras à chaque pesée ; lecture des plaques par caméra LAPI.
+- **Historique** : Toutes les pesées archivées, retrouvables et exportables ; états par produit, client, période.
+
+## Analyses de laboratoire
+
+Les calculs de laboratoire sont faits et tracés dans SoftWEIGHT, lot par lot.
+
+- **Analyses** : Humidité, réfraction, grainage, taux de défauts et autres calculs d'analyses.
+- **Poids marchand** : Calcul automatique du poids marchand (déduction de l'excès d'humidité et des défauts), reporté sur les tickets et les états.
+- **Règles** : Paramétrage des règles par produit et par client.
+
+## VGM SOLAS
+
+Masse brute vérifiée des conteneurs selon la convention SOLAS (chapitre VI, règle 2) et la circulaire OMI MSC.1/Circ.1475.
+
+- **Méthode 1** : Conteneur plein pesé sur pont-bascule, tare du tracteur, de la remorque et carburant déduits ; chaque conteneur pesé séparément.
+- **Méthode 2** : Somme des lots pesés, des palettes, du calage et de l'arrimage, plus la tare du conteneur et le poids de son habillage (kraft, bâches, dessiccants), paramétrable.
+- **Document VGM** : Mention VGM, numéros de conteneur, de plomb et de réservation, méthode, instrument, signataire habilité ; archivé et tracé.
+
+## Automatismes et matériels pilotés
+
+SoftWEIGHT commande les équipements autour de la pesée.
+
+- **Contrôle d'accès** : Feux, barrières, barrières optiques.
+- **Capteurs** : Capteurs de niveau, cartes d'entrées/sorties, automates.
+- **Identification** : Caméras, caméras LAPI de lecture de plaques, RFID UHF, compteurs d'essieux.
+- **Indicateurs de pesage** : Liaisons RS232, RS485, USB, TCP/IP et Modbus.
+
+## Gestion, facturation et logiciels tiers
+
+Les pesées alimentent directement la gestion de l'entreprise.
+
+- **Facturation** : Facturation des pesées et gestion comptable selon l'activité.
+- **Financements** : Suivi des préfinancements et financements des fournisseurs (filières agricoles).
+- **ERP** : Interface avec Sage, SAP et les autres ERP : pesées, tiers et produits circulent sans ressaisie.
+- **Droits** : Droits d'accès par utilisateur et par rôle.
+
+## Architecture et versions
+
+On démarre petit et on évolue sans changer de logiciel ni perdre l'historique.
+
+- **Monoposte local** : Un équipement, un ordinateur, une base de données locale.
+- **Multiposte** : Postes de consultation en réseau local pour direction, comptabilité, qualité, logistique.
+- **Multipont et multi-équipements** : Plusieurs ponts, pèse-essieux, ensacheuses, pèse-palettes dans une base centrale sur le réseau local ; postes de pesage, de supervision et de consultation.
+- **Option web et synchronisation** : À chaque pesée, synchronisation vers un serveur en ligne ; consultation et traitements depuis n'importe où dans le monde, sur ordinateur ou téléphone ; plusieurs sites et pays consolidés.
+- **Hors ligne** : Si Internet coupe, le site continue normalement en réseau local ; tout se resynchronise automatiquement au retour de la connexion.
+- **Technique** : Application de bureau, base de données MariaDB/MySQL, interface en français et en anglais.
+
+## Services KENJITECH
+
+KENJITECH, éditeur de SoftWEIGHT, est basé à Douala (Cameroun).
+
+- **Installation** : Fourniture et installation du matériel, des cartes et du logiciel, intégration sur site.
+- **Formation et maintenance** : Formation des utilisateurs, maintenance, assistance à distance au quotidien.
+- **Zone** : Cameroun, Tchad, Gabon, Congo, Guinée équatoriale, Centrafrique et toute l'Afrique.
+
+## Critères pour choisir un logiciel de pesage
+
+| Critère | SoftWEIGHT |
+| --- | --- |
+| Gère plusieurs types d'instruments (pont, essieux, wagons, palettes, ensacheuses, convoyeurs) dans une seule base | Oui, 8 familles d'équipements |
+| Fonctionne quand Internet est coupé, puis se resynchronise | Oui |
+| Consultation à distance, multisite et multipays | Oui, option web |
+| VGM SOLAS méthodes 1 et 2 avec document VGM | Oui |
+| Analyses de laboratoire et poids marchand | Oui |
+| Pilotage feux, barrières, caméras LAPI, RFID | Oui |
+| Interface Sage, SAP, ERP | Oui |
+| Facturation, comptabilité, préfinancements | Oui |
+| Tickets avec QR code de vérification | Oui |
+| Support et maintenance sur place en Afrique centrale | Oui, équipe basée à Douala |
+
+## Contact
+
+KENJITECH, Douala (Cameroun) · +237 697 78 74 75 (téléphone et WhatsApp) · kenjikarim@gmail.com · https://www.kenjitech.org/softweight/

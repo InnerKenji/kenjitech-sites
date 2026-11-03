@@ -29,394 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=Share+Tech+Mono&display=swap">
-<style>
-/* Layout: the KENJITECH circuit world. Blue opening and hero, then blocks alternating
-white / blue (the client's rule). Each service that can be shown is shown as an instrument:
-an IR camera over an electrical cabinet, an ultrasonic gauge on a steel plate.
-Single light-and-blue look by choice. */
-:root{
---bg:#ffffff;--soft:#f4f7fa;--panel:#eaf0f6;--edge:#d6e0ea;
---navy:#023d6e;--navy-2:#0b5a9e;--deep:#012a4c;
---ink:#0f1d2b;--dim:#4b5e71;--h:#023d6e;
---amber:#f5a71b;--amber-ink:#a86a00;--go:#1d8a52;--red:#d4483d;
---lcd:#7dffb0;--lcd-bg:#04110a;--dev:#0d1a26;
---f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
---f-body:"IBM Plex Sans",system-ui,"Segoe UI",sans-serif;
---f-mono:"Share Tech Mono",ui-monospace,Consolas,monospace;
-color-scheme:light;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font:16px/1.65 var(--f-body);margin:0;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--deep)}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
-.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-h1,h2,h3{font-family:var(--f-display);line-height:.95;margin:0;text-wrap:balance;font-weight:800}
-h2{font-size:clamp(2.5rem,5.6vw,4.6rem);text-transform:uppercase;color:var(--h)}
-h3{font-size:1.45rem;font-weight:800;text-transform:uppercase;letter-spacing:.02em;color:var(--h)}
-p{margin:0}
-.eyebrow{font:500 .8rem/1 var(--f-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--amber-ink)}
-.lead{color:var(--dim);font-size:1.1rem;max-width:64ch}
-.txt{color:var(--dim);max-width:64ch}
-.txt+.txt{margin-top:12px}
-section{padding-block:clamp(72px,10vw,128px);position:relative;scroll-margin-top:60px}
-.sec-head{display:grid;gap:18px;margin-bottom:46px;position:relative;z-index:1}
-.btn{display:inline-flex;align-items:center;gap:10px;font:600 1rem/1 var(--f-body);padding:15px 22px;border-radius:999px;text-decoration:none;border:0;cursor:pointer}
-.btn-amber{background:var(--amber);color:#1c1200}
-.btn-amber:hover{background:#ffbd45}
-.btn-line{color:var(--navy);box-shadow:inset 0 0 0 1.5px var(--navy);background:transparent}
-.btn-line:hover{background:var(--navy);color:#fff}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
-/* blue blocks flip tokens; white cards inside keep light tokens */
-.blue{background:linear-gradient(180deg,var(--navy),#03345e);color:#fff;--h:#fff;--ink:#fff;--dim:#bcd0e3;--edge:#ffffff2e;--amber-ink:var(--amber);--go:#5fe39c;--soft:#0a4a80}
-.blue .card{--h:#023d6e;--ink:#0f1d2b;--dim:#4b5e71;--edge:#d6e0ea;--amber-ink:#a86a00;--go:#1d8a52;--soft:#f4f7fa;color:var(--ink)}
-.blue .btn-line{color:#fff;box-shadow:inset 0 0 0 1.5px #ffffff88}
-.blue .btn-line:hover{background:#fff;color:var(--navy)}
-.ghost{position:absolute;left:0;right:0;top:40px;text-align:center;font:900 clamp(5rem,16vw,15rem)/1 var(--f-display);text-transform:uppercase;color:transparent;-webkit-text-stroke:1.5px #023d6e14;white-space:nowrap;pointer-events:none;z-index:0;overflow:hidden}
-.blue .ghost{-webkit-text-stroke-color:#ffffff1f}
-.wm{overflow:clip}
-.wm::after{content:"";position:absolute;width:min(46vw,560px);aspect-ratio:1;right:-6vw;top:50%;margin-top:calc(min(46vw,560px) / -2);background:url("assets/kenjitech-logo.png") center/contain no-repeat;opacity:.05;pointer-events:none;z-index:0;translate:0 var(--wm-y,0px)}
-.wm.left::after{right:auto;left:-6vw}
-.wm>.wrap{position:relative;z-index:1}
-@media (max-width:700px){.wm::after{width:80vw;margin-top:-40vw;opacity:.04}}
-/* boot: the logo's circuit powers up */
-#boot{position:fixed;inset:0;z-index:100;background:radial-gradient(60% 60% at 50% 45%,#0b5a9e,var(--deep));display:grid;place-items:center;animation:bootOut .5s ease 2s forwards}
-#boot .disc{width:150px;height:150px;margin:0 auto;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 0 0 0 #7dffb0;animation:pulse 1.6s ease-out .2s 1}
-#boot .disc img{width:124px;height:124px;display:block;animation:spinIn 1.4s cubic-bezier(.2,.8,.2,1)}
-#boot b{display:block;text-align:center;margin-top:20px;font:800 2rem/1 var(--f-display);letter-spacing:.12em;color:#fff}
-#boot small{display:block;text-align:center;font:500 .72rem/1 var(--f-mono);letter-spacing:.3em;color:#bcd0e3;margin-top:10px}
-@keyframes spinIn{from{transform:rotate(-120deg) scale(.6);opacity:0}to{transform:none;opacity:1}}
-@keyframes pulse{to{box-shadow:0 0 0 40px #7dffb000}}
-@keyframes bootOut{to{opacity:0;visibility:hidden}}
-/* cursor */
-#cur{position:fixed;left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border:1.5px solid var(--amber);border-radius:50%;pointer-events:none;z-index:90;opacity:0;transition:width .2s,height .2s,margin .2s,background .2s;display:none}
-#cur.big{width:64px;height:64px;margin:-32px 0 0 -32px;background:#f5a71b22}
-@media (pointer:fine){#cur{display:block}}
-/* header / menu */
-header.top{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;background:var(--deep);border-bottom:1px solid #ffffff1f;transition:box-shadow .3s}
-header.top.solid{box-shadow:0 8px 24px #0f1d2b40}
-.top .wrap{display:flex;align-items:center;gap:22px;padding-block:12px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 1.45rem/1 var(--f-display);letter-spacing:.06em;color:#fff}
-.brand .disc{width:42px;height:42px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none}
-.brand img{width:34px;height:34px;display:block}
-nav.menu{display:flex;gap:4px;margin-left:auto;font-size:.9rem}
-nav.menu a{text-decoration:none;color:#c9d9e8;padding:8px 10px;border-radius:6px;white-space:nowrap}
-nav.menu a:hover{color:#fff;background:#ffffff14}
-nav.menu a.on{color:#1c1200;background:var(--amber)}
-.burger{display:none;margin-left:auto;width:46px;height:42px;border-radius:8px;border:1px solid #ffffff40;background:transparent;cursor:pointer;place-items:center}
-.burger i,.burger i::before,.burger i::after{display:block;width:20px;height:2px;background:#fff;border-radius:2px;position:relative;transition:transform .25s,background .25s}
-.burger i::before,.burger i::after{content:"";position:absolute;left:0}
-.burger i::before{top:-6px}.burger i::after{top:6px}
-.burger[aria-expanded="true"] i{background:transparent}
-.burger[aria-expanded="true"] i::before{transform:translateY(6px) rotate(45deg)}
-.burger[aria-expanded="true"] i::after{transform:translateY(-6px) rotate(-45deg)}
-.top .btn{flex:none;white-space:nowrap}
-@media (max-width:1300px){.top .btn{display:none}}
-@media (max-width:1080px){
-nav.menu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--deep);border-top:1px solid #ffffff1f;padding:8px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px));box-shadow:0 20px 30px #0f1d2b55}
-nav.menu.open{display:flex}
-nav.menu a{padding:14px 8px;border-bottom:1px solid #ffffff14;border-radius:0;font-size:1.05rem}
-.burger{display:grid}
-}
-/* HERO with live circuit board */
-.hero{padding-block:140px 90px;overflow:hidden}
-#pcb{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:.9}
-.hero .wrap{position:relative;display:grid;gap:26px;z-index:1}
-.giant{font:900 clamp(3.8rem,14.5vw,13rem)/.82 var(--f-display);text-transform:uppercase;color:#fff;letter-spacing:.01em}
-.giant span{color:var(--amber)}
-.rot{font:800 clamp(1.8rem,4vw,3.2rem)/1.05 var(--f-display);text-transform:uppercase;color:#fff;display:flex;flex-wrap:wrap;gap:0 .3em}
-.rot .w{color:var(--lcd);display:inline-block;min-width:6ch;border-bottom:3px solid var(--amber)}
-.hero-row{display:grid;grid-template-columns:1.25fr .75fr;gap:44px;align-items:end}
-.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
-.facts{display:grid;gap:10px}
-.fact{background:#ffffff12;border:1px solid #ffffff26;border-radius:12px;padding:14px 16px;backdrop-filter:blur(4px)}
-.fact b{display:block;font:800 1.5rem/1.05 var(--f-display);text-transform:uppercase;color:#fff}
-.fact span{font-size:.88rem;color:#bcd0e3}
-@media (max-width:860px){.hero-row{grid-template-columns:1fr}}
-/* ABOUT */
-.about{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;position:relative;z-index:1}
-.pillars{display:grid;gap:14px}
-.pil{display:grid;grid-template-columns:52px 1fr;gap:4px 16px;padding:18px;border:1px solid var(--edge);border-radius:12px;background:#fff}
-.pil i{grid-row:span 2;width:52px;height:52px;border-radius:12px;background:var(--navy);color:#fff;display:grid;place-items:center;font:800 1.4rem/1 var(--f-display);font-style:normal}
-.pil p{color:var(--dim);font-size:.95rem}
-@media (max-width:860px){.about{grid-template-columns:1fr}}
-/* SERVICES grid */
-.svc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;position:relative;z-index:1}
-.svc{background:#fff;border-radius:14px;padding:24px;display:grid;gap:10px;align-content:start;transition:transform .3s,box-shadow .3s;text-decoration:none}
-.svc:hover{transform:translateY(-5px);box-shadow:0 22px 40px #00000040}
-.svc .tag{justify-self:start;font:.72rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;padding:6px 9px;border-radius:99px;background:var(--panel);color:var(--navy)}
-.svc .tag.new{background:#fff1d6;color:#7a4c00}
-.svc p{color:var(--dim);font-size:.95rem}
-.svc ul{margin:0;padding-left:18px;color:var(--dim);font-size:.92rem}
-.svc .go{font:.82rem/1 var(--f-mono);color:var(--amber-ink);margin-top:4px}
-@media (max-width:980px){.svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:600px){.svc-grid{grid-template-columns:1fr}}
-/* DEMOS shared */
-.demo{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:center;position:relative;z-index:1}
-.demo.rev{grid-template-columns:1.1fr .9fr}
-.demo.rev .demo-text{order:2}
-.demo-text{display:grid;gap:14px}
-.demo-text ul{margin:0;padding-left:20px;color:var(--dim)}
-.demo-text li{margin-block:4px}
-.inst{border-radius:16px;padding:14px;background:var(--dev);color:#e8f0f7;box-shadow:0 26px 50px #0f1d2b40;min-width:0}
-.inst-head{display:flex;justify-content:space-between;gap:10px;font:.72rem/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:#93a9bf;padding:4px 4px 10px}
-@media (max-width:480px){.inst-head{letter-spacing:.06em;font-size:.62rem}.inst-head span{white-space:nowrap}}
-.inst-foot{display:flex;flex-wrap:wrap;gap:10px 18px;justify-content:space-between;align-items:center;padding:12px 4px 2px;font:.85rem/1.3 var(--f-mono);color:#93a9bf}
-.inst-foot b{color:var(--lcd);font-weight:400;font-size:1.3rem}
-.toggle{background:#ffffff14;border:1px solid #ffffff33;color:#fff;border-radius:99px;padding:8px 14px;font:600 .85rem/1 var(--f-body);cursor:pointer}
-.toggle[aria-pressed="true"]{background:var(--amber);color:#1c1200;border-color:var(--amber)}
-@media (max-width:900px){.demo,.demo.rev{grid-template-columns:1fr}.demo.rev .demo-text{order:0}}
-/* IR */
-.ir-stage{position:relative;border-radius:10px;overflow:hidden;touch-action:none;cursor:none}
-#irCv{display:block;width:100%;height:auto}
-.ir-read{position:absolute;pointer-events:none;font:.9rem/1 var(--f-mono);color:#fff;background:#000a;padding:5px 8px;border-radius:4px;transform:translate(14px,-34px);white-space:nowrap}
-.scale{display:flex;align-items:center;gap:8px;font:.75rem/1 var(--f-mono);color:#93a9bf}
-.scale i{display:block;width:140px;height:10px;border-radius:3px;background:linear-gradient(90deg,#10002e,#4b0a8a,#b0157a,#e8532a,#f9a51b,#fff7c9)}
-.alarm{color:#ff8a7a}
-/* UT */
-.ut{display:grid;gap:12px}
-#utSvg{width:100%;height:auto;display:block;background:#f4f7fa;border-radius:10px;touch-action:none}
-#utScope{width:100%;height:auto;display:block;background:var(--lcd-bg);border-radius:10px}
-.ut-ctrl{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
-.ut-ctrl input{width:100%;accent-color:var(--amber)}
-.ut-ctrl select{font:.9rem var(--f-mono);background:#0b1b2b;color:#e8f0f7;border:1px solid #ffffff33;border-radius:6px;padding:7px 8px}
-.ok{color:var(--lcd)}.warn{color:var(--amber)}.crit{color:#ff8a7a}
-/* SUPERVISION mimic */
-.sc{border-radius:10px;overflow:hidden;background:#0b1b2b}
-#scSvg{display:block;width:100%;height:auto}
-#scSvg .pipe{fill:none;stroke:#3a5168;stroke-width:8;stroke-linejoin:round}
-#scSvg .flow{stroke:#4fb3ff;stroke-width:3;stroke-dasharray:8 10;opacity:0}
-#scSvg .flow.on{opacity:1;animation:dash .7s linear infinite}
-@keyframes dash{to{stroke-dashoffset:-18}}
-#scSvg .tank{fill:#10263a;stroke:#93a9bf;stroke-width:2}
-#scSvg .liq{fill:#1f6fb8;opacity:.85;transition:y .3s,height .3s}
-#scSvg .heat{fill:none;stroke:#3a5168;stroke-width:3}
-#scSvg .heat.on{stroke:#ff6a3d;filter:drop-shadow(0 0 4px #ff6a3d)}
-#scSvg .valve polygon,#scSvg .valve rect,#scSvg .pump circle{fill:#3a5168;stroke:#93a9bf;stroke-width:1.5}
-#scSvg .pump polygon{fill:#93a9bf}
-#scSvg .valve.on polygon,#scSvg .valve.on rect,#scSvg .pump.on circle{fill:#1d8a52;stroke:#7dffb0}
-#scSvg .pump.on polygon{fill:#fff}
-#scSvg .tx{fill:#0d1a26;stroke:#f5a71b;stroke-width:1.5}
-#scSvg .tx-t{font:10px var(--f-mono);fill:#f5a71b}
-#scSvg .cell{fill:#93a9bf}
-#scSvg .lbl{font:11px var(--f-mono);fill:#93a9bf}
-#scSvg .val{font:14px var(--f-mono);fill:#7dffb0}
-#scSvg .big{font:22px var(--f-mono);fill:#fff}
-#scSvg .val.alarm{fill:#ff8a7a}
-.sc-ctrl{display:flex;flex-wrap:wrap;gap:8px;padding:12px 2px 4px}
-.io{margin-top:10px;border-radius:10px;padding:12px;background:linear-gradient(160deg,#0f3d2c,#0a2c20);border:1px solid #2f6b52;display:grid;gap:9px;font:.74rem/1.2 var(--f-mono);color:#bfe8d4}
-.io-h{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;color:#e9c46a;letter-spacing:.08em;text-transform:uppercase}
-.io-row{display:grid;grid-template-columns:28px repeat(4,minmax(0,1fr));gap:8px;align-items:center}
-.io-row em{font-style:normal;color:#e9c46a}
-.io-row span{display:flex;align-items:center;gap:6px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-@media (max-width:520px){.io-row{grid-template-columns:26px 1fr 1fr;row-gap:6px}.io-row em{grid-row:span 2}.tl-log li{white-space:normal}}
-.led{flex:none;width:10px;height:10px;border-radius:50%;background:#173a2c;box-shadow:inset 0 0 0 1px #2f6b52}
-.led.on{background:#7dffb0;box-shadow:0 0 8px #7dffb0}
-.led.al.on{background:#ff6a5a;box-shadow:0 0 8px #ff6a5a}
-.bar{flex:none;width:34px;height:8px;border-radius:2px;background:#173a2c;overflow:hidden;display:block}
-.bar i{display:block;height:100%;width:0;background:#e9c46a;transition:width .3s}
-/* TOLL lane */
-.seg{display:flex;gap:4px;padding:3px;border-radius:99px;background:#ffffff10;margin:0 2px 10px;flex-wrap:wrap}
-.seg button{flex:1 1 auto;border:0;border-radius:99px;padding:9px 12px;background:transparent;color:#c9d9e8;font:600 .85rem/1 var(--f-body);cursor:pointer}
-.seg button[aria-pressed="true"]{background:var(--amber);color:#1c1200}
-#tlSvg{display:block;width:100%;height:auto;border-radius:10px;background:#16304a}
-#tlSvg .lbl{font:11px var(--f-mono);fill:#93a9bf}
-#tlSvg .lbl.dk{fill:#0d1a26}
-#tlSvg .plate{font:13px var(--f-mono);fill:#f5a71b;letter-spacing:.08em}
-#tlSvg .wire{fill:none;stroke:#ffffff26;stroke-width:1.5;stroke-dasharray:3 3;transition:stroke .2s}
-#tlSvg .wire.hot{stroke:#f5a71b;stroke-dasharray:none;stroke-width:2.5}
-#tlSvg .loop{fill:none;stroke:#7dffb055;stroke-width:2;stroke-dasharray:6 5;transition:stroke .2s,fill .2s}
-#tlSvg .loop.on{stroke:#7dffb0;fill:#7dffb018}
-#tlSvg .beam{stroke:#ff6a5a;stroke-width:1.5;stroke-dasharray:4 4;opacity:.45}
-#tlSvg .beam.cut{opacity:1;stroke-width:3;stroke-dasharray:none}
-#tlArm{transform-box:fill-box;transform-origin:50% 0;transition:transform .7s cubic-bezier(.5,0,.3,1)}
-#tlArm.up{transform:scaleY(.07)}
-.tl-ctrl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:12px 2px 4px;font:.85rem/1.3 var(--f-mono);color:#c9d9e8}
-.tl-ctrl .btn{padding:11px 18px;font-size:.92rem}
-.tl-ctrl .btn:disabled{opacity:.4;cursor:default}
-.tl-log{list-style:none;margin:8px 0 0;padding:10px 12px;border-radius:10px;background:#04110a;font:.8rem/1.55 var(--f-mono);color:#7dffb0;min-height:9.6em;display:flex;flex-direction:column;justify-content:flex-end}
-.tl-log li{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tl-log li time{color:#4f8a6a;margin-right:8px}
-.tl-log li.am{color:#f5a71b}
-/* SOFTWEIGHT teaser */
-.sw{display:grid;grid-template-columns:auto 1fr auto;gap:30px;align-items:center;background:#fff;border:1px solid var(--edge);border-radius:18px;padding:clamp(20px,4vw,40px);position:relative;z-index:1;box-shadow:0 20px 40px #0f1d2b10}
-.sw img{width:96px;height:96px}
-.sw h3{font-size:clamp(2rem,4vw,3rem)}
-.sw h3 span{color:var(--amber-ink)}
-.vers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
-.vers div{border:1px solid var(--edge);border-radius:12px;padding:12px;background:var(--soft);display:grid;gap:4px;align-content:start}
-.vers b{font:800 1.15rem/1 var(--f-display);text-transform:uppercase;color:var(--h)}
-.vers span{font-size:.84rem;line-height:1.45;color:var(--dim)}
-@media (max-width:1100px){.vers{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:420px){.vers{grid-template-columns:1fr}}
-.sw .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.sw .chips span{border:1px solid var(--edge);border-radius:99px;padding:6px 12px;font-size:.85rem;background:var(--soft)}
-@media (max-width:860px){.sw{grid-template-columns:1fr}}
-/* METHOD horizontal scroll */
-.method{height:440vh;padding:0}
-.method .stick{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr);align-content:center;gap:26px}
-.method .stick>.wrap{width:100%}
-.track{display:flex;gap:24px;padding-left:max(16px,calc((100vw - 1200px)/2 + 16px));will-change:transform}
-.mstep{flex:none;width:min(78vw,440px);min-height:330px;background:#fff;border-radius:18px;padding:28px;display:grid;gap:12px;align-content:start}
-.mstep .n{font:900 4.4rem/1 var(--f-display);color:transparent;-webkit-text-stroke:1.5px var(--navy)}
-.mstep p{color:var(--dim)}
-.mstep ul{margin:0;padding-left:18px;color:var(--dim);font-size:.94rem}
-.mbar{height:3px;background:#ffffff2e;border-radius:3px;overflow:hidden}
-.mbar i{display:block;height:100%;width:0;background:var(--amber)}
-@media (max-width:760px){
-.method{height:auto;padding-block:72px}
-.method .stick{position:static;height:auto}
-.track{flex-direction:column;transform:none!important;padding-right:max(16px,env(safe-area-inset-right,0px))}
-.mstep{width:auto;min-height:0}
-.mbar{display:none}
-}
-/* SECTORS */
-.sectors{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--edge);border:1px solid var(--edge);border-radius:14px;overflow:hidden;position:relative;z-index:1}
-.sec{background:#fff;padding:22px;display:grid;gap:8px;align-content:start;transition:background .3s}
-.sec:hover{background:#fff7e6}
-.sec b{font:800 1.35rem/1 var(--f-display);text-transform:uppercase;color:var(--navy)}
-.sec span{color:var(--dim);font-size:.9rem}
-@media (max-width:900px){.sectors{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:520px){.sectors{grid-template-columns:1fr}}
-/* REFERENCES */
-.refs{border-top:1px solid var(--edge);position:relative;z-index:1}
-.ref{display:grid;grid-template-columns:1fr auto;gap:6px 20px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--edge)}
-.ref b{font:900 clamp(2rem,5.4vw,4.2rem)/1 var(--f-display);text-transform:uppercase;color:var(--h);transition:color .25s,transform .35s;transform-origin:0 50%}
-.ref .sec2{font:.8rem/1.3 var(--f-mono);color:var(--dim);text-transform:uppercase;letter-spacing:.08em;text-align:right}
-.ref .what{grid-column:1/-1;color:var(--dim);max-height:0;overflow:hidden;transition:max-height .35s}
-.ref:hover b{color:var(--amber);transform:translateX(14px)}
-.ref:hover .what{max-height:60px}
-.more{font:800 clamp(1.6rem,3.6vw,2.6rem)/1 var(--f-display);text-transform:uppercase;color:var(--amber);padding-top:26px;margin:0}
-@media (hover:none),(max-width:700px){.ref .what{max-height:none}.ref{grid-template-columns:1fr}.ref .sec2{text-align:left}}
-/* ZONE */
-.zone{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;position:relative;z-index:1}
-.countries{display:flex;flex-wrap:wrap;gap:10px}
-.countries span{border:1px solid var(--edge);border-radius:99px;padding:9px 16px;font-weight:500;background:#fff}
-.countries span.hq{background:var(--amber);color:#1c1200;border-color:var(--amber)}
-.admin{display:grid;gap:8px}
-.admin div{display:grid;grid-template-columns:170px 1fr;gap:12px;border-bottom:1px solid var(--edge);padding-bottom:8px}
-.admin span{font:.8rem/1.6 var(--f-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--dim)}
-@media (max-width:860px){.zone{grid-template-columns:1fr}.admin div{grid-template-columns:1fr;gap:2px}}
-/* CONTACT */
-.contact{background:linear-gradient(180deg,var(--navy),var(--deep))}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
-.coord{display:grid;gap:4px;padding:14px 0;border-top:1px solid #ffffff2a}
-.coord span{font:.75rem/1 var(--f-mono);color:#9fc0de;text-transform:uppercase;letter-spacing:.14em}
-.coord b{font-size:1.25rem;font-weight:600;user-select:all}
-form.demo-f{background:#fff;border-radius:14px;padding:24px;display:grid;gap:14px}
-.f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-form.demo-f label{display:grid;gap:6px;font-size:.85rem;color:var(--dim)}
-form.demo-f input,form.demo-f select,form.demo-f textarea{font:inherit;font-size:1rem;padding:11px 12px;border:1px solid var(--edge);border-radius:8px;background:var(--soft);color:var(--ink);width:100%}
-textarea{min-height:100px;resize:vertical}
-.sent{background:#e6f7ee;border-radius:8px;padding:12px 14px;color:#1d8a52}
-@media (max-width:860px){.contact-grid{grid-template-columns:1fr}.f2{grid-template-columns:1fr}}
-footer{color:var(--dim);font-size:.88rem}
-footer .wrap{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;padding-block:26px}
-footer b{color:var(--navy)}
-.rv{transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .8s}
-.js .rv.pre{transform:translateY(28px);opacity:.15}
-</style>
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@graph": [
-  {
-   "@type": [
-    "Organization",
-    "ProfessionalService"
-   ],
-   "@id": "https://www.kenjitech.org/#organization",
-   "name": "KENJITECH",
-   "legalName": "ETS KENJITECH",
-   "alternateName": [
-    "Kenji Tech",
-    "KENJI TECH",
-    "Kenjitech",
-    "K-TECH"
-   ],
-   "url": "https://www.kenjitech.org/",
-   "logo": "https://www.kenjitech.org/assets/kenjitech-logo.png",
-   "image": "https://www.kenjitech.org/assets/og-kenjitech.jpg",
-   "slogan": "Technologies et services innovants pour votre développement",
-   "description": "Intégrateur de solutions industrielles à Douala (Cameroun) : pesage et ponts-bascules, métrologie, thermométrie, supervision industrielle, systèmes de péage, thermographie infrarouge, contrôle d'épaisseur par jauges à ultrasons, électricité, informatique, maintenance. Éditeur du logiciel de pesage SoftWEIGHT.",
-   "foundingDate": "2021-12-30",
-   "telephone": "+237697787475",
-   "email": "kenjikarim@gmail.com",
-   "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Douala",
-    "addressRegion": "Littoral",
-    "addressCountry": "CM"
-   },
-   "areaServed": [
-    {
-     "@type": "Country",
-     "name": "Cameroun"
-    },
-    {
-     "@type": "Place",
-     "name": "Afrique centrale"
-    },
-    {
-     "@type": "Continent",
-     "name": "Afrique"
-    }
-   ],
-   "knowsAbout": [
-    "Pesage industriel",
-    "Pont-bascule",
-    "Pèse-essieu",
-    "Métrologie",
-    "Thermométrie",
-    "Supervision industrielle",
-    "Systèmes de péage",
-    "Thermographie infrarouge",
-    "Contrôle d'épaisseur par ultrasons",
-    "VGM SOLAS",
-    "Logiciel de pesage",
-    "Électricité industrielle",
-    "Intégration de systèmes"
-   ],
-   "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+237697787475",
-    "email": "kenjikarim@gmail.com",
-    "contactType": "customer service",
-    "availableLanguage": [
-     "French",
-     "English"
-    ],
-    "areaServed": "Africa"
-   }
-  },
-  {
-   "@type": "WebSite",
-   "@id": "https://www.kenjitech.org/#website",
-   "url": "https://www.kenjitech.org/",
-   "name": "KENJITECH",
-   "alternateName": "Kenji Tech",
-   "inLanguage": "fr",
-   "publisher": {
-    "@id": "https://www.kenjitech.org/#organization"
-   }
-  },
-  {
-   "@type": "WebPage",
-   "@id": "https://www.kenjitech.org/#webpage",
-   "url": "https://www.kenjitech.org/",
-   "name": "KENJITECH – Pesage, métrologie et supervision industrielle à Douala, Cameroun",
-   "isPartOf": {
-    "@id": "https://www.kenjitech.org/#website"
-   },
-   "about": {
-    "@id": "https://www.kenjitech.org/#organization"
-   },
-   "inLanguage": "fr"
-  }
- ]
-}
-</script>
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 <div id="boot" aria-hidden="true"><div><div class="disc"><img src="assets/kenjitech-logo.png" alt=""></div><b>KENJITECH</b><small>TECHNOLOGIES · SERVICES · INNOVATION</small></div></div>
@@ -756,247 +369,106 @@ footer b{color:var(--navy)}
 </section>
 </main>
 <footer><div class="wrap"><span><b>ETS KENJITECH</b> · Douala · RCCM RC/DLA/2021/A/2021</span><span style="display:inline-flex;align-items:center;gap:8px"><img src="assets/softweight.svg" alt="" width="20" height="20">Éditeur du logiciel SoftWEIGHT</span></div></footer>
-<script>
-document.documentElement.classList.add('js');
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const $=s=>document.querySelector(s);
-const fine=matchMedia('(pointer:fine)').matches;
-(function(){const b=$('#boot');if(reduce){b.remove();return}setTimeout(()=>b.remove(),2600)})();
-/* supervision mimic: a small process simulated live, wired to the I/O card */
-(function(){
-const S={v1:false,p1:false,r1:false,auto:false,lvl:40,temp:27,pres:.2,wt:0,hum:62,dump:false,t:0},
-el=id=>document.getElementById(id),fr=(v,d)=>v.toFixed(d).replace('.',','),
-btns=[...document.querySelectorAll('.sc-ctrl .toggle')];let vis=false,last=0,msgLock=0;
-btns.forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.act;
-if(k==='auto'){S.auto=!S.auto}else{S.auto=false;S[k]=!S[k]}render(true)}));
-function msg(t,al){const m=el('scMsg');m.textContent=t;m.className=al?'alarm':''}
-function step(dt){S.t+=dt;
-if(S.auto){if(S.lvl<25)S.v1=true;if(S.lvl>80)S.v1=false;
-if(S.lvl>35&&!S.dump&&S.wt<1000)S.p1=true;if(S.lvl<15||S.wt>=1000)S.p1=false;
-if(S.temp<60&&S.lvl>20)S.r1=true;if(S.temp>72||S.lvl<15)S.r1=false;
-if(S.wt>=1000&&!S.dump)S.dump=true}
-const flowOut=S.p1&&S.lvl>1;
-S.lvl=Math.max(0,Math.min(100,S.lvl+(S.v1?7:0)*dt-(flowOut?5:0)*dt));
-if(flowOut&&!S.dump)S.wt=Math.min(1000,S.wt+60*dt);
-if(S.dump){S.wt=Math.max(0,S.wt-260*dt);if(S.wt===0)S.dump=false}
-S.temp+=((S.r1?80:27)-S.temp)*(S.r1?.09:.04)*dt;
-S.pres+=((flowOut?2.3+.25*Math.sin(S.t*2.3)+S.lvl*.006:.2)-S.pres)*.9*dt*3;
-S.hum=62+5*Math.sin(S.t/7)-(S.temp-27)*.1;
-let al='';
-if(S.lvl>=97&&S.v1){S.v1=false;al='Sécurité trop-plein : vanne V1 fermée par l\'automate.'}
-if(S.r1&&S.lvl<8){S.r1=false;al='Sécurité marche à sec : chauffe R1 coupée.'}
-if(S.wt>=1000&&S.p1&&!S.auto){S.p1=false;al='Trémie pleine : pompe P1 arrêtée. Passez en automatique pour la vidange.'}
-if(al){msg(al,true);msgLock=3}
+<script src="assets/site.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": [
+    "Organization",
+    "ProfessionalService"
+   ],
+   "@id": "https://www.kenjitech.org/#organization",
+   "name": "KENJITECH",
+   "legalName": "ETS KENJITECH",
+   "alternateName": [
+    "Kenji Tech",
+    "KENJI TECH",
+    "Kenjitech",
+    "K-TECH"
+   ],
+   "url": "https://www.kenjitech.org/",
+   "logo": "https://www.kenjitech.org/assets/kenjitech-logo.png",
+   "image": "https://www.kenjitech.org/assets/og-kenjitech.jpg",
+   "slogan": "Technologies et services innovants pour votre développement",
+   "description": "Intégrateur de solutions industrielles à Douala (Cameroun) : pesage et ponts-bascules, métrologie, thermométrie, supervision industrielle, systèmes de péage, thermographie infrarouge, contrôle d'épaisseur par jauges à ultrasons, électricité, informatique, maintenance. Éditeur du logiciel de pesage SoftWEIGHT.",
+   "foundingDate": "2021-12-30",
+   "telephone": "+237697787475",
+   "email": "kenjikarim@gmail.com",
+   "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Douala",
+    "addressRegion": "Littoral",
+    "addressCountry": "CM"
+   },
+   "areaServed": [
+    {
+     "@type": "Country",
+     "name": "Cameroun"
+    },
+    {
+     "@type": "Place",
+     "name": "Afrique centrale"
+    },
+    {
+     "@type": "Continent",
+     "name": "Afrique"
+    }
+   ],
+   "knowsAbout": [
+    "Pesage industriel",
+    "Pont-bascule",
+    "Pèse-essieu",
+    "Métrologie",
+    "Thermométrie",
+    "Supervision industrielle",
+    "Systèmes de péage",
+    "Thermographie infrarouge",
+    "Contrôle d'épaisseur par ultrasons",
+    "VGM SOLAS",
+    "Logiciel de pesage",
+    "Électricité industrielle",
+    "Intégration de systèmes"
+   ],
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+237697787475",
+    "email": "kenjikarim@gmail.com",
+    "contactType": "customer service",
+    "availableLanguage": [
+     "French",
+     "English"
+    ],
+    "areaServed": "Africa"
+   }
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://www.kenjitech.org/#website",
+   "url": "https://www.kenjitech.org/",
+   "name": "KENJITECH",
+   "alternateName": "Kenji Tech",
+   "inLanguage": "fr",
+   "publisher": {
+    "@id": "https://www.kenjitech.org/#organization"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://www.kenjitech.org/#webpage",
+   "url": "https://www.kenjitech.org/",
+   "name": "KENJITECH – Pesage, métrologie et supervision industrielle à Douala, Cameroun",
+   "isPartOf": {
+    "@id": "https://www.kenjitech.org/#website"
+   },
+   "about": {
+    "@id": "https://www.kenjitech.org/#organization"
+   },
+   "inLanguage": "fr"
+  }
+ ]
 }
-function render(force){
-const on=(id,c)=>el(id).classList.toggle('on',!!c);
-on('scV1',S.v1);on('scPin',S.v1);on('scP1',S.p1);on('scPout',S.p1&&S.lvl>1&&!S.dump);on('scHeat',S.r1);
-const h=170*S.lvl/100;el('scLiq').setAttribute('y',240-h);el('scLiq').setAttribute('height',h);
-const hh=92*S.wt/1000;el('scHop').setAttribute('y',212-hh);el('scHop').setAttribute('height',hh);
-el('scLvl').textContent=Math.round(S.lvl)+' %';el('scTT').textContent=fr(S.temp,1)+' °C';el('scPT').textContent=fr(S.pres,1)+' bar';
-el('scWT').textContent=Math.round(S.wt)+' kg';el('scHT').textContent=Math.round(S.hum)+' % HR';
-el('scTT').classList.toggle('alarm',S.temp>75);
-on('di1',S.lvl<15);on('di2',S.lvl>85);on('di3',S.p1);on('di4',S.wt>=1000);
-on('do1',S.v1);on('do2',S.p1);on('do3',S.r1);on('do4',S.dump);
-el('di2').classList.add('al');el('di4').classList.add('al');
-el('ai1').style.width=Math.min(100,S.temp/1)+'%';el('ai2').style.width=Math.min(100,S.pres/4*100)+'%';
-el('ai3').style.width=(S.wt/10)+'%';el('ai4').style.width=S.hum+'%';
-btns.forEach(b=>b.setAttribute('aria-pressed',String(!!S[b.dataset.act])));
-if(msgLock<=0||force){msgLock=0;
-if(S.auto)msg(S.dump?'Mode automatique : trémie pesée à 1 000 kg, vidange en cours.':'Mode automatique : l\'automate régule le niveau, la température et le dosage.');
-else if(!S.v1&&!S.p1&&!S.r1)msg('Process à l\'arrêt. Ouvrez la vanne V1 pour remplir la cuve.');
-else msg('Mode manuel : '+[S.v1&&'remplissage',S.p1&&'dosage vers la trémie',S.r1&&'chauffe'].filter(Boolean).join(', ')+'.')}
-el('scClock').textContent=new Date().toLocaleTimeString('fr-FR');
-}
-function loop(ts){if(!vis){last=0;return}const dt=last?Math.min(.1,(ts-last)/1000):0;last=ts;step(dt);if(msgLock>0)msgLock-=dt;render();requestAnimationFrame(loop)}
-render();
-new IntersectionObserver(es=>{const v=es[0].isIntersecting;if(v&&!vis){vis=true;requestAnimationFrame(loop)}vis=v}).observe(el('scSvg'));
-})();
-/* toll lane: vehicles, sensors and barrier driven by the selected mode */
-(function(){
-const el=id=>document.getElementById(id),car=el('tlCar'),arm=el('tlArm'),beam=el('tlBeam'),pay=el('tlPay'),hint=el('tlHint'),log=el('tlLog');
-const NAMES={man:'Manuel',semi:'Semi-automatique',auto:'Automatique'},PLATES=['LT 482 KT','CE 731 AB','OU 225 FT','LT 905 HC','CE 118 GD','NW 640 PA'];
-let mode='semi',st='gap',x=-200,V=null,wait=0,vis=false,last=0,n=0,c1=0,c2=0,tk=1041,k=0,paid=false,read=false,looped=false;
-const say=(t,am)=>{const li=document.createElement('li');if(am)li.className='am';const tm=document.createElement('time');tm.textContent=new Date().toLocaleTimeString('fr-FR');li.append(tm,t);log.append(li);while(log.children.length>6)log.firstChild.remove()};
-const hot=id=>{const w=el(id);w.classList.add('hot');setTimeout(()=>w.classList.remove('hot'),700)};
-function lights(g){el('tlRed').setAttribute('fill',g?'#4a1d1a':'#d4483d');el('tlGreen').setAttribute('fill',g?'#2bd46f':'#16402a');hot('wLight')}
-function newCar(){const truck=k%3===2;k++;V={truck,len:truck?150:84,cls:truck?2:1,ax:truck?3:2,plate:PLATES[k%PLATES.length]};
-car.innerHTML=truck
-?'<rect x="0" y="130" width="112" height="52" rx="4" fill="#cfd9e3"/><rect x="116" y="133" width="34" height="46" rx="6" fill="#f5a71b"/><rect x="138" y="137" width="9" height="38" rx="2" fill="#0d1a26aa"/>'
-:'<rect x="0" y="136" width="84" height="40" rx="12" fill="#4fb3ff"/><rect x="50" y="140" width="16" height="32" rx="4" fill="#0d1a26aa"/><rect x="12" y="141" width="12" height="30" rx="3" fill="#0d1a2666"/>';
-x=-V.len-20;st='go';paid=read=looped=false;el('tlPlate').textContent=''}
-function setMode(m){mode=m;el('tlMode').textContent=NAMES[m];document.querySelectorAll('.seg button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.m===m)));
-el('tlOp').style.opacity=m==='auto'?.15:1;pay.textContent=m==='man'?'Encaisser':'Valider le paiement';say('Voie passée en mode '+NAMES[m].toLowerCase()+'.',true)}
-document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.m)));
-function doPay(){if(st!=='stop'||paid)return;paid=true;pay.disabled=true;tk++;
-say(mode==='man'?`Opérateur : classe ${V.cls} saisie, paiement encaissé, ticket n° ${tk}.`:`Opérateur : paiement validé, ticket n° ${tk} imprimé.`);open()}
-pay.addEventListener('click',doPay);
-function open(){lights(true);arm.classList.add('up');hot('wArm');say('Feu vert, barrière ouverte.');st='leave';hint.textContent='Passage en cours…'}
-function step(dt){
-if(st==='gap'){wait-=dt;if(wait<=0)newCar();return}
-const front=x+V.len;
-if(st==='go'){x+=150*dt;
-if(!looped&&front>=300){looped=true;el('tlLoop').classList.add('on');hot('wLoop');say('Boucle : véhicule détecté.');
-if(mode!=='man')say(`Classification : ${V.ax} essieux, classe ${V.cls}${V.truck?' (poids lourd)':''}.`)}
-if(!read&&mode!=='man'&&front>=335){read=true;el('tlPlate').textContent=V.plate;hot('wCam');say(`LAPI : plaque ${V.plate} lue.`)}
-if(front>=486){x=486-V.len;st='stop';wait=mode==='auto'?.7:(mode==='semi'?3:4.5);
-if(mode==='auto'){hint.textContent='Lecture du badge…'}else{pay.disabled=false;hint.textContent=mode==='man'?'À vous : classez et encaissez.':'À vous : validez le paiement.'}}}
-else if(st==='stop'){wait-=dt;if(wait<=0){
-if(mode==='auto'){paid=true;tk++;say(k%2?`Badge RFID reconnu, abonnement valide, passage n° ${tk}.`:`Compte prépayé de ${V.plate} débité, ticket n° ${tk}.`);open()}else doPay()}}
-else if(st==='leave'){x+=170*dt;
-const cut=x<472&&x+V.len>468;beam.classList.toggle('cut',cut);if(cut)hot('wBeam');
-if(x>300+70)el('tlLoop').classList.remove('on');
-if(x>504){beam.classList.remove('cut');arm.classList.remove('up');lights(false);hot('wArm');n++;V.cls===1?c1++:c2++;
-el('tlN').textContent=n;el('tlC1').textContent=c1;el('tlC2').textContent=c2;say('Barrière optique : passage confirmé, barrière refermée.');st='out'}}
-else if(st==='out'){x+=170*dt;if(x>660){st='gap';wait=.8;hint.textContent='En attente d\'un véhicule…';el('tlPlate').textContent=''}}
-car.setAttribute('transform',`translate(${x.toFixed(1)} 0)`)}
-function loop(ts){if(!vis){last=0;return}const dt=last?Math.min(.1,(ts-last)/1000):0;last=ts;step(dt);requestAnimationFrame(loop)}
-setMode('semi');log.innerHTML='';say('Voie 1 ouverte, mode semi-automatique.',true);wait=.3;
-new IntersectionObserver(es=>{const v=es[0].isIntersecting;if(v&&!vis){vis=true;requestAnimationFrame(loop)}vis=v}).observe(el('tlSvg'));
-})();
-/* menu + scrollspy */
-(function(){const b=$('#burger'),m=$('#menu');
-b.addEventListener('click',()=>{const o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',o);m.classList.toggle('open',o);b.setAttribute('aria-label',o?'Fermer le menu':'Ouvrir le menu')});
-m.addEventListener('click',e=>{if(e.target.closest('a')){b.setAttribute('aria-expanded','false');m.classList.remove('open')}});
-const links=[...m.querySelectorAll('a')],secs=links.map(a=>document.querySelector(a.getAttribute('href')));
-function spy(){let k=0;secs.forEach((s,i)=>{if(s&&s.getBoundingClientRect().top<innerHeight*.35)k=i});links.forEach((a,i)=>a.classList.toggle('on',i===k))}
-addEventListener('scroll',spy,{passive:true});spy()})();
-const hdr=$('#top');addEventListener('scroll',()=>hdr.classList.toggle('solid',scrollY>40),{passive:true});
-(function(){const c=$('#cur');if(!fine)return;
-addEventListener('pointermove',e=>{c.style.opacity=1;c.style.transform=`translate(${e.clientX}px,${e.clientY}px)`},{passive:true});
-document.addEventListener('pointerover',e=>{c.classList.toggle('big',!!e.target.closest('a,button,input,select,textarea,.ref,.svc'));c.style.visibility=e.target.closest('#irStage,#utSvg')?'hidden':'visible'})})();
-/* rotating verb */
-(function(){const w=$('#rotW'),words=['concevons','intégrons','supervisons','mesurons','contrôlons','fournissons','maintenons'];let i=0;
-if(reduce)return;setInterval(()=>{i=(i+1)%words.length;w.textContent=words[i]},1900)})();
-/* hero circuit board: traces with travelling pulses, brighter near the pointer */
-(function(){
-const cv=$('#pcb'),ctx=cv.getContext('2d');let W,H,traces=[],pulses=[],mx=-999,my=-999;
-function build(){const r=cv.getBoundingClientRect();W=cv.width=Math.round(r.width*devicePixelRatio);H=cv.height=Math.round(r.height*devicePixelRatio);
-const g=28*devicePixelRatio;traces=[];let seed=11;const rnd=()=>(seed=(seed*9301+49297)%233280)/233280;
-const n=Math.round(W*H/(g*g*14));
-for(let k=0;k<n;k++){let x=Math.round(rnd()*W/g)*g,y=Math.round(rnd()*H/g)*g;const pts=[[x,y]];let dir=Math.floor(rnd()*4);
-for(let s=0;s<3+Math.floor(rnd()*4);s++){const len=(2+Math.floor(rnd()*5))*g;if(dir===0)x+=len;else if(dir===1)y+=len;else if(dir===2)x-=len;else y-=len;
-if(rnd()<.5){const d=g*(rnd()<.5?1:-1);if(dir%2===0)y+=d;else x+=d}pts.push([x,y]);dir=(dir+(rnd()<.5?1:3))%4}
-traces.push(pts)}
-pulses=traces.map(()=>({t:Math.random(),v:.0015+Math.random()*.003}))}
-function lenOf(p){let L=0;for(let i=1;i<p.length;i++)L+=Math.hypot(p[i][0]-p[i-1][0],p[i][1]-p[i-1][1]);return L}
-function at(p,t){let L=lenOf(p)*t;for(let i=1;i<p.length;i++){const s=Math.hypot(p[i][0]-p[i-1][0],p[i][1]-p[i-1][1]);if(L<=s){const f=s?L/s:0;return[p[i-1][0]+(p[i][0]-p[i-1][0])*f,p[i-1][1]+(p[i][1]-p[i-1][1])*f]}L-=s}return p[p.length-1]}
-function frame(){ctx.clearRect(0,0,W,H);ctx.lineWidth=1.4*devicePixelRatio;
-traces.forEach((p,k)=>{ctx.strokeStyle='#ffffff1c';ctx.beginPath();ctx.moveTo(p[0][0],p[0][1]);p.slice(1).forEach(q=>ctx.lineTo(q[0],q[1]));ctx.stroke();
-ctx.fillStyle='#ffffff30';const e=p[p.length-1];ctx.beginPath();ctx.arc(e[0],e[1],3*devicePixelRatio,0,7);ctx.fill();
-const pu=pulses[k];if(!reduce)pu.t=(pu.t+pu.v)%1;const [x,y]=at(p,pu.t);const d=Math.hypot(x-mx,y-my),near=Math.max(0,1-d/(220*devicePixelRatio));
-ctx.fillStyle=near>0?`rgba(245,167,27,${.5+near*.5})`:'rgba(125,255,176,.55)';ctx.beginPath();ctx.arc(x,y,(2.2+near*3)*devicePixelRatio,0,7);ctx.fill()});
-if(!reduce)requestAnimationFrame(frame)}
-addEventListener('resize',()=>{build();if(reduce)frame()});
-$('#accueil').addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();mx=(e.clientX-r.left)*devicePixelRatio;my=(e.clientY-r.top)*devicePixelRatio});
-build();frame();
-})();
-/* parallax */
-(function(){if(reduce)return;const els=[...document.querySelectorAll('[data-speed]')],wms=[...document.querySelectorAll('.wm')];let raf=0;
-function run(){const vh=innerHeight;els.forEach(el=>{const r=el.getBoundingClientRect();if(r.bottom<-200||r.top>vh+200)return;const s=+el.dataset.speed*(innerWidth<700?.5:1);el.style.translate=`0 ${(-(r.top+r.height/2-vh/2)*s).toFixed(1)}px`});
-wms.forEach(w=>{const r=w.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;w.style.setProperty('--wm-y',((r.top+r.height/2-vh/2)*-.15).toFixed(1)+'px')})}
-addEventListener('scroll',()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(run)},{passive:true});addEventListener('resize',run);run()})();
-/* THERMOGRAPHY: a real cabinet photo; a temperature field is built from what the photo shows
-(copper bars, fuses, cables) plus the load on each feeder, and an IR lens follows the pointer */
-(function(){
-const cv=$('#irCv'),ctx=cv.getContext('2d'),W=cv.width,H=cv.height,stage=$('#irStage'),read=$('#irRead'),tOut=$('#irT'),msg=$('#irMsg'),full=$('#irFull');
-const photo=new Image();photo.src='assets/coffret.jpg';
-// fuse positions per feeder (photo pixels): three phases L1 L2 L3
-const feeders=[
-{n:1,p:[[50,80],[72,80],[92,80]],load:9},{n:2,p:[[200,90],[217,90],[234,90]],load:7},{n:3,p:[[318,95],[332,95],[345,95]],load:11},{n:4,p:[[415,112],[428,112],[441,112]],load:6},
-{n:6,p:[[50,290],[72,290],[92,290]],load:8},{n:7,p:[[203,278],[218,278],[234,278]],load:10},{n:8,p:[[318,262],[332,262],[345,262]],load:7},{n:9,p:[[415,262],[428,262],[441,262]],load:5}];
-const HOT={x:218,y:274,T:93,f:7};
-let F=null,vis=null,th=null;
-function T(x,y){if(!F)return 29;const i=Math.max(0,Math.min(W-1,x|0)),j=Math.max(0,Math.min(H-1,y|0));return F[j*W+i]}
-function build(){
-vis=document.createElement('canvas');vis.width=W;vis.height=H;const v=vis.getContext('2d');v.drawImage(photo,0,0,W,H);
-const d=v.getImageData(0,0,W,H).data;let f=new Float32Array(W*H);
-for(let k=0;k<W*H;k++){const r=d[k*4],g=d[k*4+1],b=d[k*4+2],l=.3*r+.59*g+.11*b;
-const cu=(r>110&&r-g>35&&g>b)?Math.min(1,(r-g)/70):0;
-f[k]=8*cu+(l<55?3.2:0)+(l>200?1.6:0)}
-// thermal diffusion: a few box-blur passes
-const tmp=new Float32Array(W*H);
-for(let pass=0;pass<3;pass++){const R=4;
-for(let y=0;y<H;y++){let acc=0;for(let x=-R;x<=R;x++)acc+=f[y*W+Math.max(0,Math.min(W-1,x))];
-for(let x=0;x<W;x++){tmp[y*W+x]=acc/(2*R+1);acc+=f[y*W+Math.min(W-1,x+R+1)]-f[y*W+Math.max(0,x-R)]}}
-for(let x=0;x<W;x++){let acc=0;for(let y=-R;y<=R;y++)acc+=tmp[Math.max(0,Math.min(H-1,y))*W+x];
-for(let y=0;y<H;y++){f[y*W+x]=acc/(2*R+1);acc+=tmp[Math.min(H-1,y+R+1)*W+x]-tmp[Math.max(0,y-R)*W+x]}}}
-const src=[];feeders.forEach(fd=>fd.p.forEach(([x,y],ph)=>src.push({x,y,T:fd.load*1.5+(ph===1?2:0),r:16})));
-src.push({x:HOT.x,y:HOT.y,T:HOT.T-29,r:9},{x:HOT.x,y:HOT.y+28,T:22,r:13},{x:HOT.x+4,y:HOT.y+62,T:10,r:12});
-for(let y=0;y<H;y++)for(let x=0;x<W;x++){let add=0;for(const s of src){const d2=(x-s.x)**2+(y-s.y)**2;if(d2<9*s.r*s.r)add=Math.max(add,s.T*Math.exp(-d2/(2*s.r*s.r)))}
-f[y*W+x]=28+f[y*W+x]*1.7+add+3*(1-y/H)+(Math.sin(x*12.9898+y*78.233)*43758.5453%1)*.25}
-F=f;
-th=document.createElement('canvas');th.width=W;th.height=H;const t2=th.getContext('2d'),img=t2.createImageData(W,H);
-const pal=[[16,0,46],[75,10,138],[176,21,122],[232,83,42],[249,165,27],[255,247,201]];
-const col=t=>{const q=Math.max(0,Math.min(1,(t-28)/54))*(pal.length-1),i=Math.floor(q),k=q-i,a=pal[i],b=pal[Math.min(pal.length-1,i+1)];return[a[0]+(b[0]-a[0])*k,a[1]+(b[1]-a[1])*k,a[2]+(b[2]-a[2])*k]};
-for(let k=0;k<W*H;k++){const c=col(f[k]);img.data[k*4]=c[0];img.data[k*4+1]=c[1];img.data[k*4+2]=c[2];img.data[k*4+3]=255}
-t2.putImageData(img,0,0);t2.globalAlpha=.2;t2.globalCompositeOperation='luminosity';t2.drawImage(vis,0,0);t2.globalAlpha=1;t2.globalCompositeOperation='source-over';
-draw()}
-const LR=Math.round(W*.13);
-let px=W*.3,py=H*.45,fullOn=false,found=false;
-const fmt=t=>t.toFixed(1).replace('.',',')+' °C';
-function draw(){if(!vis)return;ctx.drawImage(fullOn?th:vis,0,0);
-if(!fullOn){ctx.save();ctx.beginPath();ctx.arc(px,py,LR,0,7);ctx.clip();ctx.drawImage(th,0,0);ctx.restore();ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.beginPath();ctx.arc(px,py,LR,0,7);ctx.stroke()}
-ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(px-10,py);ctx.lineTo(px+10,py);ctx.moveTo(px,py-10);ctx.lineTo(px,py+10);ctx.stroke();
-const t=T(px,py);tOut.textContent=fmt(t);tOut.className=t>70?'alarm':'';
-const r=cv.getBoundingClientRect(),sx=r.width/W;read.hidden=false;read.style.left=(px*sx)+'px';read.style.top=(py*sx)+'px';read.textContent=fmt(t);
-if(t>70){found=true;const ref=Math.max(T(203,278),T(234,278));
-msg.innerHTML='<span class="alarm">Point chaud : '+t.toFixed(0)+' °C sur le fusible de la phase L2, départ D7, contre '+ref.toFixed(0)+' °C sur les phases voisines. Contact ou serrage à reprendre.</span>'}
-else if(!found)msg.textContent='Déplacez la caméra sur le coffret.'}
-function move(e){const r=cv.getBoundingClientRect();px=Math.max(0,Math.min(W,(e.clientX-r.left)/r.width*W));py=Math.max(0,Math.min(H,(e.clientY-r.top)/r.height*H));draw()}
-stage.addEventListener('pointermove',move);stage.addEventListener('pointerdown',move);
-full.addEventListener('click',()=>{fullOn=!fullOn;full.setAttribute('aria-pressed',fullOn);draw()});
-let manual=false;stage.addEventListener('pointerdown',()=>manual=true);stage.addEventListener('pointerenter',()=>{if(fine)manual=true});
-if(!reduce){let a=0;setInterval(()=>{if(manual||!vis)return;a+=.05;px=W*.5+Math.cos(a)*W*.32;py=H*.5+Math.sin(a*1.3)*H*.3;draw()},60)}
-addEventListener('resize',draw);
-if(photo.complete)build();else photo.onload=build;
-})();
-/* ULTRASOUND: probe along a plate with a corroded zone; A-scan shows back-wall echoes */
-(function(){
-const svg=$('#utSvg'),pos=$('#utPos'),mat=$('#utMat'),sc=$('#utScope'),g=sc.getContext('2d'),eOut=$('#utE'),st=$('#utState'),vel=$('#utVel');
-const top=40,nom=12,px_mm=8; // 12 mm drawn as 96 px
-const thick=x=>{const c=650,w=70;return nom-4.6*Math.exp(-((x-c)**2)/(2*w*w))-1.1*Math.exp(-((x-860)**2)/(2*30*30))}; // mm at x in 0..1000
-const X=x=>20+x*.56;
-let path=`M${X(0)} ${top}`;for(let x=0;x<=1000;x+=10)path+=` L${X(x)} ${top}`;for(let x=1000;x>=0;x-=10)path+=` L${X(x)} ${top+thick(x)*px_mm}`;path+='Z';
-svg.innerHTML=`<defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="#8a96a1" stroke-width="2"/></pattern></defs>
-<rect x="20" y="${top-6}" width="560" height="6" fill="#1d5fa8"/><text x="22" y="24" font-family="IBM Plex Sans,sans-serif" font-size="12" fill="#4b5e71">Peinture</text>
-<path d="${path}" fill="#c5d0da"/><path d="${path}" fill="url(#hatch)" opacity=".35"/>
-<text x="580" y="${top+nom*px_mm+20}" text-anchor="end" font-family="IBM Plex Sans,sans-serif" font-size="12" fill="#4b5e71">Tôle acier · nominale 12 mm</text>
-<g id="probe"><rect x="-16" y="${top-34}" width="32" height="26" rx="4" fill="#0d1a26"/><rect x="-10" y="${top-10}" width="20" height="5" fill="#f5a71b"/><line x1="0" y1="${top-34}" x2="0" y2="0" stroke="#0d1a26" stroke-width="3"/>
-<line id="beam" x1="0" y1="${top}" x2="0" y2="${top+nom*px_mm}" stroke="#1d8a52" stroke-width="3" stroke-dasharray="4 4"/></g>`;
-const probe=svg.querySelector('#probe'),beam=svg.querySelector('#beam');
-let t0=0;
-function upd(){const x=+pos.value,e=thick(x),v=+mat.value;probe.setAttribute('transform',`translate(${X(x)} 0)`);beam.setAttribute('y2',top+e*px_mm);
-eOut.textContent=e.toFixed(1).replace('.',',')+' mm';const name=mat.options[mat.selectedIndex].text;vel.textContent=name+' · '+v.toLocaleString('fr-FR').replace(/ | /g,' ')+' m/s';
-if(e<8.5){st.className='crit';st.textContent='Critique · perte de '+(nom-e).toFixed(1).replace('.',',')+' mm'}else if(e<10.5){st.className='warn';st.textContent='Corrosion · à surveiller'}else{st.className='ok';st.textContent='Conforme · nominale 12 mm'}
-scope(e,v)}
-function scope(e,v){const Wc=sc.width,Hc=sc.height;g.fillStyle='#04110a';g.fillRect(0,0,Wc,Hc);g.strokeStyle='#123a22';g.lineWidth=1;
-for(let i=1;i<10;i++){g.beginPath();g.moveTo(i*Wc/10,0);g.lineTo(i*Wc/10,Hc);g.stroke()}for(let i=1;i<4;i++){g.beginPath();g.moveTo(0,i*Hc/4);g.lineTo(Wc,i*Hc/4);g.stroke()}
-const tof=2*e/1000/v*1e6; // µs, round trip
-const span=20; // µs shown
-g.strokeStyle='#7dffb0';g.lineWidth=1.6;g.shadowColor='#7dffb0';g.shadowBlur=6;g.beginPath();
-for(let i=0;i<=Wc;i++){const t=i/Wc*span;let y=0;const pk=(c,a,w)=>a*Math.exp(-((t-c)**2)/(2*w*w))*Math.cos((t-c)*18);
-y+=pk(.4,1,.18);for(let k=1;k<=5;k++)y+=pk(.4+k*tof,.85*Math.pow(.6,k-1),.16);y+=(Math.random()-.5)*.04;
-const Y=Hc*.78-y*Hc*.6;i?g.lineTo(i,Y):g.moveTo(i,Y)}
-g.stroke();g.shadowBlur=0;g.fillStyle='#93a9bf';g.font='12px monospace';g.fillText('0 µs',4,Hc-6);g.fillText(span+' µs',Wc-44,Hc-6);
-g.fillStyle='#f5a71b';g.fillText('écho de fond · '+tof.toFixed(2).replace('.',',')+' µs',Math.min(Wc-170,(.4+tof)/span*Wc+6),16)}
-pos.addEventListener('input',upd);mat.addEventListener('change',upd);
-let drag=false;const fromEvt=e=>{const r=svg.getBoundingClientRect();const x=((e.clientX-r.left)/r.width*600-20)/.56;pos.value=Math.max(0,Math.min(1000,x));upd()};
-svg.addEventListener('pointerdown',e=>{drag=true;svg.setPointerCapture(e.pointerId);fromEvt(e)});svg.addEventListener('pointermove',e=>{if(drag)fromEvt(e)});svg.addEventListener('pointerup',()=>drag=false);
-upd();if(!reduce)setInterval(()=>scope(thick(+pos.value),+mat.value),140);
-})();
-/* method: horizontal track driven by vertical scroll */
-(function(){const sec=$('#methode'),tr=$('#track'),bar=$('#mbar');if(reduce)return;let raf=0;
-function on(){if(innerWidth<=760){tr.style.transform='';return}const r=sec.getBoundingClientRect(),p=Math.min(1,Math.max(0,-r.top/(r.height-innerHeight)));
-const max=tr.scrollWidth-innerWidth+40;tr.style.transform=`translateX(${-p*Math.max(0,max)}px)`;bar.style.width=(p*100)+'%'}
-addEventListener('scroll',()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(on)},{passive:true});addEventListener('resize',on);on()})();
-(function(){if(reduce||!('IntersectionObserver'in window))return;
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
-document.querySelectorAll('.rv').forEach(el=>{if(el.getBoundingClientRect().top>innerHeight){el.classList.add('pre');io.observe(el)}})})();
-$('#demoForm').addEventListener('submit',e=>{e.preventDefault();const f=e.target;if(!f.nom.value.trim()){f.nom.focus();return}
-const lines=[...f.querySelectorAll('input,select,textarea')].filter(x=>x.value.trim()).map(x=>{const l=x.closest('label');return (l?l.childNodes[0].textContent.trim():x.name)+' : '+x.value.trim()});
-const txt='Bonjour KENJITECH,\n'+lines.join('\n');window.open('https://wa.me/237697787475?text='+encodeURIComponent(txt),'_blank','noopener');
-const s=$('#sent');s.hidden=false;s.innerHTML='Merci. WhatsApp s\'ouvre avec votre demande déjà rédigée : il ne reste qu\'à l\'envoyer. Vous pouvez aussi écrire à <a href="mailto:kenjikarim@gmail.com?subject='+encodeURIComponent('Demande depuis le site')+'&body='+encodeURIComponent(txt)+'">kenjikarim@gmail.com</a>.'});
 </script>
 </body>
 </html>

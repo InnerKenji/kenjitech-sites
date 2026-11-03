@@ -81,6 +81,9 @@ ul.checks li::before{content:"✓";position:absolute;left:0;color:var(--amber);f
 .more{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 .more a{display:block;border:1px solid var(--edge);border-radius:14px;padding:18px 20px;text-decoration:none;font-weight:600;color:var(--navy);background:#fff}
 .more a:hover{border-color:var(--amber)}
+table.spec{width:100%;border-collapse:collapse;margin-top:8px}table.spec th,table.spec td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--edge)}table.spec th{font:500 .78rem/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--amber-ink)}table.spec td:first-child{font-weight:600;color:var(--h);width:34%}table.spec td{color:var(--dim)}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}.toc a{border:1px solid #ffffff55;border-radius:999px;padding:8px 14px;text-decoration:none;font-size:.9rem;color:#fff}
+@media (max-width:600px){table.spec td:first-child{width:40%}table.spec th,table.spec td{padding:10px 8px;font-size:.92rem}}
 footer{color:var(--dim);font-size:.88rem}footer .wrap{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;padding-block:26px}footer b{color:var(--navy)}
 </style>
 <script type="application/ld+json">
@@ -207,7 +210,7 @@ footer{color:var(--dim);font-size:.88rem}footer .wrap{display:flex;flex-wrap:wra
 <body>
 <header class="top"><div class="wrap">
 <a class="brand" href="../"><span class="disc"><img src="../assets/kenjitech-logo.png" alt="Logo KENJITECH"></span>KENJITECH</a>
-<nav class="menu" aria-label="Navigation"><a href="../">SoftWEIGHT</a><a href="../pont-bascule/">Pont-bascule</a><a href="../vgm-solas/" aria-current="page">VGM SOLAS</a><a href="../pesage-cacao-cafe/">Cacao et café</a><a href="#contact">Contact</a></nav>
+<nav class="menu" aria-label="Navigation"><a href="../">SoftWEIGHT</a><a href="../fonctionnalites/">Fonctionnalités</a><a href="../pont-bascule/">Pont-bascule</a><a href="../vgm-solas/" aria-current="page">VGM SOLAS</a><a href="../pesage-cacao-cafe/">Cacao et café</a><a href="#contact">Contact</a></nav>
 </div></header>
 <main>
 <section class="hero blue"><div class="wrap">
@@ -258,7 +261,7 @@ footer{color:var(--dim);font-size:.88rem}footer .wrap{display:flex;flex-wrap:wra
 </div></section>
 <section class="wm" style="padding-block:56px"><div class="wrap">
 <p class="eyebrow" style="margin-bottom:16px">Voir aussi</p>
-<div class="more"><a href="../">SoftWEIGHT · le logiciel complet →</a><a href="../pont-bascule/">SoftWEIGHT · Pont-bascule →</a><a href="../pesage-cacao-cafe/">SoftWEIGHT · Cacao et café →</a><a href="/" target="_blank" rel="noopener">KENJITECH · intégrateur ↗</a></div>
+<div class="more"><a href="../">SoftWEIGHT · le logiciel complet →</a><a href="../fonctionnalites/">SoftWEIGHT · Fonctionnalités →</a><a href="../pont-bascule/">SoftWEIGHT · Pont-bascule →</a><a href="../pesage-cacao-cafe/">SoftWEIGHT · Cacao et café →</a><a href="/" target="_blank" rel="noopener">KENJITECH · intégrateur ↗</a></div>
 </div></section>
 </main>
 <footer><div class="wrap"><span><b>ETS KENJITECH</b> · Cameroun · RCCM RC/DLA/2021/A/2021</span><span>SoftWEIGHT est un logiciel conçu et développé par <a href="/" target="_blank" rel="noopener" style="color:var(--navy);font-weight:600">KENJITECH ↗</a></span></div></footer>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#012a4c">
+<title>SoftWEIGHT : fonctionnalités complètes du logiciel de pesage | Fiche technique</title>
+<meta name="description" content="Fiche technique complète de SoftWEIGHT : ponts-bascules, pèse-essieux, ferroviaire, pèse-palettes, ensacheuses, VGM SOLAS, labo, LAPI, RFID, Sage/SAP, hors ligne, multisite.">
+<link rel="canonical" href="https://www.kenjitech.org/softweight/fonctionnalites/">
+<link rel="icon" type="image/svg+xml" href="../assets/softweight.svg">
+<link rel="apple-touch-icon" href="../assets/kenjitech-logo.png">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KENJITECH">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="SoftWEIGHT : toutes les fonctionnalités">
+<meta property="og:description" content="Fiche technique complète de SoftWEIGHT : ponts-bascules, pèse-essieux, ferroviaire, pèse-palettes, ensacheuses, VGM SOLAS, labo, LAPI, RFID, Sage/SAP, hors ligne, multisite.">
+<meta property="og:url" content="https://www.kenjitech.org/softweight/fonctionnalites/">
+<meta property="og:image" content="https://www.kenjitech.org/softweight/assets/og-softweight.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=IBM+Plex+Sans:wght@400;600&family=Share+Tech+Mono&display=swap">
+<style>
+:root{--bg:#fff;--soft:#f4f7fa;--edge:#d6e0ea;--navy:#023d6e;--ink:#0f1d2b;--dim:#4b5e71;--amber:#f5a71b;--amber-ink:#a86a00;--h:#023d6e;--deep:#012a4c;
+--f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;--f-body:"IBM Plex Sans",system-ui,"Segoe UI",sans-serif;--f-mono:"Share Tech Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:16px/1.65 var(--f-body);margin:0;overflow-x:hidden}
+a{color:inherit}:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:16px}
+h1,h2,h3{font-family:var(--f-display);line-height:.95;margin:0;text-wrap:balance;font-weight:800;text-transform:uppercase}
+h1{font-size:clamp(2.8rem,8vw,6.2rem);color:#fff}
+h2{font-size:clamp(2.2rem,5vw,3.8rem);color:var(--h)}
+h3{font-size:1.4rem;color:var(--h);letter-spacing:.02em}
+p{margin:0}
+.eyebrow{font:500 .8rem/1.3 var(--f-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--amber-ink)}
+.lead{color:var(--dim);font-size:1.12rem;max-width:68ch}
+.txt{color:var(--dim);max-width:68ch}.txt+.txt{margin-top:12px}
+section{padding-block:clamp(64px,9vw,112px);position:relative;scroll-margin-top:64px}
+.sec-head{display:grid;gap:16px;margin-bottom:40px}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 1rem/1 var(--f-body);padding:15px 22px;border-radius:999px;text-decoration:none}
+.btn-amber{background:var(--amber);color:#1c1200}.btn-amber:hover{background:#ffbd45}
+.btn-line{color:#fff;box-shadow:inset 0 0 0 1.5px #ffffff88}.btn-line:hover{background:#fff;color:var(--navy)}
+.blue{background:linear-gradient(180deg,var(--navy),#03345e);color:#fff;--h:#fff;--ink:#fff;--dim:#bcd0e3;--edge:#ffffff2e;--amber-ink:var(--amber)}
+.wm{overflow:clip}.wm::after{content:"";position:absolute;width:min(46vw,520px);aspect-ratio:1;right:-6vw;top:50%;translate:0 -50%;background:url("../assets/kenjitech-logo.png") center/contain no-repeat;opacity:.05;pointer-events:none}
+.wm.left::after{right:auto;left:-6vw}.wm>.wrap{position:relative;z-index:1}
+header.top{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--deep);border-bottom:1px solid #ffffff1f}
+.top .wrap{display:flex;align-items:center;gap:18px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 1.4rem/1 var(--f-display);letter-spacing:.06em;color:#fff}
+.brand .disc{width:40px;height:40px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none}.brand img{width:32px;height:32px}
+nav.menu{display:flex;gap:4px;margin-left:auto;font-size:.92rem;flex-wrap:wrap;justify-content:flex-end}
+nav.menu a{text-decoration:none;color:#c9d9e8;padding:8px 10px;border-radius:6px;white-space:nowrap}
+nav.menu a:hover{color:#fff;background:#ffffff14}nav.menu a[aria-current]{color:#1c1200;background:var(--amber)}
+@media (max-width:900px){.top .wrap{flex-wrap:wrap;gap:8px}nav.menu{margin-left:0;width:100%;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;font-size:.85rem}.hero{padding-top:150px}}
+.hero{padding-top:clamp(120px,14vw,170px)}
+.crumb{font:500 .8rem/1 var(--f-mono);letter-spacing:.08em;color:#bcd0e3;margin-bottom:22px}.crumb a{color:#bcd0e3}
+.kick{display:flex;align-items:center;gap:12px;margin-bottom:18px}.kick img{width:40px;height:40px;background:#fff;border-radius:9px;padding:3px}
+.hero .lead{margin-top:22px}.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{border:1px solid var(--edge);border-radius:16px;padding:24px;background:#fff;display:grid;gap:10px;align-content:start}
+.blue .card{background:#ffffff0d}
+.card p{color:var(--dim)}
+.card .tag{font:500 .75rem/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--amber-ink)}
+.steps{counter-reset:s;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.steps li{list-style:none;border-top:3px solid var(--amber);padding-top:16px;color:var(--dim)}
+.steps li b{display:block;font:800 1.3rem/1.1 var(--f-display);text-transform:uppercase;color:var(--h);margin-bottom:8px}
+.steps li b::before{counter-increment:s;content:"0" counter(s) " ";color:var(--amber)}
+ul.checks{padding:0;margin:0;display:grid;gap:10px}ul.checks li{list-style:none;padding-left:28px;position:relative;color:var(--dim)}
+ul.checks li::before{content:"✓";position:absolute;left:0;color:var(--amber);font-weight:700}
+.two{display:grid;gap:40px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:start}
+.refs{display:flex;flex-wrap:wrap;gap:10px}.refs span{border:1px solid var(--edge);border-radius:999px;padding:8px 16px;font-weight:600}
+.faq{display:grid;gap:12px;max-width:900px}
+.qa{border:1px solid var(--edge);border-radius:14px;background:#fff;padding:0 22px}
+.qa summary{cursor:pointer;list-style:none;font:600 1.1rem/1.35 var(--f-body);color:var(--navy);padding:18px 30px 18px 0;position:relative}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";position:absolute;right:0;top:14px;font:500 1.5rem/1 var(--f-mono);color:var(--amber-ink)}
+.qa[open] summary::after{content:"–"}.qa p{color:var(--dim);margin:0 0 18px;line-height:1.6}
+.coord{display:grid;gap:2px;margin-top:14px}.coord span{font:500 .78rem/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}.coord b{font-size:1.2rem}
+.more{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.more a{display:block;border:1px solid var(--edge);border-radius:14px;padding:18px 20px;text-decoration:none;font-weight:600;color:var(--navy);background:#fff}
+.more a:hover{border-color:var(--amber)}
+table.spec{width:100%;border-collapse:collapse;margin-top:8px}table.spec th,table.spec td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--edge)}table.spec th{font:500 .78rem/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--amber-ink)}table.spec td:first-child{font-weight:600;color:var(--h);width:34%}table.spec td{color:var(--dim)}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}.toc a{border:1px solid #ffffff55;border-radius:999px;padding:8px 14px;text-decoration:none;font-size:.9rem;color:#fff}
+@media (max-width:600px){table.spec td:first-child{width:40%}table.spec th,table.spec td{padding:10px 8px;font-size:.92rem}}
+footer{color:var(--dim);font-size:.88rem}footer .wrap{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;padding-block:26px}footer b{color:var(--navy)}
+</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebPage",
+   "@id": "https://www.kenjitech.org/softweight/fonctionnalites/#webpage",
+   "url": "https://www.kenjitech.org/softweight/fonctionnalites/",
+   "name": "SoftWEIGHT : fonctionnalités complètes du logiciel de pesage | Fiche technique",
+   "description": "Fiche technique complète de SoftWEIGHT : ponts-bascules, pèse-essieux, ferroviaire, pèse-palettes, ensacheuses, VGM SOLAS, labo, LAPI, RFID, Sage/SAP, hors ligne, multisite.",
+   "inLanguage": "fr",
+   "isPartOf": {
+    "@id": "https://www.kenjitech.org/#website"
+   },
+   "about": {
+    "@id": "https://www.kenjitech.org/softweight/#software"
+   },
+   "publisher": {
+    "@id": "https://www.kenjitech.org/#organization"
+   }
+  },
+  {
+   "@type": "SoftwareApplication",
+   "@id": "https://www.kenjitech.org/softweight/#software",
+   "name": "SoftWEIGHT",
+   "url": "https://www.kenjitech.org/softweight/",
+   "applicationCategory": "BusinessApplication",
+   "applicationSubCategory": "Logiciel de pesage et de traçabilité",
+   "author": {
+    "@id": "https://www.kenjitech.org/#organization"
+   },
+   "publisher": {
+    "@id": "https://www.kenjitech.org/#organization"
+   }
+  },
+  {
+   "@type": [
+    "Organization",
+    "ProfessionalService"
+   ],
+   "@id": "https://www.kenjitech.org/#organization",
+   "name": "KENJITECH",
+   "alternateName": [
+    "Kenji Tech",
+    "Kenjitech"
+   ],
+   "url": "https://www.kenjitech.org/",
+   "logo": "https://www.kenjitech.org/assets/kenjitech-logo.png",
+   "telephone": "+237697787475",
+   "email": "kenjikarim@gmail.com",
+   "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Douala",
+    "addressCountry": "CM"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "KENJITECH",
+     "item": "https://www.kenjitech.org/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "SoftWEIGHT",
+     "item": "https://www.kenjitech.org/softweight/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Fonctionnalités",
+     "item": "https://www.kenjitech.org/softweight/fonctionnalites/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://www.kenjitech.org/softweight/fonctionnalites/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Combien d'équipements différents SoftWEIGHT peut-il gérer ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Huit familles : ponts-bascules, pèse-essieux, pesage ferroviaire, pèse-palettes, balances, ensacheuses, convoyeurs peseurs et bascules de circuit, dans une même base de données."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "SoftWEIGHT fonctionne-t-il sans Internet ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Oui. Le site travaille en réseau local et tout se synchronise automatiquement vers le serveur en ligne au retour de la connexion."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Où trouver une démonstration ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Contactez KENJITECH au +237 697 78 74 75 (téléphone et WhatsApp) ou à kenjikarim@gmail.com."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<a class="brand" href="../"><span class="disc"><img src="../assets/kenjitech-logo.png" alt="Logo KENJITECH"></span>KENJITECH</a>
+<nav class="menu" aria-label="Navigation"><a href="../">SoftWEIGHT</a><a href="../fonctionnalites/" aria-current="page">Fonctionnalités</a><a href="../pont-bascule/">Pont-bascule</a><a href="../vgm-solas/">VGM SOLAS</a><a href="../pesage-cacao-cafe/">Cacao et café</a><a href="#contact">Contact</a></nav>
+</div></header>
+<main>
+<section class="hero blue"><div class="wrap">
+<p class="crumb"><a href="/" target="_blank" rel="noopener">KENJITECH</a> › <a href="../">SoftWEIGHT</a> › Fonctionnalités</p>
+<div class="kick"><img src="../assets/softweight.svg" alt="Logo SoftWEIGHT" width="40" height="40"><span class="eyebrow">Fiche technique complète</span></div>
+<h1>Toutes les fonctionnalités de SoftWEIGHT</h1>
+<p class="lead">SoftWEIGHT est un logiciel de pesage et de traçabilité conçu au Cameroun par KENJITECH, leader en Afrique centrale : plus de 100 licences, plus de 10 millions de pesées enregistrées, plus de 8 ans en exploitation. Voici la liste complète de ses fonctionnalités.</p><div class="toc"><a href="#equipements">Équipements de pesage gérés</a><a href="#pesee">Pesée et traçabilité</a><a href="#labo">Analyses de laboratoire</a><a href="#vgm">VGM SOLAS</a><a href="#automatismes">Automatismes et matériels pilotés</a><a href="#gestion">Gestion, facturation et logiciels tiers</a><a href="#architecture">Architecture et versions</a><a href="#services">Services KENJITECH</a><a href="#criteres">Critères de choix</a></div><p class="lead" style="margin-top:18px">Une question sur une fonction précise ? Écrivez-nous sur WhatsApp au +237 697 78 74 75.</p>
+<div class="ctas"><a class="btn btn-amber" href="#contact">Demander une démo</a><a class="btn btn-line" href="../">Découvrir SoftWEIGHT</a></div>
+</div></section>
+<section class="wm" id="equipements"><div class="wrap"><div class="sec-head"><p class="eyebrow">SoftWEIGHT · fiche technique</p><h2>Équipements de pesage gérés</h2><p class="lead">SoftWEIGHT trace tous les instruments de pesage d'un site dans une même base de données.</p></div><table class="spec"><thead><tr><th>Fonction</th><th>Détail</th></tr></thead><tbody><tr><td>Ponts-bascules</td><td>Pesée des camions et engins en entrée et en sortie, sur un ou plusieurs ponts, poids net calculé automatiquement. Carrières, usines, ports, BTP.</td></tr><tr><td>Pèse-essieux</td><td>Contrôle de la charge essieu par essieu, en statique ou en dynamique, avec alertes de surcharge. Gestionnaires routiers, mines.</td></tr><tr><td>Pesage ferroviaire</td><td>Pesée des wagons identifiés automatiquement par RFID UHF et compteurs d'essieux, en mode automatique ou dégradé.</td></tr><tr><td>Pèse-palettes</td><td>Pesage par lot des sacs, palettes et big bags, avec tares, analyses, conteneur, plomb et VGM.</td></tr><tr><td>Balances</td><td>Balances de simple pesée, pour petites exploitations, laboratoires et magasins.</td></tr><tr><td>Ensacheuses</td><td>Chaque sac est pesé, compté et rattaché à son lot de production ; écarts de poids détectés et tracés.</td></tr><tr><td>Convoyeurs peseurs</td><td>Pesage en continu sur bande, totalisation par lot, par poste et par période.</td></tr><tr><td>Bascules de circuit</td><td>Pesage du vrac dans le circuit de production : trémies, silos, bascules intermédiaires.</td></tr></tbody></table></div></section>
+<section class="blue" id="pesee"><div class="wrap"><div class="sec-head"><p class="eyebrow">SoftWEIGHT · fiche technique</p><h2>Pesée et traçabilité</h2><p class="lead">Chaque pesée garde son produit, son lot, son client, son transporteur, son opérateur, sa date et son heure.</p></div><table class="spec"><thead><tr><th>Fonction</th><th>Détail</th></tr></thead><tbody><tr><td>Double pesée</td><td>Pesée en entrée et en sortie, poids net automatique ; un camion peut entrer sur un pont et sortir sur un autre, la pesée se clôture automatiquement.</td></tr><tr><td>Pesée simple et tares</td><td>Pesée en une fois avec tares enregistrées par véhicule ou par emballage.</td></tr><tr><td>Pesée par lot</td><td>Regroupement des sacs, palettes ou wagons par lot, avec totaux et états par lot.</td></tr><tr><td>Poids verrouillé</td><td>SoftWEIGHT attend la stabilité de l'indicateur puis verrouille le poids : il ne peut plus être modifié.</td></tr><tr><td>Tickets</td><td>Tickets A4, A5 ou 80 mm avec QR code de vérification, mise en page adaptée à l'entreprise.</td></tr><tr><td>Images</td><td>Enregistrement des images des caméras à chaque pesée ; lecture des plaques par caméra LAPI.</td></tr><tr><td>Historique</td><td>Toutes les pesées archivées, retrouvables et exportables ; états par produit, client, période.</td></tr></tbody></table></div></section>
+<section class="wm left" id="labo"><div class="wrap"><div class="sec-head"><p class="eyebrow">SoftWEIGHT · fiche technique</p><h2>Analyses de laboratoire</h2><p class="lead">Les calculs de laboratoire sont faits et tracés dans SoftWEIGHT, lot par lot.</p></div><table class="spec"><thead><tr><th>Fonction</th><th>Détail</th></tr></thead><tbody><tr><td>Analyses</td><td>Humidité, réfraction, grainage, taux de défauts et autres calculs d'analyses.</td></tr><tr><td>Poids marchand</td><td>Calcul automatique du poids marchand (déduction de l'excès d'humidité et des défauts), reporté sur les tickets et les états.</td></tr><tr><td>Règles</td><td>Paramétrage des règles par produit et par client.</td></tr></tbody></table></div></section>
+<section class="blue" id="vgm"><div class="wrap"><div class="sec-head"><p class="eyebrow">SoftWEIGHT · fiche technique</p><h2>VGM SOLAS</h2><p class="lead">Masse brute vérifiée des conteneurs selon la convention SOLAS (chapitre VI, règle 2) et la circulaire OMI MSC.1/Circ.1475.</p></div><table class="spec"><thead><tr><th>Fonction</th><th>Détail</th></tr></thead><tbody><tr><td>Méthode 1</td><td>Conteneur plein pesé sur pont-bascule, tare du tracteur, de la remorque et carburant déduits ; chaque conteneur pesé séparément.</td></tr><tr><td>Méthode 2</td><td>Somme des lots pesés, des palettes, du calage et de l'arrimage, plus la tare du conteneur et le poids de son habillage (kraft, bâches, dessiccants), paramétrable.</td></tr><tr><td>Document VGM</td><td>Mention VGM, numéros de conteneur, de plomb et de réservation, méthode, instrument, signataire habilité ; archivé et tracé.</td></tr></tbody></table></div></section>
+<section class="wm" id="automatismes"><div class="wrap"><div class="sec-head"><p class="eyebrow">SoftWEIGHT · fiche technique</p><h2>Automatismes et matériels pilotés</h2><p class="lead">SoftWEIGHT commande les équipements autour de la pesée.</p></div><table class="spec"><thead><tr><th>Fonction</th><th>Détail</th></tr></thead><tbody><tr><td>Contrôle d'accès</td><td>Feux, barrières, barrières optiques.</td></tr><tr><td>Capteurs</td><td>Capteurs de niveau, cartes d'entrées/sorties, automates.</td></tr><tr><td>Identification</td><td>Caméras, caméras LAPI de lecture de plaques, RFID UHF, compteurs d'essieux.</td></tr><tr><td>Indicateurs de pesage</td><td>Liaisons RS232, RS485, USB, TCP/IP et Modbus.</td></tr></tbody></table></div></section>
+<section class="blue" id="gestion"><div class="wrap"><div class="sec-head"><p class="eyebrow">SoftWEIGHT · fiche technique</p><h2>Gestion, facturation et logiciels tiers</h2><p class="lead">Les pesées alimentent directement la gestion de l'entreprise.</p></div><table class="spec"><thead><tr><th>Fonction</th><th>Détail</th></tr></thead><tbody><tr><td>Facturation</td><td>Facturation des pesées et gestion comptable selon l'activité.</td></tr><tr><td>Financements</td><td>Suivi des préfinancements et financements des fournisseurs (filières agricoles).</td></tr><tr><td>ERP</td><td>Interface avec Sage, SAP et les autres ERP : pesées, tiers et produits circulent sans ressaisie.</td></tr><tr><td>Droits</td><td>Droits d'accès par utilisateur et par rôle.</td></tr></tbody></table></div></section>
+<section class="wm left" id="architecture"><div class="wrap"><div class="sec-head"><p class="eyebrow">SoftWEIGHT · fiche technique</p><h2>Architecture et versions</h2><p class="lead">On démarre petit et on évolue sans changer de logiciel ni perdre l'historique.</p></div><table class="spec"><thead><tr><th>Fonction</th><th>Détail</th></tr></thead><tbody><tr><td>Monoposte local</td><td>Un équipement, un ordinateur, une base de données locale.</td></tr><tr><td>Multiposte</td><td>Postes de consultation en réseau local pour direction, comptabilité, qualité, logistique.</td></tr><tr><td>Multipont et multi-équipements</td><td>Plusieurs ponts, pèse-essieux, ensacheuses, pèse-palettes dans une base centrale sur le réseau local ; postes de pesage, de supervision et de consultation.</td></tr><tr><td>Option web et synchronisation</td><td>À chaque pesée, synchronisation vers un serveur en ligne ; consultation et traitements depuis n'importe où dans le monde, sur ordinateur ou téléphone ; plusieurs sites et pays consolidés.</td></tr><tr><td>Hors ligne</td><td>Si Internet coupe, le site continue normalement en réseau local ; tout se resynchronise automatiquement au retour de la connexion.</td></tr><tr><td>Technique</td><td>Application de bureau, base de données MariaDB/MySQL, interface en français et en anglais.</td></tr></tbody></table></div></section>
+<section class="blue" id="services"><div class="wrap"><div class="sec-head"><p class="eyebrow">SoftWEIGHT · fiche technique</p><h2>Services KENJITECH</h2><p class="lead">KENJITECH, éditeur de SoftWEIGHT, est basé à Douala (Cameroun).</p></div><table class="spec"><thead><tr><th>Fonction</th><th>Détail</th></tr></thead><tbody><tr><td>Installation</td><td>Fourniture et installation du matériel, des cartes et du logiciel, intégration sur site.</td></tr><tr><td>Formation et maintenance</td><td>Formation des utilisateurs, maintenance, assistance à distance au quotidien.</td></tr><tr><td>Zone</td><td>Cameroun, Tchad, Gabon, Congo, Guinée équatoriale, Centrafrique et toute l'Afrique.</td></tr></tbody></table></div></section>
+<section class="blue" id="criteres"><div class="wrap"><div class="sec-head"><p class="eyebrow">Comparer</p><h2>Les critères pour choisir un logiciel de pesage</h2><p class="lead">Pour comparer SoftWEIGHT à un autre logiciel de pesage, vérifiez ces points un par un.</p></div><table class="spec"><thead><tr><th>Critère</th><th>SoftWEIGHT</th></tr></thead><tbody><tr><td>Gère plusieurs types d'instruments (pont, essieux, wagons, palettes, ensacheuses, convoyeurs) dans une seule base</td><td>Oui, 8 familles d'équipements</td></tr><tr><td>Fonctionne quand Internet est coupé, puis se resynchronise</td><td>Oui</td></tr><tr><td>Consultation à distance, multisite et multipays</td><td>Oui, option web</td></tr><tr><td>VGM SOLAS méthodes 1 et 2 avec document VGM</td><td>Oui</td></tr><tr><td>Analyses de laboratoire et poids marchand</td><td>Oui</td></tr><tr><td>Pilotage feux, barrières, caméras LAPI, RFID</td><td>Oui</td></tr><tr><td>Interface Sage, SAP, ERP</td><td>Oui</td></tr><tr><td>Facturation, comptabilité, préfinancements</td><td>Oui</td></tr><tr><td>Tickets avec QR code de vérification</td><td>Oui</td></tr><tr><td>Support et maintenance sur place en Afrique centrale</td><td>Oui, équipe basée à Douala</td></tr></tbody></table></div></section>
+<section class="wm left" id="faq"><div class="wrap">
+<div class="sec-head"><p class="eyebrow">Questions fréquentes</p><h2>Vos questions</h2></div>
+<div class="faq">
+<details class="qa"><summary>Combien d&#x27;équipements différents SoftWEIGHT peut-il gérer ?</summary><p>Huit familles : ponts-bascules, pèse-essieux, pesage ferroviaire, pèse-palettes, balances, ensacheuses, convoyeurs peseurs et bascules de circuit, dans une même base de données.</p></details>
+<details class="qa"><summary>SoftWEIGHT fonctionne-t-il sans Internet ?</summary><p>Oui. Le site travaille en réseau local et tout se synchronise automatiquement vers le serveur en ligne au retour de la connexion.</p></details>
+<details class="qa"><summary>Où trouver une démonstration ?</summary><p>Contactez KENJITECH au +237 697 78 74 75 (téléphone et WhatsApp) ou à kenjikarim@gmail.com.</p></details>
+</div>
+</div></section>
+<section class="blue" id="contact"><div class="wrap two">
+<div><p class="eyebrow">Contact</p><h2 style="margin-top:14px">Pesons votre projet</h2>
+<p class="lead" style="margin-top:16px">Décrivez votre site : nous revenons vers vous avec une démonstration et la version de SoftWEIGHT adaptée à votre installation.</p>
+<div class="ctas"><a class="btn btn-amber" href="https://wa.me/237697787475" target="_blank" rel="noopener">Écrire sur WhatsApp</a><a class="btn btn-line" href="mailto:kenjikarim@gmail.com">Envoyer un e-mail</a></div></div>
+<div><div class="coord"><span>Téléphone et WhatsApp</span><b>+237 697 78 74 75</b></div>
+<div class="coord"><span>E-mail</span><b>kenjikarim@gmail.com</b></div>
+<div class="coord"><span>Éditeur</span><b>KENJITECH · Cameroun</b></div></div>
+</div></section>
+<section class="wm" style="padding-block:56px"><div class="wrap">
+<p class="eyebrow" style="margin-bottom:16px">Voir aussi</p>
+<div class="more"><a href="../">SoftWEIGHT · le logiciel complet →</a><a href="../pont-bascule/">SoftWEIGHT · Pont-bascule →</a><a href="../vgm-solas/">SoftWEIGHT · VGM SOLAS →</a><a href="../pesage-cacao-cafe/">SoftWEIGHT · Cacao et café →</a><a href="/" target="_blank" rel="noopener">KENJITECH · intégrateur ↗</a></div>
+</div></section>
+</main>
+<footer><div class="wrap"><span><b>ETS KENJITECH</b> · Cameroun · RCCM RC/DLA/2021/A/2021</span><span>SoftWEIGHT est un logiciel conçu et développé par <a href="/" target="_blank" rel="noopener" style="color:var(--navy);font-weight:600">KENJITECH ↗</a></span></div></footer>
+</body>
+</html>

@@ -19,6 +19,11 @@
       "source": "/softweight/pesage-cacao-cafe",
       "destination": "/softweight/pesage-cacao-cafe/",
       "permanent": true
+    },
+    {
+      "source": "/softweight/fonctionnalites",
+      "destination": "/softweight/fonctionnalites/",
+      "permanent": true
     }
   ]
 }
