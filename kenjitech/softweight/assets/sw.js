@@ -138,15 +138,12 @@ $('#demoForm').addEventListener('submit',e=>{e.preventDefault();const f=e.target
 const lines=[...f.querySelectorAll('input,select,textarea')].filter(x=>x.value.trim()).map(x=>{const l=x.closest('label');return (l?l.childNodes[0].textContent.trim():x.name)+' : '+x.value.trim()});
 const txt='Bonjour KENJITECH,\n'+lines.join('\n');window.open('https://wa.me/237697787475?text='+encodeURIComponent(txt),'_blank','noopener');
 const s=$('#sent');s.hidden=false;s.innerHTML='Merci. WhatsApp s\'ouvre avec votre demande déjà rédigée : il ne reste qu\'à l\'envoyer. Vous pouvez aussi écrire à <a href="mailto:contact@kenjitech.org?cc=kenjikarim@gmail.com&subject='+encodeURIComponent('Demande depuis le site')+'&body='+encodeURIComponent(txt)+'">contact@kenjitech.org</a>.'});
-(function(){const box=document.getElementById('captures');if(!box)return;
-const D='assets/captures/',G={
-pesage:[
+(function(){const D='assets/captures/',SETS={
+lot:{pesage:[
 {f:['sw-lot-pesee-968kg','sw-lot-pesee-1845kg','sw-lot-pesee-2730kg','sw-lot-pesee-3567kg'],t:'Pesée par lot sur balance',d:"L'afficheur suit la charge en direct : ici de 968 kg à 3 567 kg. On valide le poids, puis on enregistre le lot."},
-{f:['sw-pont-pesee-1845kg','sw-pont-pesee-3567kg'],t:'Pesée sur pont-bascule',d:'Bon de livraison, mouvement, client, fournisseur, produit, conteneur : la pesée se remplit, le poids arrive de l’indicateur.'},
 {f:['sw-lots'],t:'Lots et palettes',d:'Chaque lot garde ses palettes, ses tares, ses sacs et son poids net, avec la date et l’heure de chaque mouvement.'},
-{f:['sw-rapports-pesees'],t:'Rapport des pesées',d:'Filtres par période, lot, client, produit, provenance, destination ou conteneur, puis export PDF ou Excel.'},
-{f:['sw-pont-liste-pesees'],t:'Pesées en attente et complétées',d:'Les pesées ouvertes et terminées du jour, avec la recherche par numéro.'},
-{f:['sw-etats'],t:'États',d:'Générer les états simples ou détaillés, triés par mouvement, client, produit, navire ou conteneur.'},
+{f:['sw-rapports-pesees'],t:'Rapport des pesées par lot',d:'Filtres par période, lot, client, produit, provenance, destination ou conteneur, puis export PDF ou Excel.'},
+{f:['sw-etats'],t:'États des lots',d:'Tous les mouvements de lots : réception, empotage, export, sorties, avec sacs, tares, poids du lot et poids net, puis export PDF, Excel ou état du stock.'},
 {f:['sw-stock'],t:'État du stock',d:'Reçu, expédié et stock actuel en kilogrammes, mis à jour à chaque lot.'},
 {f:['sw-accueil'],t:'Accueil',d:'Après connexion de l’opérateur : le pesage, les états et la configuration.'}],
 compta:[
@@ -155,18 +152,20 @@ compta:[
 {f:['sw-compta-generale-fournisseurs'],t:'Comptes fournisseurs',d:'Montants livrés et financements reçus par fournisseur.'},
 {f:['sw-facturation'],t:'Facturation des lots',d:'Coût unitaire au kilo, coût total, coût moyen : la facture se calcule à partir du poids net du lot.'},
 {f:['sw-financements-clients'],t:'Financements clients',d:'Préfinancements et financements donnés, avec leur historique et le total.'},
-{f:['sw-financements-fournisseurs'],t:'Financements fournisseurs',d:'Financements reçus des fournisseurs et corrections.'}]};
-const img=document.getElementById('capImg'),tt=document.getElementById('capTitle'),tx=document.getElementById('capTxt'),th=document.getElementById('capThumbs'),dlg=document.getElementById('capBox');
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;let g='pesage',cur=0,timer=null,k=0;
-// précharge les images animées
-G.pesage[0].f.concat(G.pesage[1].f).forEach(n=>{const i=new Image();i.src=D+n+'.jpg'});
-function show(i){cur=i;const it=G[g][i];k=0;clearInterval(timer);img.src=D+it.f[0]+'.jpg';img.alt='SoftWEIGHT : '+it.t;tt.textContent=it.t;tx.textContent=it.d;
+{f:['sw-financements-fournisseurs'],t:'Financements fournisseurs',d:'Financements reçus des fournisseurs et corrections.'}]}};
+window.SW_CAPS=SETS;
+const dlg=document.getElementById('capBox'),reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(dlg){dlg.querySelector('.cap-x').onclick=()=>dlg.close();dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()})}
+document.querySelectorAll('.cap-set').forEach(box=>{const G=SETS[box.dataset.set];if(!G)return;
+const img=box.querySelector('.cap-img'),tt=box.querySelector('.cap-title'),tx=box.querySelector('.cap-txt'),th=box.querySelector('.cap-thumbs');
+let g=Object.keys(G)[0],timer=null,k=0;
+Object.values(G).forEach(a=>a.forEach(it=>{if(it.f.length>1)it.f.forEach(n=>{const i=new Image();i.src=D+n+'.jpg'})}));
+function show(i){const it=G[g][i];k=0;clearInterval(timer);img.src=D+it.f[0]+'.jpg';img.alt='SoftWEIGHT, logiciel de pesage : '+it.t;tt.textContent=it.t;tx.textContent=it.d;
 th.querySelectorAll('button').forEach((b,j)=>b.setAttribute('aria-current',j===i));
 if(it.f.length>1&&!reduce)timer=setInterval(()=>{k=(k+1)%it.f.length;img.src=D+it.f[k]+'.jpg'},1400)}
 function build(){th.innerHTML='';G[g].forEach((it,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('role','listitem');
 b.innerHTML='<img src="'+D+'mini/'+it.f[it.f.length-1]+'.jpg" alt="" loading="lazy" width="800" height="450"><span></span>';b.querySelector('span').textContent=it.t;b.onclick=()=>show(i);th.appendChild(b)});show(0)}
 box.querySelectorAll('.cap-tabs button').forEach(b=>b.onclick=()=>{box.querySelectorAll('.cap-tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));g=b.dataset.g;build()});
-document.getElementById('capZoom').onclick=()=>{if(!dlg||!dlg.showModal){window.open(img.src,'_blank','noopener');return}
+box.querySelector('.cap-zoom').onclick=()=>{if(!dlg||!dlg.showModal){window.open(img.src,'_blank','noopener');return}
 dlg.querySelector('img').src=img.src;dlg.querySelector('img').alt=img.alt;dlg.querySelector('p').textContent=tt.textContent+' : '+tx.textContent;dlg.showModal()};
-if(dlg){dlg.querySelector('.cap-x').onclick=()=>dlg.close();dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()})}
-build()})();
+build()})})();
