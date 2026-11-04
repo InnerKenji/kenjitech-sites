@@ -2,10 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
  <url><loc>https://www.kenjitech.org/</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>1.0</priority>
   <image:image><image:loc>https://www.kenjitech.org/assets/og-kenjitech.jpg</image:loc></image:image></url>
- <url><loc>https://www.kenjitech.org/softweight/</loc><lastmod>2026-11-03</lastmod><changefreq>monthly</changefreq><priority>1.0</priority>
+ <url><loc>https://www.kenjitech.org/softweight/</loc><lastmod>2026-11-04</lastmod><changefreq>monthly</changefreq><priority>1.0</priority>
   <image:image><image:loc>https://www.kenjitech.org/softweight/assets/og-softweight.jpg</image:loc></image:image></url>
  <url><loc>https://www.kenjitech.org/softweight/pont-bascule/</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
  <url><loc>https://www.kenjitech.org/softweight/vgm-solas/</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
  <url><loc>https://www.kenjitech.org/softweight/pesage-cacao-cafe/</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
  <url><loc>https://www.kenjitech.org/softweight/fonctionnalites/</loc><lastmod>2026-11-03</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+ <url><loc>https://www.kenjitech.org/softweight/captures/</loc><lastmod>2026-11-04</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
+  <image:image><image:loc>https://www.kenjitech.org/softweight/assets/captures/softweight-logiciel-pesage-par-lot-pese-palette-968-kg.jpg</image:loc></image:image>
+  <image:image><image:loc>https://www.kenjitech.org/softweight/assets/captures/softweight-logiciel-pesage-par-lot-pese-palette-3567-kg.jpg</image:loc></image:image>
+  <image:image><image:loc>https://www.kenjitech.org/softweight/assets/captures/softweight-pesage-par-lot-gestion-lots-palettes.jpg</image:loc></image:image>
+  <image:image><image:loc>https://www.kenjitech.org/softweight/assets/captures/softweight-logiciel-pesage-rapport-des-pesees.jpg</image:loc></image:image>
+  <image:image><image:loc>https://www.kenjitech.org/softweight/assets/captures/softweight-logiciel-pesage-etats-des-lots.jpg</image:loc></image:image>
+  <image:image><image:loc>https://www.kenjitech.org/softweight/assets/captures/softweight-logiciel-pesage-etat-du-stock.jpg</image:loc></image:image>
+  <image:image><image:loc>https://www.kenjitech.org/softweight/assets/captures/softweight-pesage-gestion-comptable-caisse.jpg</image:loc></image:image>
+  <image:image><image:loc>https://www.kenjitech.org/softweight/assets/captures/softweight-pesage-gestion-comptable-comptes-clients.jpg</image:loc></image:image>
+  <image:image><image:loc>https://www.kenjitech.org/softweight/assets/captures/softweight-pesage-gestion-comptable-comptes-fournisseurs.jpg</image:loc></image:image>
+  <image:image><image:loc>https://www.kenjitech.org/softweight/assets/captures/softweight-pesage-facturation-des-lots.jpg</image:loc></image:image>
+  <image:image><image:loc>https://www.kenjitech.org/softweight/assets/captures/softweight-pesage-financements-clients.jpg</image:loc></image:image>
+  <image:image><image:loc>https://www.kenjitech.org/softweight/assets/captures/softweight-pesage-financements-fournisseurs.jpg</image:loc></image:image></url>
 </urlset>

@@ -24,6 +24,11 @@
       "source": "/softweight/fonctionnalites",
       "destination": "/softweight/fonctionnalites/",
       "permanent": true
+    },
+    {
+      "source": "/softweight/captures",
+      "destination": "/softweight/captures/",
+      "permanent": true
     }
   ]
 }

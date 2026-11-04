@@ -140,19 +140,19 @@ const txt='Bonjour KENJITECH,\n'+lines.join('\n');window.open('https://wa.me/237
 const s=$('#sent');s.hidden=false;s.innerHTML='Merci. WhatsApp s\'ouvre avec votre demande déjà rédigée : il ne reste qu\'à l\'envoyer. Vous pouvez aussi écrire à <a href="mailto:contact@kenjitech.org?cc=kenjikarim@gmail.com&subject='+encodeURIComponent('Demande depuis le site')+'&body='+encodeURIComponent(txt)+'">contact@kenjitech.org</a>.'});
 (function(){const D='assets/captures/',SETS={
 lot:{pesage:[
-{f:['sw-lot-pesee-968kg','sw-lot-pesee-1845kg','sw-lot-pesee-2730kg','sw-lot-pesee-3567kg'],t:'Pesée par lot sur balance',d:"L'afficheur suit la charge en direct : ici de 968 kg à 3 567 kg. On valide le poids, puis on enregistre le lot."},
-{f:['sw-lots'],t:'Lots et palettes',d:'Chaque lot garde ses palettes, ses tares, ses sacs et son poids net, avec la date et l’heure de chaque mouvement.'},
-{f:['sw-rapports-pesees'],t:'Rapport des pesées par lot',d:'Filtres par période, lot, client, produit, provenance, destination ou conteneur, puis export PDF ou Excel.'},
-{f:['sw-etats'],t:'États des lots',d:'Tous les mouvements de lots : réception, empotage, export, sorties, avec sacs, tares, poids du lot et poids net, puis export PDF, Excel ou état du stock.'},
-{f:['sw-stock'],t:'État du stock',d:'Reçu, expédié et stock actuel en kilogrammes, mis à jour à chaque lot.'},
-{f:['sw-accueil'],t:'Accueil',d:'Après connexion de l’opérateur : le pesage, les états et la configuration.'}],
+{f:['softweight-logiciel-pesage-par-lot-pese-palette-968-kg','softweight-logiciel-pesage-par-lot-pese-palette-1845-kg','softweight-logiciel-pesage-par-lot-pese-palette-2730-kg','softweight-logiciel-pesage-par-lot-pese-palette-3567-kg'],t:'Pesée par lot sur balance',d:"L'afficheur suit la charge en direct : ici de 968 kg à 3 567 kg. On valide le poids, puis on enregistre le lot."},
+{f:['softweight-pesage-par-lot-gestion-lots-palettes'],t:'Lots et palettes',d:'Chaque lot garde ses palettes, ses tares, ses sacs et son poids net, avec la date et l’heure de chaque mouvement.'},
+{f:['softweight-logiciel-pesage-rapport-des-pesees'],t:'Rapport des pesées par lot',d:'Filtres par période, lot, client, produit, provenance, destination ou conteneur, puis export PDF ou Excel.'},
+{f:['softweight-logiciel-pesage-etats-des-lots'],t:'États des lots',d:'Tous les mouvements de lots : réception, empotage, export, sorties, avec sacs, tares, poids du lot et poids net, puis export PDF, Excel ou état du stock.'},
+{f:['softweight-logiciel-pesage-etat-du-stock'],t:'État du stock',d:'Reçu, expédié et stock actuel en kilogrammes, mis à jour à chaque lot.'},
+{f:['softweight-logiciel-pesage-kenjitech-accueil'],t:'Accueil',d:'Après connexion de l’opérateur : le pesage, les états et la configuration.'}],
 compta:[
-{f:['sw-compta-generale-caisse'],t:'Caisse : capital et dépenses',d:'Capital reçu, dépenses totales et solde en caisse, avec l’historique et le paiement des lots.'},
-{f:['sw-compta-generale-clients'],t:'Comptes clients',d:'Pour chaque client : livraisons, montant livré, financements reçus et écart.'},
-{f:['sw-compta-generale-fournisseurs'],t:'Comptes fournisseurs',d:'Montants livrés et financements reçus par fournisseur.'},
-{f:['sw-facturation'],t:'Facturation des lots',d:'Coût unitaire au kilo, coût total, coût moyen : la facture se calcule à partir du poids net du lot.'},
-{f:['sw-financements-clients'],t:'Financements clients',d:'Préfinancements et financements donnés, avec leur historique et le total.'},
-{f:['sw-financements-fournisseurs'],t:'Financements fournisseurs',d:'Financements reçus des fournisseurs et corrections.'}]}};
+{f:['softweight-pesage-gestion-comptable-caisse'],t:'Caisse : capital et dépenses',d:'Capital reçu, dépenses totales et solde en caisse, avec l’historique et le paiement des lots.'},
+{f:['softweight-pesage-gestion-comptable-comptes-clients'],t:'Comptes clients',d:'Pour chaque client : livraisons, montant livré, financements reçus et écart.'},
+{f:['softweight-pesage-gestion-comptable-comptes-fournisseurs'],t:'Comptes fournisseurs',d:'Montants livrés et financements reçus par fournisseur.'},
+{f:['softweight-pesage-facturation-des-lots'],t:'Facturation des lots',d:'Coût unitaire au kilo, coût total, coût moyen : la facture se calcule à partir du poids net du lot.'},
+{f:['softweight-pesage-financements-clients'],t:'Financements clients',d:'Préfinancements et financements donnés, avec leur historique et le total.'},
+{f:['softweight-pesage-financements-fournisseurs'],t:'Financements fournisseurs',d:'Financements reçus des fournisseurs et corrections.'}]}};
 window.SW_CAPS=SETS;
 const dlg=document.getElementById('capBox'),reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(dlg){dlg.querySelector('.cap-x').onclick=()=>dlg.close();dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()})}
