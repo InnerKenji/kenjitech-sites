@@ -43,6 +43,7 @@
 <a href="#equipements">Équipements</a>
 <a href="#pesee">Une pesée</a>
 <a href="#versions">Versions</a>
+<a href="#captures">Captures</a>
 <a href="#reseau">Hors ligne</a>
 <a href="#labo">SOLAS · Labo</a>
 <a href="#references">Références</a>
@@ -246,6 +247,17 @@
 </div>
 </div>
 <div class="ver-note rv"><b>On commence petit,<br>on grandit sans changer.</b><p>Passer du monoposte au multiposte, ajouter un pont ou activer l'option web se fait sur la même installation. Les données et l'historique sont conservés.</p></div>
+<div class="caps" id="captures">
+<div class="sec-head rv"><p class="eyebrow">Captures d'écran réelles</p><h2>SoftWEIGHT en usine : pesage par lot et gestion comptable</h2>
+<p class="lead">Voici la version de SoftWEIGHT utilisée en usine pour le pesage par lot, avec sa gestion comptable intégrée. Toutes les images sont des captures du logiciel en fonctionnement : l'afficheur de poids, les lots, les états, le stock, la comptabilité générale, la facturation et les financements.</p></div>
+<div class="cap-tabs" role="tablist" aria-label="Choisir un module">
+<button type="button" role="tab" aria-selected="true" data-g="pesage">Pesage par lot</button>
+<button type="button" role="tab" aria-selected="false" data-g="compta">Gestion comptable</button>
+</div>
+<figure class="cap-main"><button type="button" class="cap-zoom" id="capZoom" aria-label="Agrandir la capture"><img id="capImg" src="assets/captures/sw-lot-pesee-968kg.jpg" alt="SoftWEIGHT, écran de pesée par lot avec afficheur de poids" width="1600" height="900" loading="lazy" decoding="async"></button>
+<figcaption><b id="capTitle">Pesée par lot sur balance</b><span id="capTxt">L'afficheur suit la charge en direct : ici de 968 kg à 3 567 kg. On valide le poids, puis on enregistre le lot.</span></figcaption></figure>
+<div class="cap-thumbs" id="capThumbs" role="list"></div>
+</div>
 </div>
 </section>
 <!-- NETWORK -->
@@ -463,6 +475,7 @@
 </section>
 </main>
 <footer><div class="wrap"><span><b>ETS KENJITECH</b> · Cameroun · RCCM RC/DLA/2021/A/2021</span><span style="display:inline-flex;align-items:center;gap:8px"><img src="assets/softweight.svg" alt="" width="20" height="20">SoftWEIGHT est un logiciel conçu et développé par&nbsp;<a href="/" target="_blank" rel="noopener" style="color:var(--navy);font-weight:600">KENJITECH ↗</a></span></div></footer>
+<dialog id="capBox" class="cap-box" aria-label="Capture agrandie"><button type="button" class="cap-x" aria-label="Fermer">×</button><img alt=""><p></p></dialog>
 <script src="assets/sw.js"></script>
 <script type="application/ld+json">
 {
