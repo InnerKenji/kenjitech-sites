@@ -29,6 +29,256 @@
       "source": "/softweight/captures",
       "destination": "/softweight/captures/",
       "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-logiciel-pont-bascule-pesee-camion-8260-kg.jpg",
+      "destination": "/softweight/assets/captures/logiciel-de-pesage-pont-bascule.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-logiciel-pont-bascule-pesee-camion-8260-kg.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-de-pesage-pont-bascule.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-logiciel-pont-bascule-pesee-camion-17840-kg.jpg",
+      "destination": "/softweight/assets/captures/logiciel-pont-bascule-pesage-camion.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-logiciel-pont-bascule-pesee-camion-17840-kg.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-pont-bascule-pesage-camion.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-logiciel-pont-bascule-pesee-camion-31520-kg.jpg",
+      "destination": "/softweight/assets/captures/application-de-pesage-pont-bascule.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-logiciel-pont-bascule-pesee-camion-31520-kg.jpg",
+      "destination": "/softweight/assets/captures/mini/application-de-pesage-pont-bascule.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-logiciel-pont-bascule-deuxieme-pesee-46380-kg.jpg",
+      "destination": "/softweight/assets/captures/logiciel-de-pesee-camion-poids-net.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-logiciel-pont-bascule-deuxieme-pesee-46380-kg.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-de-pesee-camion-poids-net.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-logiciel-pont-bascule-deuxieme-pesee-54600-kg.jpg",
+      "destination": "/softweight/assets/captures/logiciel-gestion-pont-bascule.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-logiciel-pont-bascule-deuxieme-pesee-54600-kg.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-gestion-pont-bascule.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-logiciel-de-pesage-pont-bascule-accueil.jpg",
+      "destination": "/softweight/assets/captures/logiciel-de-pesage-softweight-kenjitech.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-logiciel-de-pesage-pont-bascule-accueil.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-de-pesage-softweight-kenjitech.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-pont-bascule-pesees-en-attente.jpg",
+      "destination": "/softweight/assets/captures/logiciel-pont-bascule-suivi-des-pesees.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-pont-bascule-pesees-en-attente.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-pont-bascule-suivi-des-pesees.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-pont-bascule-pesees-terminees.jpg",
+      "destination": "/softweight/assets/captures/logiciel-de-pesage-industriel-historique-des-pesees.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-pont-bascule-pesees-terminees.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-de-pesage-industriel-historique-des-pesees.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-logiciel-pesage-camions-etats-des-pesees.jpg",
+      "destination": "/softweight/assets/captures/logiciel-de-pesage-rapports-excel-pdf.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-logiciel-pesage-camions-etats-des-pesees.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-de-pesage-rapports-excel-pdf.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-pont-bascule-parametres-indicateur-de-poids.jpg",
+      "destination": "/softweight/assets/captures/logiciel-de-pesage-indicateur-de-poids-rs232-modbus.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-pont-bascule-parametres-indicateur-de-poids.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-de-pesage-indicateur-de-poids-rs232-modbus.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-logiciel-pesage-par-lot-pese-palette-968-kg.jpg",
+      "destination": "/softweight/assets/captures/logiciel-de-pesage-pese-palette.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-logiciel-pesage-par-lot-pese-palette-968-kg.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-de-pesage-pese-palette.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-logiciel-pesage-par-lot-pese-palette-1845-kg.jpg",
+      "destination": "/softweight/assets/captures/logiciel-de-pesage-usine.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-logiciel-pesage-par-lot-pese-palette-1845-kg.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-de-pesage-usine.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-logiciel-pesage-par-lot-pese-palette-2730-kg.jpg",
+      "destination": "/softweight/assets/captures/application-de-pesage-ensacheuse.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-logiciel-pesage-par-lot-pese-palette-2730-kg.jpg",
+      "destination": "/softweight/assets/captures/mini/application-de-pesage-ensacheuse.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-logiciel-pesage-par-lot-pese-palette-3567-kg.jpg",
+      "destination": "/softweight/assets/captures/logiciel-de-pesage-balance-industrielle.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-logiciel-pesage-par-lot-pese-palette-3567-kg.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-de-pesage-balance-industrielle.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-pesage-par-lot-gestion-lots-palettes.jpg",
+      "destination": "/softweight/assets/captures/logiciel-de-pesage-par-lot-tracabilite.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-pesage-par-lot-gestion-lots-palettes.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-de-pesage-par-lot-tracabilite.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-logiciel-pesage-rapport-des-pesees.jpg",
+      "destination": "/softweight/assets/captures/logiciel-de-pesage-rapport-des-pesees.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-logiciel-pesage-rapport-des-pesees.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-de-pesage-rapport-des-pesees.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-logiciel-pesage-etats-des-lots.jpg",
+      "destination": "/softweight/assets/captures/logiciel-de-pesage-cacao-cafe-suivi-des-lots.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-logiciel-pesage-etats-des-lots.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-de-pesage-cacao-cafe-suivi-des-lots.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-logiciel-pesage-etat-du-stock.jpg",
+      "destination": "/softweight/assets/captures/logiciel-de-pesage-gestion-de-stock.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-logiciel-pesage-etat-du-stock.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-de-pesage-gestion-de-stock.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-logiciel-pesage-kenjitech-accueil.jpg",
+      "destination": "/softweight/assets/captures/softweight-logiciel-de-pesage.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-logiciel-pesage-kenjitech-accueil.jpg",
+      "destination": "/softweight/assets/captures/mini/softweight-logiciel-de-pesage.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-pesage-gestion-comptable-caisse.jpg",
+      "destination": "/softweight/assets/captures/logiciel-de-pesage-avec-comptabilite.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-pesage-gestion-comptable-caisse.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-de-pesage-avec-comptabilite.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-pesage-gestion-comptable-comptes-clients.jpg",
+      "destination": "/softweight/assets/captures/logiciel-de-pesage-comptes-clients.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-pesage-gestion-comptable-comptes-clients.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-de-pesage-comptes-clients.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-pesage-gestion-comptable-comptes-fournisseurs.jpg",
+      "destination": "/softweight/assets/captures/logiciel-de-pesage-comptes-fournisseurs.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-pesage-gestion-comptable-comptes-fournisseurs.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-de-pesage-comptes-fournisseurs.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-pesage-facturation-des-lots.jpg",
+      "destination": "/softweight/assets/captures/logiciel-de-pesage-et-facturation.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-pesage-facturation-des-lots.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-de-pesage-et-facturation.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-pesage-financements-clients.jpg",
+      "destination": "/softweight/assets/captures/logiciel-de-pesage-financements-clients.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-pesage-financements-clients.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-de-pesage-financements-clients.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/softweight-pesage-financements-fournisseurs.jpg",
+      "destination": "/softweight/assets/captures/logiciel-de-pesage-financements-fournisseurs.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/assets/captures/mini/softweight-pesage-financements-fournisseurs.jpg",
+      "destination": "/softweight/assets/captures/mini/logiciel-de-pesage-financements-fournisseurs.jpg",
+      "permanent": true
     }
   ]
 }

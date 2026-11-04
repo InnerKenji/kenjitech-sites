@@ -140,28 +140,28 @@ const txt='Bonjour KENJITECH,\n'+lines.join('\n');window.open('https://wa.me/237
 const s=$('#sent');s.hidden=false;s.innerHTML='Merci. WhatsApp s\'ouvre avec votre demande déjà rédigée : il ne reste qu\'à l\'envoyer. Vous pouvez aussi écrire à <a href="mailto:contact@kenjitech.org?cc=kenjikarim@gmail.com&subject='+encodeURIComponent('Demande depuis le site')+'&body='+encodeURIComponent(txt)+'">contact@kenjitech.org</a>.'});
 (function(){const D='assets/captures/',SETS={
 pont:{pesage:[
-{f:['softweight-logiciel-pont-bascule-pesee-camion-8260-kg','softweight-logiciel-pont-bascule-pesee-camion-17840-kg','softweight-logiciel-pont-bascule-pesee-camion-31520-kg'],t:'Pesée d’un camion sur pont-bascule',d:"L'afficheur lit l'indicateur du pont-bascule en direct, par échelons de 20 kg : ici de 8 260 kg à 31 520 kg. On valide le poids, puis on enregistre la pesée."},
-{f:['softweight-logiciel-pont-bascule-deuxieme-pesee-46380-kg','softweight-logiciel-pont-bascule-deuxieme-pesee-54600-kg'],t:'Deuxième pesée et poids net',d:'Au retour du camion, le poids 1 est rappelé et la deuxième pesée (jusqu’à 54 600 kg ici) donne le poids net automatiquement, avec l’écart sur le poids déclaré.'},
-{f:['softweight-logiciel-de-pesage-pont-bascule-accueil'],t:'Accueil',d:'Après connexion : le pesage, les états et la configuration.'}],
+{f:['logiciel-de-pesage-pont-bascule','logiciel-pont-bascule-pesage-camion','application-de-pesage-pont-bascule'],t:'Pesée d’un camion sur pont-bascule',d:"L'afficheur lit l'indicateur du pont-bascule en direct, par échelons de 20 kg : ici de 8 260 kg à 31 520 kg. On valide le poids, puis on enregistre la pesée."},
+{f:['logiciel-de-pesee-camion-poids-net','logiciel-gestion-pont-bascule'],t:'Deuxième pesée et poids net',d:'Au retour du camion, le poids 1 est rappelé et la deuxième pesée (jusqu’à 54 600 kg ici) donne le poids net automatiquement, avec l’écart sur le poids déclaré.'},
+{f:['logiciel-de-pesage-softweight-kenjitech'],t:'Accueil',d:'Après connexion : le pesage, les états et la configuration.'}],
 suivi:[
-{f:['softweight-pont-bascule-pesees-en-attente'],t:'Pesées en attente',d:'Les camions pesés une première fois, en attente de leur deuxième pesée : code de pesée, produit, opérateur, immatriculation, date.'},
-{f:['softweight-pont-bascule-pesees-terminees'],t:'Pesées terminées',d:'Toutes les pesées complétées, avec leur poids net, prêtes pour les états et la facturation.'},
-{f:['softweight-logiciel-pesage-camions-etats-des-pesees'],t:'États des pesées',d:'Filtres par période, mouvement, client, produit, fournisseur, transporteur, provenance ou destination, puis export Excel ou PDF.'},
-{f:['softweight-pont-bascule-parametres-indicateur-de-poids'],t:'Indicateur de poids et exploitant',d:'Réglage de l’indicateur du pont-bascule (port série, vitesse, parité, Ethernet, Modbus) et des informations de l’exploitant imprimées sur le ticket.'}]},
+{f:['logiciel-pont-bascule-suivi-des-pesees'],t:'Pesées en attente',d:'Les camions pesés une première fois, en attente de leur deuxième pesée : code de pesée, produit, opérateur, immatriculation, date.'},
+{f:['logiciel-de-pesage-industriel-historique-des-pesees'],t:'Pesées terminées',d:'Toutes les pesées complétées, avec leur poids net, prêtes pour les états et la facturation.'},
+{f:['logiciel-de-pesage-rapports-excel-pdf'],t:'États des pesées',d:'Filtres par période, mouvement, client, produit, fournisseur, transporteur, provenance ou destination, puis export Excel ou PDF.'},
+{f:['logiciel-de-pesage-indicateur-de-poids-rs232-modbus'],t:'Indicateur de poids et exploitant',d:'Réglage de l’indicateur du pont-bascule (port série, vitesse, parité, Ethernet, Modbus) et des informations de l’exploitant imprimées sur le ticket.'}]},
 lot:{pesage:[
-{f:['softweight-logiciel-pesage-par-lot-pese-palette-968-kg','softweight-logiciel-pesage-par-lot-pese-palette-1845-kg','softweight-logiciel-pesage-par-lot-pese-palette-2730-kg','softweight-logiciel-pesage-par-lot-pese-palette-3567-kg'],t:'Pesée par lot sur balance',d:"L'afficheur suit la charge en direct : ici de 968 kg à 3 567 kg. On valide le poids, puis on enregistre le lot."},
-{f:['softweight-pesage-par-lot-gestion-lots-palettes'],t:'Lots et palettes',d:'Chaque lot garde ses palettes, ses tares, ses sacs et son poids net, avec la date et l’heure de chaque mouvement.'},
-{f:['softweight-logiciel-pesage-rapport-des-pesees'],t:'Rapport des pesées par lot',d:'Filtres par période, lot, client, produit, provenance, destination ou conteneur, puis export PDF ou Excel.'},
-{f:['softweight-logiciel-pesage-etats-des-lots'],t:'États des lots',d:'Tous les mouvements de lots : réception, empotage, export, sorties, avec sacs, tares, poids du lot et poids net, puis export PDF, Excel ou état du stock.'},
-{f:['softweight-logiciel-pesage-etat-du-stock'],t:'État du stock',d:'Reçu, expédié et stock actuel en kilogrammes, mis à jour à chaque lot.'},
-{f:['softweight-logiciel-pesage-kenjitech-accueil'],t:'Accueil',d:'Après connexion de l’opérateur : le pesage, les états et la configuration.'}],
+{f:['logiciel-de-pesage-pese-palette','logiciel-de-pesage-usine','application-de-pesage-ensacheuse','logiciel-de-pesage-balance-industrielle'],t:'Pesée par lot sur balance',d:"L'afficheur suit la charge en direct : ici de 968 kg à 3 567 kg. On valide le poids, puis on enregistre le lot."},
+{f:['logiciel-de-pesage-par-lot-tracabilite'],t:'Lots et palettes',d:'Chaque lot garde ses palettes, ses tares, ses sacs et son poids net, avec la date et l’heure de chaque mouvement.'},
+{f:['logiciel-de-pesage-rapport-des-pesees'],t:'Rapport des pesées par lot',d:'Filtres par période, lot, client, produit, provenance, destination ou conteneur, puis export PDF ou Excel.'},
+{f:['logiciel-de-pesage-cacao-cafe-suivi-des-lots'],t:'États des lots',d:'Tous les mouvements de lots : réception, empotage, export, sorties, avec sacs, tares, poids du lot et poids net, puis export PDF, Excel ou état du stock.'},
+{f:['logiciel-de-pesage-gestion-de-stock'],t:'État du stock',d:'Reçu, expédié et stock actuel en kilogrammes, mis à jour à chaque lot.'},
+{f:['softweight-logiciel-de-pesage'],t:'Accueil',d:'Après connexion de l’opérateur : le pesage, les états et la configuration.'}],
 compta:[
-{f:['softweight-pesage-gestion-comptable-caisse'],t:'Caisse : capital et dépenses',d:'Capital reçu, dépenses totales et solde en caisse, avec l’historique et le paiement des lots.'},
-{f:['softweight-pesage-gestion-comptable-comptes-clients'],t:'Comptes clients',d:'Pour chaque client : livraisons, montant livré, financements reçus et écart.'},
-{f:['softweight-pesage-gestion-comptable-comptes-fournisseurs'],t:'Comptes fournisseurs',d:'Montants livrés et financements reçus par fournisseur.'},
-{f:['softweight-pesage-facturation-des-lots'],t:'Facturation des lots',d:'Coût unitaire au kilo, coût total, coût moyen : la facture se calcule à partir du poids net du lot.'},
-{f:['softweight-pesage-financements-clients'],t:'Financements clients',d:'Préfinancements et financements donnés, avec leur historique et le total.'},
-{f:['softweight-pesage-financements-fournisseurs'],t:'Financements fournisseurs',d:'Financements reçus des fournisseurs et corrections.'}]}};
+{f:['logiciel-de-pesage-avec-comptabilite'],t:'Caisse : capital et dépenses',d:'Capital reçu, dépenses totales et solde en caisse, avec l’historique et le paiement des lots.'},
+{f:['logiciel-de-pesage-comptes-clients'],t:'Comptes clients',d:'Pour chaque client : livraisons, montant livré, financements reçus et écart.'},
+{f:['logiciel-de-pesage-comptes-fournisseurs'],t:'Comptes fournisseurs',d:'Montants livrés et financements reçus par fournisseur.'},
+{f:['logiciel-de-pesage-et-facturation'],t:'Facturation des lots',d:'Coût unitaire au kilo, coût total, coût moyen : la facture se calcule à partir du poids net du lot.'},
+{f:['logiciel-de-pesage-financements-clients'],t:'Financements clients',d:'Préfinancements et financements donnés, avec leur historique et le total.'},
+{f:['logiciel-de-pesage-financements-fournisseurs'],t:'Financements fournisseurs',d:'Financements reçus des fournisseurs et corrections.'}]}};
 window.SW_CAPS=SETS;
 const dlg=document.getElementById('capBox'),reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(dlg){dlg.querySelector('.cap-x').onclick=()=>dlg.close();dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()})}
@@ -169,7 +169,7 @@ document.querySelectorAll('.cap-set').forEach(box=>{const G=SETS[box.dataset.set
 const img=box.querySelector('.cap-img'),tt=box.querySelector('.cap-title'),tx=box.querySelector('.cap-txt'),th=box.querySelector('.cap-thumbs');
 let g=Object.keys(G)[0],timer=null,k=0;
 Object.values(G).forEach(a=>a.forEach(it=>{if(it.f.length>1)it.f.forEach(n=>{const i=new Image();i.src=D+n+'.jpg'})}));
-function show(i){const it=G[g][i];k=0;clearInterval(timer);img.src=D+it.f[0]+'.jpg';img.alt='SoftWEIGHT, logiciel de pesage : '+it.t;tt.textContent=it.t;tx.textContent=it.d;
+function show(i){const it=G[g][i];k=0;clearInterval(timer);img.src=D+it.f[0]+'.jpg';img.alt='Logiciel de pesage SoftWEIGHT : '+it.t;tt.textContent=it.t;tx.textContent=it.d;
 th.querySelectorAll('button').forEach((b,j)=>b.setAttribute('aria-current',j===i));
 if(it.f.length>1&&!reduce)timer=setInterval(()=>{k=(k+1)%it.f.length;img.src=D+it.f[k]+'.jpg'},1400)}
 function build(){th.innerHTML='';G[g].forEach((it,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('role','listitem');
