@@ -85,6 +85,12 @@ table.spec{width:100%;border-collapse:collapse;margin-top:8px}table.spec th,tabl
 .toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}.toc a{border:1px solid #ffffff55;border-radius:999px;padding:8px 14px;text-decoration:none;font-size:.9rem;color:#fff}
 @media (max-width:600px){table.spec td:first-child{width:40%}table.spec th,table.spec td{padding:10px 8px;font-size:.92rem}}
 footer{color:var(--dim);font-size:.88rem}footer .wrap{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;padding-block:26px}footer b{color:var(--navy)}
+.shots{display:grid;gap:28px;grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr))}
+.shots figure{margin:0;display:grid;gap:10px}
+.shots a{display:block;border:1px solid var(--edge);border-radius:14px;overflow:hidden;background:#f4f7fa;box-shadow:0 14px 40px #023d6e1a}
+.shots img{display:block;width:100%;height:auto}
+.shots figcaption{display:grid;gap:4px}.shots figcaption b{color:var(--h);font-size:1.05rem}.shots figcaption span{color:var(--dim);font-size:.95rem}
+.more{margin-top:26px}.more a{font-weight:600;color:var(--navy);text-decoration:none;border-bottom:2px solid var(--amber)}
 </style>
 <script type="application/ld+json">
 {
@@ -93,6 +99,7 @@ footer{color:var(--dim);font-size:.88rem}footer .wrap{display:flex;flex-wrap:wra
   {
    "@type": "WebPage",
    "@id": "https://www.kenjitech.org/softweight/pont-bascule/#webpage",
+   "image": ["https://www.kenjitech.org/softweight/assets/captures/softweight-logiciel-pont-bascule-pesee-camion-31520-kg.jpg", "https://www.kenjitech.org/softweight/assets/captures/softweight-logiciel-pont-bascule-deuxieme-pesee-54600-kg.jpg", "https://www.kenjitech.org/softweight/assets/captures/softweight-pont-bascule-pesees-en-attente.jpg", "https://www.kenjitech.org/softweight/assets/captures/softweight-logiciel-pesage-camions-etats-des-pesees.jpg"],
    "url": "https://www.kenjitech.org/softweight/pont-bascule/",
    "name": "Logiciel de pont-bascule SoftWEIGHT | Pesage des camions, tickets, barrières – Cameroun",
    "description": "Logiciel de pont-bascule SoftWEIGHT : pesée entrée et sortie des camions, poids net automatique, tickets avec QR code, feux, barrières, caméras LAPI, Sage/SAP. Fonctionne même sans Internet.",
@@ -236,6 +243,11 @@ footer{color:var(--dim);font-size:.88rem}footer .wrap{display:flex;flex-wrap:wra
 <li><b>Ticket</b>Le ticket s'imprime en A4, A5 ou 80 mm avec son QR de vérification. Feu vert, la barrière se lève.</li>
 <li><b>Synchronisation</b>La pesée part vers le serveur en ligne : la direction la voit en temps réel, où qu'elle soit.</li>
 </ol>
+</div></section>
+<section class="wm left" id="captures"><div class="wrap">
+<div class="sec-head"><p class="eyebrow">Captures d'écran réelles</p><h2>Le logiciel de pont-bascule en images</h2><p class="lead">SoftWEIGHT en fonctionnement sur un pont-bascule : pesée des camions de 8 260 kg à 54 600 kg, deuxième pesée, pesées en attente et états. Les noms des clients et les immatriculations sont masqués.</p></div>
+<div class="shots"><figure><a href="../assets/captures/softweight-logiciel-pont-bascule-pesee-camion-31520-kg.jpg"><img src="../assets/captures/softweight-logiciel-pont-bascule-pesee-camion-31520-kg.jpg" alt="SoftWEIGHT, logiciel de pont-bascule : Pesée d&#x27;un camion sur pont-bascule" width="1600" height="900" loading="lazy" decoding="async"></a><figcaption><b>Pesée d&#x27;un camion sur pont-bascule</b><span>Le poids est lu sur l&#x27;indicateur du pont-bascule, validé, puis enregistré avec le camion, le produit et l&#x27;heure.</span></figcaption></figure><figure><a href="../assets/captures/softweight-logiciel-pont-bascule-deuxieme-pesee-54600-kg.jpg"><img src="../assets/captures/softweight-logiciel-pont-bascule-deuxieme-pesee-54600-kg.jpg" alt="SoftWEIGHT, logiciel de pont-bascule : Deuxième pesée et poids net" width="1600" height="900" loading="lazy" decoding="async"></a><figcaption><b>Deuxième pesée et poids net</b><span>Au retour du camion, le poids 1 est rappelé : la deuxième pesée donne le poids net et l&#x27;écart avec le poids déclaré.</span></figcaption></figure><figure><a href="../assets/captures/softweight-pont-bascule-pesees-en-attente.jpg"><img src="../assets/captures/softweight-pont-bascule-pesees-en-attente.jpg" alt="SoftWEIGHT, logiciel de pont-bascule : Pesées en attente" width="1600" height="900" loading="lazy" decoding="async"></a><figcaption><b>Pesées en attente</b><span>Les camions pesés une première fois, en attente de leur deuxième passage.</span></figcaption></figure><figure><a href="../assets/captures/softweight-logiciel-pesage-camions-etats-des-pesees.jpg"><img src="../assets/captures/softweight-logiciel-pesage-camions-etats-des-pesees.jpg" alt="SoftWEIGHT, logiciel de pont-bascule : États des pesées" width="1600" height="900" loading="lazy" decoding="async"></a><figcaption><b>États des pesées</b><span>Filtres par période, client, produit, transporteur ou destination, puis export Excel ou PDF.</span></figcaption></figure></div>
+<p class="more"><a href="../captures/#pont-bascule">Voir toutes les captures du logiciel de pont-bascule →</a></p>
 </div></section>
 <section class="blue"><div class="wrap">
 <div class="sec-head"><p class="eyebrow">Fonctions pont-bascule</p><h2>Tout ce qu'un pont-bascule demande</h2></div>

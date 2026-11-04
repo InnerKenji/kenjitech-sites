@@ -139,6 +139,15 @@ const lines=[...f.querySelectorAll('input,select,textarea')].filter(x=>x.value.t
 const txt='Bonjour KENJITECH,\n'+lines.join('\n');window.open('https://wa.me/237697787475?text='+encodeURIComponent(txt),'_blank','noopener');
 const s=$('#sent');s.hidden=false;s.innerHTML='Merci. WhatsApp s\'ouvre avec votre demande déjà rédigée : il ne reste qu\'à l\'envoyer. Vous pouvez aussi écrire à <a href="mailto:contact@kenjitech.org?cc=kenjikarim@gmail.com&subject='+encodeURIComponent('Demande depuis le site')+'&body='+encodeURIComponent(txt)+'">contact@kenjitech.org</a>.'});
 (function(){const D='assets/captures/',SETS={
+pont:{pesage:[
+{f:['softweight-logiciel-pont-bascule-pesee-camion-8260-kg','softweight-logiciel-pont-bascule-pesee-camion-17840-kg','softweight-logiciel-pont-bascule-pesee-camion-31520-kg'],t:'Pesée d’un camion sur pont-bascule',d:"L'afficheur lit l'indicateur du pont-bascule en direct, par échelons de 20 kg : ici de 8 260 kg à 31 520 kg. On valide le poids, puis on enregistre la pesée."},
+{f:['softweight-logiciel-pont-bascule-deuxieme-pesee-46380-kg','softweight-logiciel-pont-bascule-deuxieme-pesee-54600-kg'],t:'Deuxième pesée et poids net',d:'Au retour du camion, le poids 1 est rappelé et la deuxième pesée (jusqu’à 54 600 kg ici) donne le poids net automatiquement, avec l’écart sur le poids déclaré.'},
+{f:['softweight-logiciel-de-pesage-pont-bascule-accueil'],t:'Accueil',d:'Après connexion : le pesage, les états et la configuration.'}],
+suivi:[
+{f:['softweight-pont-bascule-pesees-en-attente'],t:'Pesées en attente',d:'Les camions pesés une première fois, en attente de leur deuxième pesée : code de pesée, produit, opérateur, immatriculation, date.'},
+{f:['softweight-pont-bascule-pesees-terminees'],t:'Pesées terminées',d:'Toutes les pesées complétées, avec leur poids net, prêtes pour les états et la facturation.'},
+{f:['softweight-logiciel-pesage-camions-etats-des-pesees'],t:'États des pesées',d:'Filtres par période, mouvement, client, produit, fournisseur, transporteur, provenance ou destination, puis export Excel ou PDF.'},
+{f:['softweight-pont-bascule-parametres-indicateur-de-poids'],t:'Indicateur de poids et exploitant',d:'Réglage de l’indicateur du pont-bascule (port série, vitesse, parité, Ethernet, Modbus) et des informations de l’exploitant imprimées sur le ticket.'}]},
 lot:{pesage:[
 {f:['softweight-logiciel-pesage-par-lot-pese-palette-968-kg','softweight-logiciel-pesage-par-lot-pese-palette-1845-kg','softweight-logiciel-pesage-par-lot-pese-palette-2730-kg','softweight-logiciel-pesage-par-lot-pese-palette-3567-kg'],t:'Pesée par lot sur balance',d:"L'afficheur suit la charge en direct : ici de 968 kg à 3 567 kg. On valide le poids, puis on enregistre le lot."},
 {f:['softweight-pesage-par-lot-gestion-lots-palettes'],t:'Lots et palettes',d:'Chaque lot garde ses palettes, ses tares, ses sacs et son poids net, avec la date et l’heure de chaque mouvement.'},

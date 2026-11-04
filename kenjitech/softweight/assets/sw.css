@@ -439,3 +439,5 @@ nav.menu a.ft{color:var(--amber,#f5a71b);font-weight:600}
 .cap-x{position:absolute;top:8px;right:8px;width:42px;height:42px;border-radius:50%;border:0;background:#fff;color:var(--navy);font-size:1.6rem;line-height:1;cursor:pointer;box-shadow:0 4px 14px #0005}
 @media (max-width:640px){.caps{margin-top:64px}.cap-thumbs{grid-template-columns:repeat(2,1fr)}.cap-tabs button{padding:10px 14px}}
 .cap-more{margin-top:22px}.cap-more a{font-weight:600;color:var(--navy);text-decoration:none;border-bottom:2px solid var(--amber)}
+.cap-h{margin:56px 0 8px;font-size:clamp(1.35rem,2.4vw,1.75rem);color:var(--navy);scroll-margin-top:90px}.cap-h:first-of-type{margin-top:36px}
+.cap-intro{max-width:72ch;margin:0 0 22px;color:var(--dim,#4a5a6e)}
