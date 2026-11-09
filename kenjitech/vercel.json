@@ -279,6 +279,31 @@
       "source": "/softweight/assets/captures/mini/softweight-pesage-financements-fournisseurs.jpg",
       "destination": "/softweight/assets/captures/mini/logiciel-de-pesage-financements-fournisseurs.jpg",
       "permanent": true
+    },
+    {
+      "source": "/softweight/videos",
+      "destination": "/softweight/videos/",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/videos/presentation-logiciel-de-pesage-softweight",
+      "destination": "/softweight/videos/presentation-logiciel-de-pesage-softweight/",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/videos/demonstration-logiciel-de-pesage",
+      "destination": "/softweight/videos/demonstration-logiciel-de-pesage/",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/videos/logiciel-pont-bascule",
+      "destination": "/softweight/videos/logiciel-pont-bascule/",
+      "permanent": true
+    },
+    {
+      "source": "/softweight/videos/logiciel-pesage-cacao-cafe",
+      "destination": "/softweight/videos/logiciel-pesage-cacao-cafe/",
+      "permanent": true
     }
   ]
 }
