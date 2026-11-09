@@ -7,7 +7,7 @@ SoftWEIGHT (à ne pas confondre avec les « soft weights » de fitness) est un l
 ## Pages
 - [Fiche technique complète de SoftWEIGHT](https://www.kenjitech.org/softweight/fonctionnalites/) : toutes les fonctionnalités, critères de comparaison
 - [Captures d'écran réelles de SoftWEIGHT](https://www.kenjitech.org/softweight/captures/) : pesage des camions sur pont-bascule (de 8 260 kg à 54 600 kg, deuxième pesée, pesées en attente, états, indicateur de poids), pesage par lot en usine (pèse-palette, balance), états, stock et module optionnel de gestion comptable
-- [Vidéos de SoftWEIGHT](https://www.kenjitech.org/softweight/videos/) : [Présentation de SoftWEIGHT](https://www.kenjitech.org/softweight/videos/presentation-logiciel-de-pesage-softweight/) ; [Démonstration du logiciel](https://www.kenjitech.org/softweight/videos/demonstration-logiciel-de-pesage/)
+- [Vidéos de SoftWEIGHT](https://www.kenjitech.org/softweight/videos/) : [Présentation de SoftWEIGHT](https://www.kenjitech.org/softweight/videos/presentation-logiciel-de-pesage-softweight/) ; [Logiciel de pont-bascule](https://www.kenjitech.org/softweight/videos/logiciel-pont-bascule/) ; [Pesage du cacao et du café](https://www.kenjitech.org/softweight/videos/logiciel-pesage-cacao-cafe/) ; [Démonstration du logiciel](https://www.kenjitech.org/softweight/videos/demonstration-logiciel-de-pesage/)
 - [Version texte complète pour les IA](https://www.kenjitech.org/llms-full.txt)
 - [SoftWEIGHT, logiciel de pesage](https://www.kenjitech.org/softweight/) : présentation complète, versions, références, FAQ
 - [Logiciel de pont-bascule](https://www.kenjitech.org/softweight/pont-bascule/)
