@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#012a4c">
+<title>Internet coupé… et le pont-bascule continue de peser ! | Logiciel de pesage SoftWEIGHT</title>
+<meta name="description" content="Mardi soir, 19 h, une usine au Cameroun : Internet coupe devant une file de camions. Ailleurs, c&#x27;est la catastrophe ; ici, rien ne s&#x27;arrête. Cette vidéo montre comment SoftWEIGHT continue de peser en réseau local, puis synchronise tout automatiquement au retour de la connexion.">
+<link rel="canonical" href="https://www.kenjitech.org/softweight/videos/logiciel-pesage-sans-internet/">
+<link rel="icon" type="image/svg+xml" href="../../assets/softweight.svg">
+<link rel="apple-touch-icon" href="../../assets/kenjitech-logo.png">
+<meta name="robots" content="index,follow,max-image-preview:large,max-video-preview:-1">
+<meta property="og:type" content="video.other">
+<meta property="og:site_name" content="KENJITECH">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Internet coupé… et le pont-bascule continue de peser ! | Logiciel de pesage SoftWEIGHT">
+<meta property="og:description" content="Mardi soir, 19 h, une usine au Cameroun : Internet coupe devant une file de camions. Ailleurs, c&#x27;est la catastrophe ; ici, rien ne s&#x27;arrête. Cette vidéo montre comment SoftWEIGHT continue de peser en réseau local, puis synchronise tout automatiquement au retour de la connexion.">
+<meta property="og:url" content="https://www.kenjitech.org/softweight/videos/logiciel-pesage-sans-internet/">
+<meta property="og:image" content="https://www.kenjitech.org/softweight/assets/videos/logiciel-pesage-sans-internet.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=IBM+Plex+Sans:wght@400;600&family=Share+Tech+Mono&display=swap">
+<style>
+:root{--bg:#fff;--soft:#f4f7fa;--edge:#d6e0ea;--navy:#023d6e;--ink:#0f1d2b;--dim:#4b5e71;--amber:#f5a71b;--amber-ink:#a86a00;--h:#023d6e;--deep:#012a4c;
+--f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;--f-body:"IBM Plex Sans",system-ui,"Segoe UI",sans-serif;--f-mono:"Share Tech Mono",ui-monospace,Consolas,monospace;color-scheme:light}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:16px/1.65 var(--f-body);margin:0;overflow-x:hidden}
+a{color:inherit}:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:16px}
+h1,h2,h3{font-family:var(--f-display);line-height:.95;margin:0;text-wrap:balance;font-weight:800;text-transform:uppercase}
+h1{font-size:clamp(2.8rem,8vw,6.2rem);color:#fff}
+h2{font-size:clamp(2.2rem,5vw,3.8rem);color:var(--h)}
+h3{font-size:1.4rem;color:var(--h);letter-spacing:.02em}
+p{margin:0}
+.eyebrow{font:500 .8rem/1.3 var(--f-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--amber-ink)}
+.lead{color:var(--dim);font-size:1.12rem;max-width:68ch}
+.txt{color:var(--dim);max-width:68ch}.txt+.txt{margin-top:12px}
+section{padding-block:clamp(64px,9vw,112px);position:relative;scroll-margin-top:64px}
+.sec-head{display:grid;gap:16px;margin-bottom:40px}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 1rem/1 var(--f-body);padding:15px 22px;border-radius:999px;text-decoration:none}
+.btn-amber{background:var(--amber);color:#1c1200}.btn-amber:hover{background:#ffbd45}
+.btn-line{color:#fff;box-shadow:inset 0 0 0 1.5px #ffffff88}.btn-line:hover{background:#fff;color:var(--navy)}
+.blue{background:linear-gradient(180deg,var(--navy),#03345e);color:#fff;--h:#fff;--ink:#fff;--dim:#bcd0e3;--edge:#ffffff2e;--amber-ink:var(--amber)}
+.wm{overflow:clip}.wm::after{content:"";position:absolute;width:min(46vw,520px);aspect-ratio:1;right:-6vw;top:50%;translate:0 -50%;background:url("../../assets/kenjitech-logo.png") center/contain no-repeat;opacity:.05;pointer-events:none}
+.wm.left::after{right:auto;left:-6vw}.wm>.wrap{position:relative;z-index:1}
+header.top{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--deep);border-bottom:1px solid #ffffff1f}
+.top .wrap{display:flex;align-items:center;gap:18px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 1.4rem/1 var(--f-display);letter-spacing:.06em;color:#fff}
+.brand .disc{width:40px;height:40px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none}.brand img{width:32px;height:32px}
+nav.menu{display:flex;gap:4px;margin-left:auto;font-size:.92rem;flex-wrap:wrap;justify-content:flex-end}
+nav.menu a{text-decoration:none;color:#c9d9e8;padding:8px 10px;border-radius:6px;white-space:nowrap}
+nav.menu a:hover{color:#fff;background:#ffffff14}nav.menu a[aria-current]{color:#1c1200;background:var(--amber)}
+@media (max-width:900px){.top .wrap{flex-wrap:wrap;gap:8px}nav.menu{margin-left:0;width:100%;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;font-size:.85rem}.hero{padding-top:150px}}
+.hero{padding-top:clamp(120px,14vw,170px)}
+.crumb{font:500 .8rem/1 var(--f-mono);letter-spacing:.08em;color:#bcd0e3;margin-bottom:22px}.crumb a{color:#bcd0e3}
+.kick{display:flex;align-items:center;gap:12px;margin-bottom:18px}.kick img{width:40px;height:40px;background:#fff;border-radius:9px;padding:3px}
+.hero .lead{margin-top:22px}.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{border:1px solid var(--edge);border-radius:16px;padding:24px;background:#fff;display:grid;gap:10px;align-content:start}
+.blue .card{background:#ffffff0d}
+.card p{color:var(--dim)}
+.card .tag{font:500 .75rem/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--amber-ink)}
+.steps{counter-reset:s;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.steps li{list-style:none;border-top:3px solid var(--amber);padding-top:16px;color:var(--dim)}
+.steps li b{display:block;font:800 1.3rem/1.1 var(--f-display);text-transform:uppercase;color:var(--h);margin-bottom:8px}
+.steps li b::before{counter-increment:s;content:"0" counter(s) " ";color:var(--amber)}
+ul.checks{padding:0;margin:0;display:grid;gap:10px}ul.checks li{list-style:none;padding-left:28px;position:relative;color:var(--dim)}
+ul.checks li::before{content:"✓";position:absolute;left:0;color:var(--amber);font-weight:700}
+.two{display:grid;gap:40px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:start}
+.refs{display:flex;flex-wrap:wrap;gap:10px}.refs span{border:1px solid var(--edge);border-radius:999px;padding:8px 16px;font-weight:600}
+.faq{display:grid;gap:12px;max-width:900px}
+.qa{border:1px solid var(--edge);border-radius:14px;background:#fff;padding:0 22px}
+.qa summary{cursor:pointer;list-style:none;font:600 1.1rem/1.35 var(--f-body);color:var(--navy);padding:18px 30px 18px 0;position:relative}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";position:absolute;right:0;top:14px;font:500 1.5rem/1 var(--f-mono);color:var(--amber-ink)}
+.qa[open] summary::after{content:"–"}.qa p{color:var(--dim);margin:0 0 18px;line-height:1.6}
+.coord{display:grid;gap:2px;margin-top:14px}.coord span{font:500 .78rem/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}.coord b{font-size:1.2rem}
+.more{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.more a{display:block;border:1px solid var(--edge);border-radius:14px;padding:18px 20px;text-decoration:none;font-weight:600;color:var(--navy);background:#fff}
+.more a:hover{border-color:var(--amber)}
+table.spec{width:100%;border-collapse:collapse;margin-top:8px}table.spec th,table.spec td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--edge)}table.spec th{font:500 .78rem/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--amber-ink)}table.spec td:first-child{font-weight:600;color:var(--h);width:34%}table.spec td{color:var(--dim)}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}.toc a{border:1px solid #ffffff55;border-radius:999px;padding:8px 14px;text-decoration:none;font-size:.9rem;color:#fff}
+@media (max-width:600px){table.spec td:first-child{width:40%}table.spec th,table.spec td{padding:10px 8px;font-size:.92rem}}
+footer{color:var(--dim);font-size:.88rem}footer .wrap{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;padding-block:26px}footer b{color:var(--navy)}
+.shots{display:grid;gap:28px;grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr))}
+.shots figure{margin:0;display:grid;gap:10px}
+.shots a{display:block;border:1px solid var(--edge);border-radius:14px;overflow:hidden;background:#f4f7fa;box-shadow:0 14px 40px #023d6e1a}
+.shots img{display:block;width:100%;height:auto}
+.shots figcaption{display:grid;gap:4px}.shots figcaption b{color:var(--h);font-size:1.05rem}.shots figcaption span{color:var(--dim);font-size:.95rem}
+.shots-more{margin-top:26px}.shots-more a{font-weight:600;color:var(--navy);text-decoration:none;border-bottom:2px solid var(--amber)}
+.shots{display:grid;gap:28px;grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr))}
+.shots figure{margin:0;display:grid;gap:10px}
+.shots a{display:block;border:1px solid var(--edge);border-radius:14px;overflow:hidden;background:#f4f7fa;box-shadow:0 14px 40px #023d6e1a}
+.shots img{display:block;width:100%;height:auto}
+.shots figcaption{display:grid;gap:4px}.shots figcaption b{color:var(--h);font-size:1.08rem}.shots figcaption span{color:var(--dim);font-size:.96rem}
+.grp+.grp{margin-top:72px}.grp h3{margin-bottom:10px}.grp>.txt{margin-bottom:26px}
+/*vid*/.vgrid{display:grid;gap:26px;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr))}.vcard{display:grid;gap:12px;text-decoration:none;color:inherit}.vcard .th{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--edge);box-shadow:0 14px 40px #023d6e1a;aspect-ratio:16/9;background:#012a4c}.vcard img{display:block;width:100%;height:100%;object-fit:cover}.vcard .th::after{content:"";position:absolute;left:50%;top:50%;width:64px;height:64px;translate:-50% -50%;border-radius:50%;background:#f5a71bee url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z' fill='%231c1200'/%3E%3C/svg%3E") 56% 50%/28px no-repeat;box-shadow:0 6px 20px #0006}.vcard .d{position:absolute;right:10px;bottom:10px;z-index:1;background:#000c;color:#fff;font:500 .8rem/1 var(--f-mono);padding:5px 7px;border-radius:5px}.vcard b{font:600 1.08rem/1.35 var(--f-body);color:var(--h)}.vcard span.s{color:var(--dim);font-size:.95rem}.vcard:hover .th{border-color:var(--amber)}/*/vid*/
+.player{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 24px 60px #0008;border:1px solid #ffffff2e}
+.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vmeta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;font:500 .82rem/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:#bcd0e3}
+.chap{display:grid;gap:8px;padding:0;margin:0}.chap li{list-style:none}
+.chap a{display:flex;gap:14px;text-decoration:none;color:var(--ink);padding:10px 14px;border:1px solid var(--edge);border-radius:10px;background:#fff}
+.chap a:hover{border-color:var(--amber)}.chap time{font:500 .95rem/1.4 var(--f-mono);color:var(--amber-ink);min-width:3.2em}
+.trans h3{margin:26px 0 8px;font-size:1.15rem}.trans p{color:var(--dim);max-width:72ch}
+.vgrid{display:grid;gap:26px;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr))}
+.vcard{display:grid;gap:12px;text-decoration:none;color:inherit}
+.vcard .th{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--edge);box-shadow:0 14px 40px #023d6e1a;aspect-ratio:16/9;background:#012a4c}
+.vcard img{display:block;width:100%;height:100%;object-fit:cover}
+.vcard .th::after{content:"";position:absolute;left:50%;top:50%;width:64px;height:64px;translate:-50% -50%;border-radius:50%;background:#f5a71bee url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z' fill='%231c1200'/%3E%3C/svg%3E") 56% 50%/28px no-repeat;box-shadow:0 6px 20px #0006}
+.vcard .d{position:absolute;right:10px;bottom:10px;z-index:1;background:#000c;color:#fff;font:500 .8rem/1 var(--f-mono);padding:5px 7px;border-radius:5px}
+.vcard b{font:600 1.08rem/1.35 var(--f-body);color:var(--h)}.vcard span.s{color:var(--dim);font-size:.95rem}
+.vcard:hover .th{border-color:var(--amber)}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "VideoObject", "@id": "https://www.kenjitech.org/softweight/videos/logiciel-pesage-sans-internet/#video", "name": "Internet coupé… et le pont-bascule continue de peser ! | Logiciel de pesage SoftWEIGHT", "description": "Mardi soir, 19 h, une usine au Cameroun : Internet coupe devant une file de camions. Ailleurs, c'est la catastrophe ; ici, rien ne s'arrête. Cette vidéo montre comment SoftWEIGHT continue de peser en réseau local, puis synchronise tout automatiquement au retour de la connexion.", "thumbnailUrl": ["https://www.kenjitech.org/softweight/assets/videos/logiciel-pesage-sans-internet.jpg", "https://i.ytimg.com/vi/6wGwWTQiR4g/maxresdefault.jpg"], "uploadDate": "2026-11-10T11:30:00+01:00", "duration": "PT2M13S", "embedUrl": "https://www.youtube.com/embed/6wGwWTQiR4g", "url": "https://www.kenjitech.org/softweight/videos/logiciel-pesage-sans-internet/", "inLanguage": "fr", "isFamilyFriendly": true, "publisher": {"@type": "Organization", "@id": "https://www.kenjitech.org/#org", "name": "KENJITECH", "url": "https://www.kenjitech.org/", "logo": {"@type": "ImageObject", "url": "https://www.kenjitech.org/assets/kenjitech-logo.png"}}, "creator": {"@type": "Organization", "@id": "https://www.kenjitech.org/#org", "name": "KENJITECH", "url": "https://www.kenjitech.org/", "logo": {"@type": "ImageObject", "url": "https://www.kenjitech.org/assets/kenjitech-logo.png"}}, "about": {"@type": "SoftwareApplication", "name": "SoftWEIGHT", "applicationCategory": "BusinessApplication", "operatingSystem": "Windows"}, "potentialAction": {"@type": "SeekToAction", "target": "https://www.youtube.com/watch?v=6wGwWTQiR4g&t={seek_to_second_number}", "startOffset-input": "required name=seek_to_second_number"}, "hasPart": [{"@type": "Clip", "name": "Le soir où Internet a coupé", "startOffset": 0, "endOffset": 16, "url": "https://www.youtube.com/watch?v=6wGwWTQiR4g&t=0s"}, {"@type": "Clip", "name": "Le scénario catastrophe", "startOffset": 16, "endOffset": 29, "url": "https://www.youtube.com/watch?v=6wGwWTQiR4g&t=16s"}, {"@type": "Clip", "name": "Le retournement", "startOffset": 29, "endOffset": 44, "url": "https://www.youtube.com/watch?v=6wGwWTQiR4g&t=29s"}, {"@type": "Clip", "name": "Le secret : le réseau local", "startOffset": 44, "endOffset": 58, "url": "https://www.youtube.com/watch?v=6wGwWTQiR4g&t=44s"}, {"@type": "Clip", "name": "Rien ne se perd", "startOffset": 58, "endOffset": 69, "url": "https://www.youtube.com/watch?v=6wGwWTQiR4g&t=58s"}, {"@type": "Clip", "name": "Le retour de la connexion", "startOffset": 69, "endOffset": 81, "url": "https://www.youtube.com/watch?v=6wGwWTQiR4g&t=69s"}, {"@type": "Clip", "name": "La direction voit tout", "startOffset": 81, "endOffset": 98, "url": "https://www.youtube.com/watch?v=6wGwWTQiR4g&t=81s"}, {"@type": "Clip", "name": "Un site ou plusieurs", "startOffset": 98, "endOffset": 108, "url": "https://www.youtube.com/watch?v=6wGwWTQiR4g&t=98s"}, {"@type": "Clip", "name": "KENJITECH à vos côtés", "startOffset": 108, "endOffset": 133, "url": "https://www.youtube.com/watch?v=6wGwWTQiR4g&t=108s"}], "transcript": "Mardi soir. Dix-neuf heures. Une usine, quelque part au Cameroun. Devant le pont-bascule, une file de camions chargés attend. Au loin, l'orage gronde. Et soudain… plus d'Internet. Dans beaucoup d'entreprises, c'est le scénario catastrophe. Le logiciel se fige. Les camions s'entassent. Les tickets s'écrivent à la main. Et le lendemain, personne ne sait vraiment combien de tonnes sont sorties. Mais ce soir-là, sur ce site, rien ne s'arrête. Le premier camion monte sur le pont. Pesée. Ticket. Barrière ouverte. Le suivant. Puis encore le suivant. Alors, comment est-ce possible ? Le secret, c'est SoftWEIGHT. Sur le site, le pont-bascule, les balances, les postes de pesage et les bureaux sont reliés en réseau local, autour d'une base centrale. Pour peser, Internet n'est pas nécessaire. Jamais. Pendant la coupure, chaque pesée est enregistrée sur place, chiffrée, en sécurité. Les pesées attendent, bien rangées. Aucune ne se perd. Vingt-trois heures douze. La connexion revient. Et là, en quelques secondes, SoftWEIGHT envoie tout vers le serveur en ligne. Automatiquement. Personne n'a rien ressaisi. À des milliers de kilomètres, le directeur général est en mission. Il ouvre le tableau de bord en ligne : les pesées de la nuit, les tonnages, les tickets. Comme s'il était sur le site. Au siège, le contrôle financier facture. Et le client suit ses lots à distance. Un pont-bascule, ou toute une usine. Un site, ou plusieurs. Chaque site travaille de façon autonome, et tout se retrouve au même endroit. Coupure d'Internet, orage, réseau instable : avec SoftWEIGHT, votre site continue de peser. SoftWEIGHT, conçu par KENJITECH à Douala. Le logiciel de pesage leader en Afrique centrale. Demandez votre démonstration sur kenjitech.org."}, {"@type": "WebPage", "@id": "https://www.kenjitech.org/softweight/videos/logiciel-pesage-sans-internet/", "url": "https://www.kenjitech.org/softweight/videos/logiciel-pesage-sans-internet/", "name": "Internet coupé… et le pont-bascule continue de peser ! | Logiciel de pesage SoftWEIGHT", "inLanguage": "fr", "primaryImageOfPage": "https://www.kenjitech.org/softweight/assets/videos/logiciel-pesage-sans-internet.jpg", "video": {"@id": "https://www.kenjitech.org/softweight/videos/logiciel-pesage-sans-internet/#video"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "KENJITECH", "item": "https://www.kenjitech.org/"}, {"@type": "ListItem", "position": 2, "name": "SoftWEIGHT", "item": "https://www.kenjitech.org/softweight/"}, {"@type": "ListItem", "position": 3, "name": "Vidéos", "item": "https://www.kenjitech.org/softweight/videos/"}, {"@type": "ListItem", "position": 4, "name": "Pesage sans Internet", "item": "https://www.kenjitech.org/softweight/videos/logiciel-pesage-sans-internet/"}]}]}</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<a class="brand" href="../../"><span class="disc"><img src="../../assets/kenjitech-logo.png" alt="Logo KENJITECH"></span>KENJITECH</a>
+<nav class="menu" aria-label="Navigation"><a href="../../">SoftWEIGHT</a><a href="../../fonctionnalites/">Fonctionnalités</a><a href="../../captures/">Captures</a><a href="../../videos/" aria-current="page">Vidéos</a><a href="../../pont-bascule/">Pont-bascule</a><a href="../../vgm-solas/">VGM SOLAS</a><a href="../../pesage-cacao-cafe/">Cacao et café</a><a href="#contact">Contact</a></nav>
+</div></header>
+<main>
+<section class="hero blue"><div class="wrap">
+<p class="crumb"><a href="/" target="_blank" rel="noopener">KENJITECH</a> › <a href="../../">SoftWEIGHT</a> › <a href="../../videos/">Vidéos</a> › Pesage sans Internet</p>
+<div class="kick"><img src="../../assets/softweight.svg" alt="Logo SoftWEIGHT" width="40" height="40"><span class="eyebrow">Vidéo · logiciel de pesage SoftWEIGHT</span></div>
+<h1 style="font-size:clamp(2.4rem,6vw,4.6rem)">Vidéo : le logiciel de pesage qui fonctionne sans Internet</h1>
+<p class="lead">Mardi soir, 19 h, une usine au Cameroun : Internet coupe devant une file de camions. Ailleurs, c&#x27;est la catastrophe ; ici, rien ne s&#x27;arrête. Cette vidéo montre comment SoftWEIGHT continue de peser en réseau local, puis synchronise tout automatiquement au retour de la connexion.</p>
+<div class="player" style="margin-top:30px"><iframe src="https://www.youtube.com/embed/6wGwWTQiR4g?rel=0" title="Internet coupé… et le pont-bascule continue de peser ! | Logiciel de pesage SoftWEIGHT" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<p class="vmeta"><span>Durée 2:13</span><span>Français · sous-titrée</span><span><a href="https://www.youtube.com/watch?v=6wGwWTQiR4g" target="_blank" rel="noopener" style="color:var(--amber)">Voir sur YouTube ↗</a></span></p>
+</div></section>
+<section class="wm"><div class="wrap two">
+<div><p class="eyebrow">Dans cette vidéo</p><h2 style="margin:14px 0 22px">Ce que vous allez voir</h2><ul class="checks"><li>Pont-bascule, balances, postes de pesage et bureaux reliés en réseau local autour d&#x27;une base centrale</li><li>Pour peser, Internet n&#x27;est jamais nécessaire</li><li>Pendant la coupure, chaque pesée est enregistrée sur place, chiffrée et sécurisée</li><li>Au retour de la connexion, synchronisation automatique vers le serveur en ligne : rien à ressaisir</li><li>Tableau de bord en ligne : la direction suit pesées, tonnages et tickets à distance</li><li>Un pont-bascule ou toute une usine, un site ou plusieurs</li></ul></div>
+<div><p class="eyebrow">Chapitres</p><h2 style="margin:14px 0 22px">Aller directement à…</h2><ol class="chap"><li><a href="https://www.youtube.com/watch?v=6wGwWTQiR4g&amp;t=0s" target="_blank" rel="noopener"><time datetime="PT0S">0:00</time><span>Le soir où Internet a coupé</span></a></li><li><a href="https://www.youtube.com/watch?v=6wGwWTQiR4g&amp;t=16s" target="_blank" rel="noopener"><time datetime="PT16S">0:16</time><span>Le scénario catastrophe</span></a></li><li><a href="https://www.youtube.com/watch?v=6wGwWTQiR4g&amp;t=29s" target="_blank" rel="noopener"><time datetime="PT29S">0:29</time><span>Le retournement</span></a></li><li><a href="https://www.youtube.com/watch?v=6wGwWTQiR4g&amp;t=44s" target="_blank" rel="noopener"><time datetime="PT44S">0:44</time><span>Le secret : le réseau local</span></a></li><li><a href="https://www.youtube.com/watch?v=6wGwWTQiR4g&amp;t=58s" target="_blank" rel="noopener"><time datetime="PT58S">0:58</time><span>Rien ne se perd</span></a></li><li><a href="https://www.youtube.com/watch?v=6wGwWTQiR4g&amp;t=69s" target="_blank" rel="noopener"><time datetime="PT69S">1:09</time><span>Le retour de la connexion</span></a></li><li><a href="https://www.youtube.com/watch?v=6wGwWTQiR4g&amp;t=81s" target="_blank" rel="noopener"><time datetime="PT81S">1:21</time><span>La direction voit tout</span></a></li><li><a href="https://www.youtube.com/watch?v=6wGwWTQiR4g&amp;t=98s" target="_blank" rel="noopener"><time datetime="PT98S">1:38</time><span>Un site ou plusieurs</span></a></li><li><a href="https://www.youtube.com/watch?v=6wGwWTQiR4g&amp;t=108s" target="_blank" rel="noopener"><time datetime="PT108S">1:48</time><span>KENJITECH à vos côtés</span></a></li></ol></div>
+</div></section>
+<section class="wm left trans"><div class="wrap">
+<div class="sec-head" style="margin-bottom:10px"><p class="eyebrow">Texte intégral</p><h2>Transcription de la vidéo</h2></div>
+<h3>Le soir où Internet a coupé</h3><p>Mardi soir. Dix-neuf heures. Une usine, quelque part au Cameroun. Devant le pont-bascule, une file de camions chargés attend. Au loin, l&#x27;orage gronde. Et soudain… plus d&#x27;Internet.</p><h3>Le scénario catastrophe</h3><p>Dans beaucoup d&#x27;entreprises, c&#x27;est le scénario catastrophe. Le logiciel se fige. Les camions s&#x27;entassent. Les tickets s&#x27;écrivent à la main. Et le lendemain, personne ne sait vraiment combien de tonnes sont sorties.</p><h3>Le retournement</h3><p>Mais ce soir-là, sur ce site, rien ne s&#x27;arrête. Le premier camion monte sur le pont. Pesée. Ticket. Barrière ouverte. Le suivant. Puis encore le suivant. Alors, comment est-ce possible ?</p><h3>Le secret : le réseau local</h3><p>Le secret, c&#x27;est SoftWEIGHT. Sur le site, le pont-bascule, les balances, les postes de pesage et les bureaux sont reliés en réseau local, autour d&#x27;une base centrale. Pour peser, Internet n&#x27;est pas nécessaire. Jamais.</p><h3>Rien ne se perd</h3><p>Pendant la coupure, chaque pesée est enregistrée sur place, chiffrée, en sécurité. Les pesées attendent, bien rangées. Aucune ne se perd.</p><h3>Le retour de la connexion</h3><p>Vingt-trois heures douze. La connexion revient. Et là, en quelques secondes, SoftWEIGHT envoie tout vers le serveur en ligne. Automatiquement. Personne n&#x27;a rien ressaisi.</p><h3>La direction voit tout</h3><p>À des milliers de kilomètres, le directeur général est en mission. Il ouvre le tableau de bord en ligne : les pesées de la nuit, les tonnages, les tickets. Comme s&#x27;il était sur le site. Au siège, le contrôle financier facture. Et le client suit ses lots à distance.</p><h3>Un site ou plusieurs</h3><p>Un pont-bascule, ou toute une usine. Un site, ou plusieurs. Chaque site travaille de façon autonome, et tout se retrouve au même endroit.</p><h3>KENJITECH à vos côtés</h3><p>Coupure d&#x27;Internet, orage, réseau instable : avec SoftWEIGHT, votre site continue de peser. SoftWEIGHT, conçu par KENJITECH à Douala. Le logiciel de pesage leader en Afrique centrale. Demandez votre démonstration sur kenjitech.org.</p>
+</div></section>
+<section class="wm"><div class="wrap"><div class="sec-head"><p class="eyebrow">Autres vidéos</p><h2>À voir aussi</h2></div><div class="vgrid"><a class="vcard" href="../../videos/presentation-logiciel-de-pesage-softweight/"><span class="th"><img src="../../assets/videos/presentation-logiciel-de-pesage-softweight.jpg" alt="SoftWEIGHT : le logiciel de pesage et de traçabilité leader en Afrique centrale" width="1280" height="720" loading="lazy" decoding="async"><span class="d">4:21</span></span><b>Présentation de SoftWEIGHT</b><span class="s">Ponts-bascules, ports, usines, petites unités de transformation, grands commerces : partout, le poids, c&#x27;est de l&#x27;argent.</span></a><a class="vcard" href="../../videos/logiciel-pont-bascule/"><span class="th"><img src="../../assets/videos/logiciel-pont-bascule.jpg" alt="Logiciel de pont-bascule SoftWEIGHT : double pesée, feux, barrières, caméras et pèse-essieux" width="1280" height="720" loading="lazy" decoding="async"><span class="d">2:29</span></span><b>Logiciel de pont-bascule</b><span class="s">Carrières, cimenteries, usines, mines, transporteurs : sur un pont-bascule, chaque tonne pesée est une tonne facturée, ou une tonne perdue.</span></a><a class="vcard" href="../../videos/logiciel-pesage-cacao-cafe/"><span class="th"><img src="../../assets/videos/logiciel-pesage-cacao-cafe.jpg" alt="Logiciel de pesage cacao et café : lots, humidité, poids marchand et préfinancements | SoftWEIGHT" width="1280" height="720" loading="lazy" decoding="async"><span class="d">2:13</span></span><b>Pesage du cacao et du café</b><span class="s">Cacao, café, riz, coton, haricot, arachide : du petit producteur à l&#x27;exportateur, tout se paie au kilo.</span></a><a class="vcard" href="../../videos/demonstration-logiciel-de-pesage/"><span class="th"><img src="../../assets/videos/demonstration-logiciel-de-pesage.jpg" alt="Démonstration SoftWEIGHT : une pesée de A à Z, du pont-bascule aux rapports | Logiciel de pesage" width="1280" height="720" loading="lazy" decoding="async"><span class="d">1:51</span></span><b>Démonstration du logiciel</b><span class="s">SoftWEIGHT en conditions réelles, écran par écran : une pesée de camion sur pont-bascule, puis un lot de sacs, de l&#x27;arrivée jusqu&#x27;aux rapports, au stock et à la facturation.</span></a></div>
+<div class="more" style="margin-top:34px"><a href="../../">SoftWEIGHT · le logiciel complet →</a><a href="../../fonctionnalites/">SoftWEIGHT · Fonctionnalités →</a></div></div></section>
+<section class="blue" id="contact"><div class="wrap two">
+<div><p class="eyebrow">Contact</p><h2 style="margin-top:14px">Demandez votre démonstration</h2>
+<p class="lead" style="margin-top:16px">Décrivez votre site : nous revenons vers vous avec une démonstration et la version de SoftWEIGHT adaptée à votre installation.</p>
+<div class="ctas"><a class="btn btn-amber" href="https://wa.me/237697787475" target="_blank" rel="noopener">Écrire sur WhatsApp</a><a class="btn btn-line" href="mailto:contact@kenjitech.org?cc=kenjikarim@gmail.com">Envoyer un e-mail</a></div></div>
+<div><div class="coord"><span>Téléphone et WhatsApp</span><b>+237 697 78 74 75</b></div>
+<div class="coord"><span>E-mail</span><b>contact@kenjitech.org</b><b style="font-weight:400;font-size:.95em;opacity:.85">kenjikarim@gmail.com</b></div>
+<div class="coord"><span>Éditeur</span><b>KENJITECH · Cameroun</b></div></div>
+</div></section>
+</main>
+<footer><div class="wrap"><span><b>ETS KENJITECH</b> · Cameroun · RCCM RC/DLA/2021/A/2021</span><span>SoftWEIGHT est un logiciel conçu et développé par <a href="/" target="_blank" rel="noopener" style="color:var(--navy);font-weight:600">KENJITECH ↗</a></span></div></footer>
+</body>
+</html>
