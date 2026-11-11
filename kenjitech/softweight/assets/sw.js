@@ -158,7 +158,12 @@ stats:[{f:['logiciel-pont-bascule-indicateurs-etats'],t:"États et indicateurs d
 install:[{f:['logiciel-pont-bascule-connexion'],t:"Connexion des opérateurs",d:"Chaque opérateur se connecte avec son identifiant et son mot de passe avant de peser."},
 {f:['logiciel-de-pesage-premier-compte-superviseur'],t:"Premier lancement : compte Superviseur",d:"Sur une installation neuve, SoftWEIGHT fait créer le compte Superviseur, qui configure le logiciel et crée les comptes des opérateurs."},
 {f:['logiciel-pont-bascule-accueil-licence'],t:"Accueil et état de la licence",d:"Le bouton Licence de l'accueil indique la version d'essai et le nombre de jours restants."},
-{f:['logiciel-de-pesage-licence-activation'],t:"Activation de la licence",d:"La fenêtre Licence affiche l'état de la licence et le code machine du poste ; la licence reçue de KENJITECH s'y colle pour l'activer."}]},
+{f:['logiciel-de-pesage-licence-activation'],t:"Activation de la licence",d:"La fenêtre Licence affiche l'état de la licence et le code machine du poste ; la licence reçue de KENJITECH s'y colle pour l'activer."}],
+tickets:[{f:['ticket-de-pesee-pont-bascule-logiciel'],t:"Ticket de pesée pont-bascule",d:"Le ticket remis après la deuxième pesée : poids brut, tare et poids net mis en évidence, avec un QR code de vérification."},
+{f:['ticket-premiere-pesee-pont-bascule'],t:"Ticket de première pesée",d:"À la première pesée, le ticket porte la mention PREMIÈRE PESÉE bien visible."},
+{f:['duplicata-ticket-de-pesee-logiciel-pesage'],t:"Duplicata du ticket de pesée",d:"Un ticket réimprimé est marqué DUPLICATA à côté du titre."},
+{f:['bon-de-pesee-a4-logiciel-de-pesage'],t:"Bon de pesée demi-A4",d:"Bon de pesée avec l'en-tête du site, les champs alignés, le bloc des poids et les cases visa opérateur et chauffeur."},
+{f:['bon-de-pesee-double-original-copie-pont-bascule'],t:"Bon de pesée en double (original et copie)",d:"Le bon imprimé deux fois sur une feuille A4, ORIGINAL et COPIE, avec un trait de coupe."}]},
 lot:{pesage:[
 {f:['logiciel-de-pesage-pese-palette','logiciel-de-pesage-usine','application-de-pesage-ensacheuse','logiciel-de-pesage-balance-industrielle'],t:'Pesée par lot sur balance',d:"L'afficheur suit la charge en direct : ici de 968 kg à 3 567 kg. On valide le poids, puis on enregistre le lot."},
 {f:['logiciel-de-pesage-par-lot-tracabilite'],t:'Lots et palettes',d:'Chaque lot garde ses palettes, ses tares, ses sacs et son poids net, avec la date et l’heure de chaque mouvement.'},
@@ -166,6 +171,9 @@ lot:{pesage:[
 {f:['logiciel-de-pesage-cacao-cafe-suivi-des-lots'],t:'États des lots',d:'Tous les mouvements de lots : réception, empotage, export, sorties, avec sacs, tares, poids du lot et poids net, puis export PDF, Excel ou état du stock.'},
 {f:['logiciel-de-pesage-gestion-de-stock'],t:'État du stock',d:'Reçu, expédié et stock actuel en kilogrammes, mis à jour à chaque lot.'},
 {f:['softweight-logiciel-de-pesage'],t:'Accueil',d:'Après connexion de l’opérateur : le pesage, les états et la configuration.'}],
+tickets:[{f:['ticket-de-pesee-par-lot-logiciel'],t:"Ticket de pesée par lot",d:"Le ticket du lot détaille chaque palette (date, heure, sacs, poids brut) puis récapitule palettes, sacs, tares et poids net."},
+{f:['duplicata-ticket-pesee-par-lot'],t:"Duplicata du ticket de lot",d:"Un ticket de lot réimprimé porte la mention DUPLICATA sous le titre."},
+{f:['etat-pdf-pesage-par-lot'],t:"État PDF cumulé des lots",d:"L'état cumulé des lots sur une période, avec le nombre de colis, le poids net de chaque lot et les totaux."}],
 compta:[
 {f:['logiciel-de-pesage-avec-comptabilite'],t:'Caisse : capital et dépenses',d:'Capital reçu, dépenses totales et solde en caisse, avec l’historique et le paiement des lots.'},
 {f:['logiciel-de-pesage-comptes-clients'],t:'Comptes clients',d:'Pour chaque client : livraisons, montant livré, financements reçus et écart.'},
