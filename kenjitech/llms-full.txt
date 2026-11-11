@@ -47,9 +47,15 @@ Chaque pesée garde son produit, son lot, son client, son transporteur, son opé
 - **Pesée simple et tares** : Pesée en une fois avec tares enregistrées par véhicule ou par emballage.
 - **Pesée par lot** : Regroupement des sacs, palettes ou wagons par lot, avec totaux et états par lot.
 - **Poids verrouillé** : SoftWEIGHT attend la stabilité de l'indicateur puis verrouille le poids : il ne peut plus être modifié.
+- **Afficheur de poids** : Le poids s'affiche en vert quand SoftWEIGHT lit l'indicateur, et en rouge à 0 quand il ne reçoit rien : l'opérateur voit tout de suite un câble débranché ou un indicateur éteint. L'état du port de communication s'affiche aussi en vert ou en rouge.
+- **Contrôle des dates** : Une pesée datée avant la dernière pesée enregistrée est refusée : impossible d'antidater une pesée.
+- **Saisie guidée** : Immatriculation enregistrée sans espace (une seule écriture par camion), produit choisi dans une liste déroulante.
 - **Tickets** : Tickets A4, A5 ou 80 mm avec QR code de vérification, mise en page adaptée à l'entreprise.
 - **Images** : Enregistrement des images des caméras à chaque pesée ; lecture des plaques par caméra LAPI.
 - **Historique** : Toutes les pesées archivées, retrouvables et exportables ; états par produit, client, période.
+- **États et indicateurs** : Écran des états avec indicateurs du nombre de pesées, qui suivent les tris et les filtres appliqués.
+- **Statistiques et graphes** : Histogrammes et camemberts par client, produit et fournisseur, sur la période choisie, aux couleurs SoftWEIGHT.
+- **Exports Excel et PDF** : Export Excel en tableau mis en forme ; export PDF des états en paysage, avec synthèse.
 
 ## Analyses de laboratoire
 
@@ -95,6 +101,9 @@ On démarre petit et on évolue sans changer de logiciel ni perdre l'historique.
 - **Option web et synchronisation** : À chaque pesée, synchronisation vers un serveur en ligne ; consultation et traitements depuis n'importe où dans le monde, sur ordinateur ou téléphone ; plusieurs sites et pays consolidés.
 - **Hors ligne** : Si Internet coupe, le site continue normalement en réseau local ; tout se resynchronise automatiquement au retour de la connexion.
 - **Technique** : Application de bureau développée en C++, base de données MariaDB/MySQL, données chiffrées, interface en français et en anglais.
+- **Installateur unique** : Un seul installateur pour le poste serveur ou le poste client, base de données MariaDB incluse, sauvegarde automatique de la base chaque nuit.
+- **Premier lancement** : Création du premier compte Superviseur au premier démarrage.
+- **Licence** : Licence liée à l'ordinateur, essai gratuit de 7 jours, protégée contre la modification de la date du PC.
 
 ## Services KENJITECH
 
