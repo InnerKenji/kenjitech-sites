@@ -79,3 +79,54 @@ table.t td.num{text-align:right;font-variant-numeric:tabular-nums}
 .foot img{height:18px;vertical-align:middle;margin-right:6px;opacity:.8}
 @media print{.top,.noprint,.foot{display:none!important}body{background:#fff}.wrap{padding:0}.card{border:0;box-shadow:none}}
 @media (max-width:700px){.top{flex-wrap:wrap}.top nav{margin-left:0}.wrap{padding:14px}}
+/* ---------- Tickets (identiques au poste) ---------- */
+.ticket{background:#fff;color:#14212E;max-width:1000px;margin:0 auto;padding:28px 34px;border:1px solid var(--line);border-radius:8px;font-family:Arial,Helvetica,sans-serif}
+.tk-head{display:flex;align-items:center;gap:18px}
+.tk-logo img{width:72px;height:72px}
+.tk-ent{flex:1;text-align:center}
+.tk-nom{font-size:2rem;font-weight:800;letter-spacing:1px;color:var(--navy)}
+.tk-adr{color:#5B6B7B;font-size:1.05rem}
+.tk-mvt{min-width:140px;border:2px solid var(--navy);border-radius:4px;padding:6px 14px;text-align:center;font-weight:800;color:var(--navy);letter-spacing:1px}
+.tk-mvt:empty{visibility:hidden}
+.tk-bar{height:4px;background:var(--amber);margin:14px 0 10px}
+.tk-titre{font-size:1.6rem;letter-spacing:1.5px;color:var(--navy);margin:8px 0 12px}
+.center-t{text-align:center}
+.tk-grid{display:flex;gap:0;border:2px solid var(--navy)}
+.tk-t{border-collapse:collapse;flex:1;font-size:1rem}
+.tk-t th{background:#EEF3F8;color:var(--navy);font-weight:400;text-align:left;padding:9px 12px;border:1px solid #C9D5E1;width:22%}
+.tk-t td{padding:9px 12px;border:1px solid #C9D5E1;width:28%}
+.tk-t em{float:right;font-style:normal;font-weight:700;font-size:.72rem;color:#5B6B7B;letter-spacing:.5px}
+.tk-t .hl{background:#FBEBC6;font-weight:700;color:var(--navy)}
+.tk-t .big,.bon .big{font-size:1.6rem;font-weight:800;color:var(--navy)}
+.tk-qr{width:230px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px;border-left:2px solid var(--navy)}
+.tk-qr svg{width:190px;height:190px}
+.tk-qr small{color:#5B6B7B;margin-top:6px}
+.tk-nb{text-align:center;color:#5B6B7B;font-size:.88rem;margin:10px 0}
+.tk-pied{display:flex;justify-content:space-between;border-top:1px solid #C9D5E1;padding-top:8px;margin-top:10px;color:#5B6B7B;font-size:.85rem}
+.tk-pied b{color:var(--navy)}
+.bon-top{display:flex;justify-content:space-between;align-items:flex-start}
+.bon-top .tk-qr{border:0;width:170px;padding:0}.bon-top .tk-qr svg{width:150px;height:150px}
+.bon-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px 24px;margin:6px 0 14px}
+.bc{display:grid;grid-template-columns:130px 1fr;padding:5px 0;font-size:.95rem}
+.bc span{color:#5B6B7B;letter-spacing:.5px;font-size:.82rem;padding-top:2px}
+.bc b{font-weight:400}
+.bon-obs{border:1px solid #9FB3C6;padding:8px 14px;min-height:64px;margin-bottom:14px}
+.bon-obs span{color:#5B6B7B;font-size:.82rem;letter-spacing:.5px}
+.bon-poids{width:100%;border-collapse:collapse;text-align:center}
+.bon-poids th{background:#EEF3F8;color:var(--navy);padding:8px;border:1px solid #9FB3C6;font-size:.88rem}
+.bon-poids td{border:1px solid #9FB3C6;padding:14px 8px;height:100px}
+.bon-poids .w{font-size:1.5rem}
+.bon-poids em{display:block;font-style:normal;font-weight:700;font-size:.72rem;color:#5B6B7B;margin-top:6px;letter-spacing:.5px}
+.bon-poids .net{background:#FBEBC6;border:3px solid var(--navy)}
+@media print{.ticket{border:0;padding:0;max-width:none}@page{size:A4;margin:12mm}}
+@media (max-width:760px){.tk-grid{flex-direction:column}.tk-qr{width:auto;border-left:0;border-top:2px solid var(--navy)}.bon-cols{grid-template-columns:1fr}.tk-nom{font-size:1.4rem}}
+/* ---------- Graphes ---------- */
+.chart{width:100%;height:auto;display:block}
+.chart .bar:hover path{opacity:.8}
+.rank{display:flex;flex-direction:column;gap:6px}
+.rank-row{display:grid;grid-template-columns:minmax(90px,38%) 1fr 92px;gap:10px;align-items:center;font-size:.88rem}
+.rank-l{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rank-b{background:#EEF2F6;border-radius:4px;height:14px;overflow:hidden}
+.rank-b i{display:block;height:100%;border-radius:0 4px 4px 0}
+.rank-v{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+.delta.up{color:var(--green)}.delta.down{color:var(--red)}
