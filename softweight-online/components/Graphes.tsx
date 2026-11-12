@@ -23,8 +23,10 @@ export function Colonnes({ data, unite = "kg", hauteur = 220, couleur = "#023D6E
   const gap = Math.min(6, bw * 0.25);
   const ticks = [0, 0.25, 0.5, 0.75, 1].map((t) => t * max);
   const best = data.reduce((a, d, i) => (d.value > (data[a]?.value ?? -1) ? i : a), 0);
+  const gid = `g${couleur.replace(/[^0-9a-z]/gi, "")}${W}${H}`;
   return (
     <svg viewBox={`0 0 ${W} ${H}`} className="chart" role="img" aria-label="graphe en colonnes">
+      <defs><linearGradient id={gid} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor={couleur} stopOpacity={0.75} /><stop offset="1" stopColor={couleur} /></linearGradient></defs>
       {ticks.map((t) => {
         const y = mt + ih - (t / max) * ih;
         return (
@@ -43,7 +45,7 @@ export function Colonnes({ data, unite = "kg", hauteur = 220, couleur = "#023D6E
         return (
           <g key={i} className="bar">
             <rect x={ml + i * bw} y={mt} width={bw} height={ih} fill="transparent" />
-            <path d={h <= 0 ? "" : `M${x},${mt + ih} V${y + r} Q${x},${y} ${x + r},${y} H${x + w - r} Q${x + w},${y} ${x + w},${y + r} V${mt + ih} Z`} fill={couleur} />
+            <path d={h <= 0 ? "" : `M${x},${mt + ih} V${y + r} Q${x},${y} ${x + r},${y} H${x + w - r} Q${x + w},${y} ${x + w},${y + r} V${mt + ih} Z`} fill={`url(#${gid})`} style={{ animationDelay: `${Math.min(i * 15, 400)}ms` }} />
             <title>{`${d.label} : ${kg(d.value)} ${unite}${d.detail ? ` · ${d.detail}` : ""}`}</title>
             {i % etiquettesTous === 0 && (
               <text x={x + w / 2} y={H - mb + 16} textAnchor="middle" fontSize={11} fill="#5B6B7B">{d.label}</text>
@@ -66,8 +68,8 @@ export function Classement({ data, unite = "kg", couleur = "#023D6E" }: { data: 
     <div className="rank">
       {data.map((d, i) => (
         <div key={i} className="rank-row" title={`${d.label} : ${kg(d.value)} ${unite}${d.detail ? ` · ${d.detail}` : ""}`}>
-          <span className="rank-l">{d.label || "—"}</span>
-          <span className="rank-b"><i style={{ width: `${(d.value / max) * 100}%`, background: couleur }} /></span>
+          <span className="rank-l">{d.label || "-"}</span>
+          <span className="rank-b"><i style={{ width: `${(d.value / max) * 100}%`, background: `linear-gradient(90deg, ${couleur}B3, ${couleur})`, animationDelay: `${i * 40}ms` }} /></span>
           <span className="rank-v">{court(d.value)} {unite}</span>
         </div>
       ))}

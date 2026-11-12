@@ -52,7 +52,7 @@ export default async function Statistiques({ params, searchParams }: {
     run(`select percentile_cont(0.5) within group (order by extract(epoch from (p.d2 - p.d1)) / 60)::float8 med,
                 avg(extract(epoch from (p.d2 - p.d1)) / 60)::float8 moy from {v} {w} and p.d2 > p.d1`.replace("{w} and", w.sql ? "{w} and" : "where")),
     v ? sql().unsafe(`select count(*)::int n, coalesce(sum(p.poids_net),0)::float8 t from ${v} ${wp.sql}`, wp.args as never[]).then((r) => [...r] as Ligne[]) : Promise.resolve([{ n: 0, t: 0 }] as Ligne[]),
-    run(`select coalesce(nullif(p.mouvement,''),'—') k, count(*)::int n, coalesce(sum(p.poids_net),0)::float8 t from {v} {w} group by 1 order by 3 desc`),
+    run(`select coalesce(nullif(p.mouvement,''),'-') k, count(*)::int n, coalesce(sum(p.poids_net),0)::float8 t from {v} {w} group by 1 order by 3 desc`),
   ]);
   const T = tot[0] ?? { n: 0, t: 0, mx: 0 };
   const P = prev[0] ?? { n: 0, t: 0 };
@@ -94,22 +94,22 @@ export default async function Statistiques({ params, searchParams }: {
             {delta !== null && <> · <span className={`delta ${delta >= 0 ? "up" : "down"}`}>{delta >= 0 ? "▲" : "▼"} {Math.abs(delta).toFixed(1)} %</span> vs période précédente</>}</span></div>
           <div className="kpi a"><b>{T.n.toLocaleString("fr-FR")}</b><span>pesées complétées (période précédente : {P.n})</span></div>
           <div className="kpi g"><b>{T.n ? kg(Math.round(T.t / T.n)) : 0} kg</b><span>net moyen · max {kg(T.mx)} kg</span></div>
-          <div className="kpi"><b>{duree[0]?.med != null ? `${Math.round(duree[0].med)} min` : "—"}</b><span>durée médiane sur site (1re → 2e pesée)</span></div>
+          <div className="kpi s"><b>{duree[0]?.med != null ? `${Math.round(duree[0].med)} min` : "-"}</b><span>durée médiane sur site (1re → 2e pesée)</span></div>
         </div>
 
-        <div className="card">
+        <div className="card c-navy">
           <h2>Tonnage net par jour</h2>
           <Colonnes data={serie} etiquettesTous={Math.max(1, Math.ceil(serie.length / 15))} />
         </div>
         <div className="grid g2">
-          <div className="card"><h2>Top clients (tonnage)</h2><Classement data={toPts(clients)} /></div>
-          <div className="card"><h2>Top produits (tonnage)</h2><Classement data={toPts(produits)} /></div>
-          <div className="card"><h2>Top transporteurs (tonnage)</h2><Classement data={toPts(transp)} /></div>
-          <div className="card"><h2>Camions les plus fréquents</h2><Classement data={camions.map((r: { k: string; n: number; t: number }) => ({ label: r.k, value: r.n, detail: `${kg(r.t)} kg net` }))} unite="passages" /></div>
-          <div className="card"><h2>Heures d&apos;arrivée (1re pesée)</h2><Colonnes data={heures} unite="pesées" hauteur={240} etiquettesTous={3} largeur={360} /></div>
-          <div className="card"><h2>Tonnage par jour de la semaine</h2><Colonnes data={semaine} hauteur={240} largeur={360} /></div>
+          <div className="card c-navy"><h2>Top clients (tonnage)</h2><Classement data={toPts(clients)} /></div>
+          <div className="card c-green"><h2>Top produits (tonnage)</h2><Classement data={toPts(produits)} couleur="#1D8A52" /></div>
+          <div className="card c-amber"><h2>Top transporteurs (tonnage)</h2><Classement data={toPts(transp)} couleur="#E09410" /></div>
+          <div className="card c-sky"><h2>Camions les plus fréquents</h2><Classement data={camions.map((r: { k: string; n: number; t: number }) => ({ label: r.k, value: r.n, detail: `${kg(r.t)} kg net` }))} unite="passages" couleur="#1F7AC9" /></div>
+          <div className="card c-teal"><h2>Heures d&apos;arrivée (1re pesée)</h2><Colonnes data={heures} couleur="#0E8C8C" unite="pesées" hauteur={240} etiquettesTous={3} largeur={360} /></div>
+          <div className="card c-green"><h2>Tonnage par jour de la semaine</h2><Colonnes data={semaine} couleur="#1D8A52" hauteur={240} largeur={360} /></div>
         </div>
-        <div className="card">
+        <div className="card c-amber">
           <h2>Par mouvement</h2>
           <table className="t"><thead><tr><th>Mouvement</th><th>Pesées</th><th>Net (kg)</th><th>Part</th></tr></thead>
             <tbody>{mvt.map((r: { k: string; n: number; t: number }) => <tr key={r.k}><td>{r.k}</td><td className="num">{r.n}</td><td className="num">{kg(r.t)}</td><td className="num">{T.t ? ((r.t / T.t) * 100).toFixed(1) : 0} %</td></tr>)}</tbody></table>

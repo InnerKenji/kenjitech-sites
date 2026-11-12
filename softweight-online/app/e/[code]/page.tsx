@@ -2,7 +2,9 @@ import { redirect } from "next/navigation";
 import { getExploitant } from "@/lib/tenant";
 import { sql, audit } from "@/lib/db";
 import { verifyPassword } from "@/lib/crypto";
-import { openSession, tooManyAttempts, recordFailure, clearFailures, userSession } from "@/lib/session";
+import { openSession, tooManyAttempts, recordFailure, clearFailures, userSession, versionMdp } from "@/lib/session";
+
+const LEURRE = "pbkdf2$sha256$100000$OaNaykUhQjYb5zRwV4n2uQ==$h6OmbzMsARlvtxuBrAv6fAbQThvIPi/d6y5crnvQ/sA=";
 import { findOperator } from "@/lib/operateurs";
 import Foot from "@/components/Foot";
 
@@ -22,7 +24,7 @@ async function login(fd: FormData) {
                           where exploitant_id = ${e.id} and lower(login) = lower(${login})`;
   if (u && u.actif && verifyPassword(pwd, u.pwd_hash)) {
     await clearFailures(cle);
-    await openSession({ k: "user", exp_id: e.id, code: e.code, uid: "w" + u.id, login: u.login, nom: u.nom || u.login, role: u.role });
+    await openSession({ k: "user", exp_id: e.id, code: e.code, uid: "w" + u.id, login: u.login, nom: u.nom || u.login, role: u.role, v: versionMdp(u.pwd_hash) });
     await audit(`web:${u.login}`, "connexion", e.id);
     redirect(`/e/${e.code}/tableau`);
   }
@@ -30,10 +32,12 @@ async function login(fd: FormData) {
   const op = await findOperator(e.schema, login);
   if (op && verifyPassword(pwd, op.hash)) {
     await clearFailures(cle);
-    await openSession({ k: "user", exp_id: e.id, code: e.code, uid: "o" + op.key, login: op.login, nom: op.nom || op.login, role: op.admin ? "admin" : "lecture" });
+    await openSession({ k: "user", exp_id: e.id, code: e.code, uid: "o" + op.key, login: op.login, nom: op.nom || op.login, role: op.admin ? "admin" : "lecture", v: versionMdp(op.hash) });
     await audit(`operateur:${op.login}`, "connexion", e.id);
     redirect(`/e/${e.code}/tableau`);
   }
+  // même temps de réponse que le compte existe ou non (ne révèle pas les identifiants)
+  if (!u && !op) verifyPassword(pwd, LEURRE);
   await recordFailure(cle);
   redirect(`/e/${e.code}?err=1`);
 }

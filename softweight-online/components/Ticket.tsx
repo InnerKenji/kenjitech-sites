@@ -52,10 +52,10 @@ export default function Ticket({ p, e, qr, format, duplicata, imprimeLe }: {
           <table className="tk-t">
             <tbody>
               <L a="Immatriculation" b={p.num_imma} c="Poids brut" d={<>{kg(brut)} kg {manuel1(p.state) && <em>MANUELLE</em>}</>} />
-              <L a="Produit" b={p.produit_nom} c="Poids tare" d={tare !== null ? <>{kg(tare)} kg {manuel2(p.state) && <em>MANUELLE</em>}</> : "—"} />
-              <L a="Détails" b={p.observation} c="Poids net" d={complete ? <b className="big">{kg(p.poids_net)} kg</b> : "—"} hl />
+              <L a="Produit" b={p.produit_nom} c="Poids tare" d={tare !== null ? <>{kg(tare)} kg {manuel2(p.state) && <em>MANUELLE</em>}</> : "-"} />
+              <L a="Détails" b={p.observation} c="Poids net" d={complete ? <b className="big">{kg(p.poids_net)} kg</b> : "-"} hl />
               <L a="Provenance" b={p.provenance} c="Date d'entrée" d={`${p.date_1 ?? ""} à ${p.heure_1 ?? ""}`} />
-              <L a="Client" b={p.client_nom} c="Date de sortie" d={complete ? `${p.date_2 ?? ""} à ${p.heure_2 ?? ""}` : "—"} />
+              <L a="Client" b={p.client_nom} c="Date de sortie" d={complete ? `${p.date_2 ?? ""} à ${p.heure_2 ?? ""}` : "-"} />
               <L a="Transporteur" b={p.transporteur_nom} c="Remorque" d={p.remorque} />
               <L a="Chauffeur" b={p.chauffeur} c="Peseur" d={p.id_operateur_2 || p.id_operateur_1} />
             </tbody>
@@ -68,7 +68,7 @@ export default function Ticket({ p, e, qr, format, duplicata, imprimeLe }: {
     );
   }
 
-  const C = ({ l, v }: { l: string; v: React.ReactNode }) => <div className="bc"><span>{l}</span><b>{v || "—"}</b></div>;
+  const C = ({ l, v }: { l: string; v: React.ReactNode }) => <div className="bc"><span>{l}</span><b>{v || "-"}</b></div>;
   return (
     <div className="ticket bon">
       {head}
@@ -112,8 +112,8 @@ export default function Ticket({ p, e, qr, format, duplicata, imprimeLe }: {
           <td>{p.id_operateur_2 || p.id_operateur_1}</td>
           <td>{p.code_pesee}</td>
           <td><div className="w">{kg(p.poids_1)}</div>{manuel1(p.state) && <em>PESÉE MANUELLE</em>}</td>
-          <td><div className="w">{complete ? kg(p.poids_2) : "—"}</div>{manuel2(p.state) && <em>PESÉE MANUELLE</em>}</td>
-          <td className="net"><div className="w big">{complete ? kg(p.poids_net) : "—"}</div></td>
+          <td><div className="w">{complete ? kg(p.poids_2) : "-"}</div>{manuel2(p.state) && <em>PESÉE MANUELLE</em>}</td>
+          <td className="net"><div className="w big">{complete ? kg(p.poids_net) : "-"}</div></td>
           <td></td>
         </tr></tbody>
       </table>

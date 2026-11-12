@@ -130,3 +130,47 @@ table.t td.num{text-align:right;font-variant-numeric:tabular-nums}
 .rank-b i{display:block;height:100%;border-radius:0 4px 4px 0}
 .rank-v{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
 .delta.up{color:var(--green)}.delta.down{color:var(--red)}
+
+/* ===== Habillage vivant (12/11) : CSS seul, aucune image ni police à télécharger ===== */
+:root{--sky:#1F7AC9;--teal:#0E8C8C;--navy-2:#0A5A9C}
+.top{background:linear-gradient(100deg,var(--navy-d) 0%,var(--navy) 45%,var(--navy-2) 100%);border-bottom:3px solid var(--amber)}
+.top nav a{display:inline-flex;align-items:center;gap:6px;transition:background .2s,color .2s}
+.top nav a svg{width:16px;height:16px;flex:none;opacity:.85}
+.top nav a.on svg{color:var(--amber);opacity:1}
+main.wrap>h1{display:flex;align-items:center;gap:10px}
+main.wrap>h1::before{content:"";width:6px;height:26px;border-radius:3px;background:linear-gradient(var(--amber),#F7C35C)}
+/* cartes : apparition douce et relief au survol */
+.card,.kpi{animation:monte .45s ease-out both}
+.grid>*:nth-child(2){animation-delay:.05s}.grid>*:nth-child(3){animation-delay:.1s}.grid>*:nth-child(4){animation-delay:.15s}
+.grid>*:nth-child(5){animation-delay:.2s}.grid>*:nth-child(6){animation-delay:.25s}
+@keyframes monte{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.card{transition:box-shadow .2s,transform .2s}
+.grid>.card:hover{box-shadow:0 8px 22px rgba(2,61,110,.12);transform:translateY(-2px)}
+.card>h2:first-child{display:flex;align-items:center;gap:8px}
+.card>h2:first-child::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--c,var(--navy));box-shadow:0 0 0 4px color-mix(in srgb,var(--c,var(--navy)) 18%,transparent)}
+.c-navy{--c:var(--navy)}.c-amber{--c:var(--amber)}.c-green{--c:var(--green)}.c-sky{--c:var(--sky)}.c-teal{--c:var(--teal)}
+/* indicateurs : teinte légère de la couleur et chiffre coloré */
+.kpi{--c:var(--navy);border-left:0;border-top:4px solid var(--c);background:linear-gradient(160deg,color-mix(in srgb,var(--c) 9%,#fff) 0%,#fff 70%);
+  box-shadow:0 1px 3px rgba(2,61,110,.06);transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.kpi::after{content:"";position:absolute;right:-26px;top:-26px;width:90px;height:90px;border-radius:50%;background:var(--c);opacity:.07}
+.kpi:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(2,61,110,.12)}
+.kpi.a{--c:var(--amber)}.kpi.g{--c:var(--green)}.kpi.s{--c:var(--sky)}
+.kpi b{color:color-mix(in srgb,var(--c) 75%,#0b1b2b)}
+.kpi.a b{color:var(--amber-t)}
+/* tableaux */
+table.t th{background:linear-gradient(180deg,var(--navy-2),var(--navy))}
+table.t tr{transition:background .15s}
+/* boutons */
+.btn{transition:background .2s,transform .1s,box-shadow .2s}
+.btn:active{transform:translateY(1px)}
+.btn.amber{box-shadow:0 2px 0 #C9840A}
+/* graphes : barres qui montent, classements qui se remplissent */
+.chart .bar path{transform-box:fill-box;transform-origin:50% 100%;animation:pousse .6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes pousse{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.rank-b i{transform-origin:0 50%;animation:remplit .7s cubic-bezier(.2,.8,.2,1) both}
+@keyframes remplit{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.badge.ok::before,.badge.wait::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:currentColor;margin-right:5px;vertical-align:1px}
+.badge.wait::before{animation:clignote 1.4s ease-in-out infinite}
+@keyframes clignote{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+@media print{.card,.kpi{animation:none;box-shadow:none}}

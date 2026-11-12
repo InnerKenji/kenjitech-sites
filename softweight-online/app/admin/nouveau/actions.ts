@@ -26,7 +26,7 @@ export async function etape(prev: Etat, fd: FormData): Promise<Etat> {
           Téléphone: p.entreprise.telephone ?? "",
           Adresse: [p.entreprise.adresse, p.entreprise.ville, p.entreprise.pays].filter(Boolean).join(", "),
           Magasin: p.magasin ?? "",
-          "Pont-bascule": [p.pont_numero, p.pont_nom].filter(Boolean).join(" — "),
+          "Pont-bascule": [p.pont_numero, p.pont_nom].filter(Boolean).join(" · "),
           "Code machine": p.code_machine ?? "",
           Licence: p.licence ?? "",
           "Version du logiciel": p.version_logiciel ?? "",

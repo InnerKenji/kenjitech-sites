@@ -40,7 +40,7 @@ export default async function Etats({ params, searchParams }: {
         </div>
         <FiltresPesees f={f} listes={listes} />
         <div className="card wm">
-          <h2 style={{ marginBottom: 2 }}>{e.nom} — État des pesées {f.statut === "attente" ? "en attente" : f.statut === "supprimee" ? "supprimées" : f.statut === "toutes" ? "" : "complétées"}</h2>
+          <h2 style={{ marginBottom: 2 }}>{e.nom} : état des pesées {f.statut === "attente" ? "en attente" : f.statut === "supprimee" ? "supprimées" : f.statut === "toutes" ? "" : "complétées"}</h2>
           <p className="muted small" style={{ marginTop: 0 }}>Période : {periode}{f.client ? ` · client : ${f.client}` : ""}{f.produit ? ` · produit : ${f.produit}` : ""}{f.magasin ? ` · site : ${f.magasin}` : ""}</p>
           <div className="grid g4" style={{ marginBottom: 14 }}>
             <div className="kpi"><b>{total.toLocaleString("fr-FR")}</b><span>pesées</span></div>
@@ -51,12 +51,12 @@ export default async function Etats({ params, searchParams }: {
             <div>
               <h3>Par produit</h3>
               <table className="t"><thead><tr><th>Produit</th><th>Pesées</th><th>Net (kg)</th></tr></thead>
-                <tbody>{parProduit.map((r, i) => <tr key={i}><td>{r.k || "—"}</td><td className="num">{r.n}</td><td className="num">{kg(r.t)}</td></tr>)}</tbody></table>
+                <tbody>{parProduit.map((r, i) => <tr key={i}><td>{r.k || "-"}</td><td className="num">{r.n}</td><td className="num">{kg(r.t)}</td></tr>)}</tbody></table>
             </div>
             <div>
               <h3>Par client</h3>
               <table className="t"><thead><tr><th>Client</th><th>Pesées</th><th>Net (kg)</th></tr></thead>
-                <tbody>{parClient.map((r, i) => <tr key={i}><td>{r.k || "—"}</td><td className="num">{r.n}</td><td className="num">{kg(r.t)}</td></tr>)}</tbody></table>
+                <tbody>{parClient.map((r, i) => <tr key={i}><td>{r.k || "-"}</td><td className="num">{r.n}</td><td className="num">{kg(r.t)}</td></tr>)}</tbody></table>
             </div>
           </div>
           <h3 style={{ marginTop: 18 }}>Détail {total > MAX && <span className="muted small">(les {MAX} plus récentes affichées ; l&apos;export Excel contient tout)</span>}</h3>

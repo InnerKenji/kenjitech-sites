@@ -1,5 +1,5 @@
 export function dt(v: unknown): string {
-  if (!v) return "—";
+  if (!v) return "-";
   if (typeof v === "string") {
     const m = v.match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?/);
     if (m && !/[zZ]|[+-]\d{2}:?\d{2}$/.test(v)) return `${m[3]}/${m[2]}/${m[1]}${m[4] ? ` ${m[4]}:${m[5]}` : ""}`;

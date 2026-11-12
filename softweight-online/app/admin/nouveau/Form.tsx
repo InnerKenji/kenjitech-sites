@@ -37,12 +37,12 @@ export default function Form() {
           <input type="hidden" name="action" value="activer" />
           <h2>Vérifiez les informations du poste</h2>
           <table className="t" style={{ marginBottom: 12 }}>
-            <tbody>{Object.entries(st.resume).map(([k, v]) => <tr key={k}><th style={{ width: 200 }}>{k}</th><td>{v || "—"}</td></tr>)}</tbody>
+            <tbody>{Object.entries(st.resume).map(([k, v]) => <tr key={k}><th style={{ width: 200 }}>{k}</th><td>{v || "-"}</td></tr>)}</tbody>
           </table>
           <label>Rattacher ce poste à</label>
           <select name="cible" defaultValue="nouveau">
             <option value="nouveau">Nouvel exploitant (crée son espace et ses tables)</option>
-            {st.exploitants.map((e) => <option key={e.id} value={e.id}>Exploitant existant : {e.code} — {e.nom}</option>)}
+            {st.exploitants.map((e) => <option key={e.id} value={e.id}>Exploitant existant : {e.code}, {e.nom}</option>)}
           </select>
           <label>Code entreprise souhaité (facultatif, sinon généré automatiquement, ex. KT-4821)</label>
           <input name="code_entreprise" placeholder="KT-…" />

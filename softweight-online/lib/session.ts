@@ -1,11 +1,19 @@
+import crypto from "node:crypto";
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { fromB64 } from "./crypto";
 import { sql, ready } from "./db";
+import { findOperator } from "./operateurs";
 
 export type Session =
   | { k: "admin"; uid: number; login: string }
-  | { k: "user"; exp_id: number; code: string; uid: string; login: string; nom: string; role: "admin" | "lecture" };
+  | { k: "user"; exp_id: number; code: string; uid: string; login: string; nom: string; role: "admin" | "lecture"; v: string };
+
+/** Empreinte courte du mot de passe stocké : si le mot de passe change (sur le poste ou sur le web),
+    ou si le compte est supprimé, les sessions ouvertes avec l'ancien mot de passe sont refusées. */
+export function versionMdp(hash: string) {
+  return crypto.createHash("sha256").update("SWV|" + hash).digest("base64url").slice(0, 16);
+}
 
 const COOKIE_ADMIN = "sw_admin";
 const COOKIE_USER = "sw_user";
@@ -61,8 +69,15 @@ export async function userSession(code: string) {
   const s = await read(COOKIE_USER);
   if (!s || s.k !== "user" || s.code !== code.toUpperCase()) return null;
   await ready();
-  const [e] = await sql()`select statut from plateforme.exploitants where id = ${s.exp_id}`;
-  return e?.statut === "actif" ? s : null;
+  const [e] = await sql()`select statut, schema_name from plateforme.exploitants where id = ${s.exp_id}`;
+  if (e?.statut !== "actif" || !s.v) return null;
+  // le compte existe toujours, est actif, et son mot de passe n'a pas changé depuis la connexion
+  if (s.uid.startsWith("w")) {
+    const [u] = await sql()`select pwd_hash, actif from plateforme.web_users where id = ${Number(s.uid.slice(1)) || 0} and exploitant_id = ${s.exp_id}`;
+    return u?.actif && versionMdp(u.pwd_hash) === s.v ? s : null;
+  }
+  const op = await findOperator(e.schema_name, s.login);
+  return op && versionMdp(op.hash) === s.v ? s : null;
 }
 
 /* ---------- Limitation des essais de connexion ---------- */

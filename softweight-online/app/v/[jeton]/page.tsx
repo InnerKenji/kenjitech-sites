@@ -6,7 +6,7 @@ import Ticket from "@/components/Ticket";
 import Foot from "@/components/Foot";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Vérification de pesée — SoftWEIGHT Online", robots: { index: false } };
+export const metadata = { title: "Vérification de pesée · SoftWEIGHT Online", robots: { index: false } };
 
 function Bandeau({ ok, titre, texte }: { ok: boolean; titre: string; texte: string }) {
   return (

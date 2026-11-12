@@ -20,10 +20,10 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ code
   const { rows, total, poids } = await chercherPesees(e.schema, f, 200000, 0);
 
   const wb = new ExcelJS.Workbook();
-  wb.creator = "SoftWEIGHT Online — KENJITECH";
+  wb.creator = "SoftWEIGHT Online, KENJITECH";
   const ws = wb.addWorksheet("Pesées", { views: [{ state: "frozen", ySplit: 4 }] });
   ws.mergeCells("A1:Q1");
-  ws.getCell("A1").value = `${e.nom} — État des pesées`;
+  ws.getCell("A1").value = `${e.nom} : état des pesées`;
   ws.getCell("A1").font = { bold: true, size: 15, color: { argb: "FF023D6E" } };
   ws.mergeCells("A2:Q2");
   ws.getCell("A2").value = `Filtres : ${Object.entries(f).filter(([, v]) => v).map(([k, v]) => `${k}=${v}`).join(", ")} · ${total} pesées · ${poids.toLocaleString("fr-FR")} kg net · exporté le ${new Date().toLocaleString("fr-FR", { timeZone: "Africa/Douala" })}`;

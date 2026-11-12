@@ -36,7 +36,7 @@ export default async function Tableau({ params }: { params: Promise<{ code: stri
           <div className="kpi"><b>{auj.n}</b><span>pesées complétées aujourd&apos;hui · {kg(auj.t)} kg</span></div>
           <div className="kpi a"><b>{kg(ceMois.t / 1000)} t</b><span>tonnage net du mois ({ceMois.n} pesées)</span></div>
           <div className="kpi g"><b>{attente.n}</b><span>camions en attente de 2e pesée</span></div>
-          <div className="kpi"><b>{sites.reduce((a, x) => a + (x.file_attente ?? 0), 0)}</b><span>modifications non encore synchronisées</span></div>
+          <div className="kpi s"><b>{sites.reduce((a, x) => a + (x.file_attente ?? 0), 0)}</b><span>modifications non encore synchronisées</span></div>
         </div>
         <div className="card">
           <div className="row" style={{ alignItems: "center" }}><h2 style={{ margin: 0 }}>Dernières pesées</h2><Link className="btn sm ghost nogrow" href={`/e/${e.code}/pesees`}>Toutes les pesées →</Link></div>
@@ -53,7 +53,7 @@ export default async function Tableau({ params }: { params: Promise<{ code: stri
               {dernieres.length === 0 && <tr><td colSpan={8} className="muted">Aucune pesée synchronisée pour l&apos;instant.</td></tr>}
             </tbody></table></div>
         </div>
-        <div className="card">
+        <div className="card c-green">
           <h2>Ponts-bascules</h2>
           <table className="t">
             <thead>
@@ -65,10 +65,10 @@ export default async function Tableau({ params }: { params: Promise<{ code: stri
                 return (
                   <tr key={i}>
                     <td>{x.magasin}</td>
-                    <td>{[x.pont_numero, x.pont_nom].filter(Boolean).join(" — ")}</td>
+                    <td>{[x.pont_numero, x.pont_nom].filter(Boolean).join(" · ")}</td>
                     <td>{ago(x.derniere_connexion)}</td>
                     <td>{ago(x.derniere_synchro)}</td>
-                    <td className="num">{x.file_attente ?? "—"}</td>
+                    <td className="num">{x.file_attente ?? "-"}</td>
                     <td>
                       {x.statut !== "actif" ? <span className="badge del">révoqué</span>
                         : online ? (x.file_attente ? <span className="badge wait">synchro en cours</span> : <span className="badge ok">à jour</span>)
