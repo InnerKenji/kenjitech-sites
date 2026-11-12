@@ -7,7 +7,8 @@ export async function findOperator(schema: string, login: string) {
   try {
     const rows = await sql().unsafe(
       `select _site, _pk, ${q(P.login)} as login, ${q(P.nom)} as nom, ${q(P.role)} as role, ${q(P.hash)} as hash
-       from ${q(schema)}.${q("m_" + P.table)} where not _deleted and lower(${q(P.login)}) = lower($1) limit 1`,
+       from ${q(schema)}.${q("m_" + P.table)} where not _deleted and lower(${q(P.login)}) = lower($1)
+         and coalesce(lower(${q(P.role)}), '') <> 'delete' limit 1`,
       [login]
     );
     const r = rows[0];

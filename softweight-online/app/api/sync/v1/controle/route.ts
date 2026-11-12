@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
   const ctx = await authSite(req);
   if (ctx instanceof NextResponse) return ctx;
   type P = { periode: string; nb: number; somme?: string | number | null };
-  type C = { table: string; colonne_date: string; colonne_somme?: string; periodes: P[] };
+  type C = { table: string; colonne_date?: string; colonne_somme?: string; periodes: P[] };
   let controles: C[];
   try {
     controles = JSON.parse(ctx.body.toString("utf8")).controles;
@@ -26,19 +26,19 @@ export async function POST(req: NextRequest) {
   }
   const ecarts: { table: string; periode: string; poste: P; enLigne: { nb: number; somme: string | null } }[] = [];
   for (const c of controles) {
-    let tn: string, cd: string, cs: string | null;
+    let tn: string, cd: string | null, cs: string | null;
     try {
       tn = tableName(c.table);
-      cd = c.colonne_date.toLowerCase();
+      cd = c.colonne_date ? c.colonne_date.toLowerCase() : null; // sans colonne de date : un seul total
       cs = c.colonne_somme ? c.colonne_somme.toLowerCase() : null;
-      if (!/^[a-z_][a-z0-9_]*$/.test(cd) || (cs && !/^[a-z_][a-z0-9_]*$/.test(cs))) throw new Error();
+      if ((cd && !/^[a-z_][a-z0-9_]*$/.test(cd)) || (cs && !/^[a-z_][a-z0-9_]*$/.test(cs))) throw new Error();
     } catch {
       continue;
     }
     let rows;
     try {
       rows = await sql().unsafe(
-        `select to_char(${q(cd)}, 'YYYY-MM') as periode, count(*)::bigint as nb${cs ? `, coalesce(sum(${q(cs)}),0)::text as somme` : ""}
+        `select ${cd ? `to_char(${q(cd)}, 'YYYY-MM')` : "'total'"} as periode, count(*)::bigint as nb${cs ? `, coalesce(sum(${q(cs)}),0)::text as somme` : ""}
          from ${q(ctx.schema)}.${q(tn)} where _site = $1 and not _deleted group by 1`,
         [ctx.siteId]
       );

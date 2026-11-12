@@ -9,7 +9,7 @@ declare global {
 }
 
 function url(): string {
-  const u = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+  const u = process.env.DATABASE_URL || process.env.POSTGRES_URL || process.env.STORAGE_URL;
   if (!u) throw new Error("DATABASE_URL manquant");
   return u;
 }
