@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import zlib from "node:zlib";
 import { sql, ready } from "./db";
 import { openSecret, safeEqualHex, signRequest } from "./crypto";
 
@@ -12,6 +13,7 @@ export type SiteCtx = {
 };
 
 const FENETRE = 600; // secondes de décalage d'horloge tolérées
+const MAX_DECOMPRESSE = 20_000_000; // un lot décompressé ne dépasse jamais 20 Mo (protection « bombe zip »)
 
 export function err(status: number, code: string, extra: object = {}) {
   return NextResponse.json({ ok: false, erreur: code, heure_serveur: Math.floor(Date.now() / 1000), ...extra }, { status });
@@ -52,8 +54,19 @@ export async function authSite(req: NextRequest): Promise<SiteCtx | NextResponse
   if (ins.length === 0) return err(409, "requete_rejouee");
   if (Math.random() < 0.02) await sql()`delete from plateforme.nonces where ts < now() - interval '1 hour'`;
 
+  // Corps compressé (zlib) par le poste pour les connexions lentes. La signature porte sur les octets
+  // reçus, vérifiée AVANT toute décompression : un tiers ne peut rien faire décompresser au serveur.
+  let corps: Buffer = body;
+  if (req.headers.get("x-sw-zip") === "1" && body.length > 0) {
+    try {
+      corps = zlib.inflateSync(body, { maxOutputLength: MAX_DECOMPRESSE });
+    } catch {
+      return err(400, "compression_invalide");
+    }
+  }
+
   await sql()`update plateforme.sites set derniere_connexion = now() where id = ${siteId}`;
-  return { siteId, secret, exploitantId: Number(s.exp_id), schema: s.schema_name, code: s.code, body };
+  return { siteId, secret, exploitantId: Number(s.exp_id), schema: s.schema_name, code: s.code, body: corps };
 }
 
 export function json<T>(ctx: SiteCtx): T {

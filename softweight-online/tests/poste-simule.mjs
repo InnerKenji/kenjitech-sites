@@ -4,6 +4,7 @@
 import nacl from "tweetnacl";
 import crypto from "node:crypto";
 import fs from "node:fs";
+import zlib from "node:zlib";
 
 const [, , cmd, stateFile, base = "http://localhost:3100"] = process.argv;
 const pub = Buffer.from(process.env.ACTIVATION_PUBLIC_KEY, "base64");
@@ -24,16 +25,19 @@ if (cmd === "code") {
 } else {
   const st = JSON.parse(fs.readFileSync(stateFile, "utf8"));
   const secret = Buffer.from(st.secret, "base64");
-  async function call(path, obj) {
-    const body = Buffer.from(JSON.stringify(obj));
+  // zip = 1 : corps compressé comme le fait le poste (zlib) ; zip = "bombe" / "altere" : tests d'attaque
+  async function call(path, obj, zip = 0) {
+    let body = Buffer.from(JSON.stringify(obj));
+    if (zip === "bombe") body = zlib.deflateSync(Buffer.alloc(60_000_000, 32), { level: 9 });
+    else if (zip) body = zlib.deflateSync(body, { level: 6 });
     const ts = String(Math.floor(Date.now() / 1000));
     const nonce = crypto.randomBytes(16).toString("base64url");
     const h = crypto.createHash("sha256").update(body).digest("hex");
     const sig = crypto.createHmac("sha256", secret).update(`POST\n${path}\n${ts}\n${nonce}\n${h}`).digest("hex");
-    const r = await fetch(base + path, {
-      method: "POST", body,
-      headers: { "content-type": "application/json", "x-sw-site": st.site_id, "x-sw-time": ts, "x-sw-nonce": nonce, "x-sw-signature": sig },
-    });
+    if (zip === "altere") body[body.length - 6] ^= 1; // un octet modifié en route, après signature
+    const headers = { "content-type": "application/json", "x-sw-site": st.site_id, "x-sw-time": ts, "x-sw-nonce": nonce, "x-sw-signature": sig };
+    if (zip) headers["x-sw-zip"] = "1";
+    const r = await fetch(base + path, { method: "POST", body, headers });
     return [r.status, await r.json()];
   }
   const show = async (label, p) => console.log(label, JSON.stringify(await p));
@@ -62,6 +66,18 @@ if (cmd === "code") {
   await show("table inconnue", call("/api/sync/v1/envoi", { gen: 0, changes: [{ seq: 7, table: "inconnue", op: "upsert", pk: { id: 1 }, row: { id: 1 } }] }));
   await show("controle", call("/api/sync/v1/controle", { controles: [{ table: "pesee", colonne_date: "date1", colonne_somme: "net",
     periodes: [{ periode: "2026-11", nb: 2, somme: 51540 }, { periode: "2026-10", nb: 4 }] }] }));
+  // Lot compressé : 200 pesées réalistes, mesure des tailles
+  const lot = [];
+  for (let i = 0; i < 200; i++) lot.push({ seq: 100 + i, table: "pesee", op: "upsert", pk: { id: 100 + i }, at: "2026-11-13 10:00:00",
+    row: { id: 100 + i, numero: "T" + (1000 + i), immat: "LT " + (100 + i) + " AB", poids1: 38000 + i * 7, poids2: 14000 + i, net: 24000 + i * 6,
+      date1: "2026-11-13 08:10:00", date2: "2026-11-13 09:00:00", statut: 1 } });
+  const brut = Buffer.from(JSON.stringify({ gen: 0, changes: lot })).length;
+  const comp = zlib.deflateSync(Buffer.from(JSON.stringify({ gen: 0, changes: lot })), { level: 6 }).length;
+  console.log(`lot de 200 : ${brut} o brut, ${comp} o compressé`);
+  await show("envoi compressé", call("/api/sync/v1/envoi", { gen: 0, changes: lot, file_attente: 200 }, 1));
+  await show("battement", call("/api/sync/v1/bonjour", { battement: 1, file_attente: 0 }, 1));
+  await show("compressé altéré (401 attendu)", call("/api/sync/v1/envoi", { gen: 0, changes: lot }, "altere"));
+  await show("bombe zip (400 attendu)", call("/api/sync/v1/envoi", {}, "bombe"));
   const r = await fetch(base + "/api/sync/v1/bonjour", { method: "POST", body: "{}", headers: {
     "x-sw-site": st.site_id, "x-sw-time": String(Math.floor(Date.now() / 1000)), "x-sw-nonce": "aaaaaaaaaaaaaaaaaaaa", "x-sw-signature": "00" } });
   console.log("fausse signature ->", r.status);

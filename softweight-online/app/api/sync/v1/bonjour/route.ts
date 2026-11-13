@@ -17,12 +17,13 @@ export async function POST(req: NextRequest) {
       version_logiciel = coalesce(${body.version ?? null}, version_logiciel)
       where id = ${ctx.siteId}`;
   }
-  const tables = await sql().unsafe(`select nom from ${q(ctx.schema)}._tables order by nom`);
-  return NextResponse.json({
-    ok: true,
-    active: true,
-    heure_serveur: Math.floor(Date.now() / 1000),
-    exploitant: ctx.code,
-    tables: tables.map((t) => t.nom),
-  });
+  // Signe de vie du poste (toutes les 15 min) : réponse minimale, la liste des tables seulement si demandée.
+  // compression "zlib-signe" : corps zlib, en-tête X-SW-Zip: 1, signature calculée sur les octets compressés envoyés.
+  const rep: Record<string, unknown> = { ok: true, active: true, heure_serveur: Math.floor(Date.now() / 1000), compression: "zlib-signe" };
+  if (!body.battement) {
+    const tables = await sql().unsafe(`select nom from ${q(ctx.schema)}._tables order by nom`);
+    rep.exploitant = ctx.code;
+    rep.tables = tables.map((t) => t.nom);
+  }
+  return NextResponse.json(rep);
 }

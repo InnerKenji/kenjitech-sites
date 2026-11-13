@@ -61,7 +61,7 @@ export default async function Tableau({ params }: { params: Promise<{ code: stri
             </thead>
             <tbody>
               {sites.map((x, i) => {
-                const online = x.derniere_connexion && Date.now() - new Date(x.derniere_connexion).getTime() < 10 * 60_000;
+                const online = x.derniere_connexion && Date.now() - new Date(x.derniere_connexion).getTime() < 35 * 60_000; // signe de vie du poste toutes les 15 min
                 return (
                   <tr key={i}>
                     <td>{x.magasin}</td>
