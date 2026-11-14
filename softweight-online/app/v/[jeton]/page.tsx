@@ -63,6 +63,9 @@ export default async function Verif({ params }: { params: Promise<{ jeton: strin
       </header>
       <main className="wrap" style={{ maxWidth: 1060 }}>
         <Bandeau ok={ok} titre={titre} texte={texte} />
+        <div style={{ margin: "12px 0" }}>
+          <a className="btn amber" href="/verifier">Scanner un autre ticket</a>
+        </div>
         {contenu}
       </main>
       <Foot />

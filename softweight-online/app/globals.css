@@ -174,3 +174,24 @@ table.t tr{transition:background .15s}
 @keyframes clignote{50%{opacity:.25}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 @media print{.card,.kpi{animation:none;box-shadow:none}}
+
+/* Vérification de ticket par caméra */
+.scan select{width:100%}
+.scan-zone{position:relative;background:#0b1622;border-radius:12px;overflow:hidden;aspect-ratio:4/3;max-height:70vh}
+.scan-zone video{width:100%;height:100%;object-fit:cover;display:block}
+.scan-cadre{position:absolute;inset:14% 18%;border:3px solid rgba(255,255,255,.85);border-radius:14px;box-shadow:0 0 0 2000px rgba(1,42,76,.35)}
+.scan-zone.actif .scan-cadre{border-color:var(--amber);animation:scanpulse 1.6s ease-in-out infinite}
+.scan-msg{position:absolute;left:0;right:0;bottom:12px;text-align:center;color:#fff;font-weight:600;text-shadow:0 1px 3px #000}
+@keyframes scanpulse{50%{border-color:#fff}}
+@media (prefers-reduced-motion:reduce){.scan-zone.actif .scan-cadre{animation:none}}
+/* Ticket lisible sur téléphone (page de vérification après un scan) */
+@media (max-width:560px){
+  .ticket{padding:14px 12px}
+  .tk-head{flex-wrap:wrap;gap:10px}.tk-logo img{width:48px;height:48px}.tk-mvt{min-width:0;padding:4px 10px}
+  .tk-titre{font-size:1.15rem;letter-spacing:.5px}
+  .tk-t,.tk-t tbody{display:block}
+  .tk-t tr{display:grid;grid-template-columns:42% 58%}
+  .tk-t th,.tk-t td{width:auto;padding:7px 9px;overflow-wrap:anywhere}
+  .tk-t .big{font-size:1.3rem}
+  .tk-pied{flex-direction:column;gap:4px}
+}

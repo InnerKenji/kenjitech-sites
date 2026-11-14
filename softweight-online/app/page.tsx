@@ -28,6 +28,10 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ e
             </div>
           </form>
           <p className="small muted" style={{ marginTop: 14 }}>Le code entreprise vous est remis par KENJITECH.</p>
+          <div style={{ borderTop: "1px solid #E3EAF1", marginTop: 16, paddingTop: 14, textAlign: "center" }}>
+            <a className="btn ghost" href="/verifier" style={{ width: "100%", justifyContent: "center" }}>Vérifier un ticket (sans compte)</a>
+            <p className="small muted" style={{ margin: "6px 0 0" }}>Scannez le QR code d'un ticket pour savoir s'il est authentique.</p>
+          </div>
         </div>
       </div>
       <Foot />

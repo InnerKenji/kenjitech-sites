@@ -14,7 +14,11 @@ const nextConfig = {
   poweredByHeader: false,
   serverExternalPackages: ["exceljs"],
   async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
+    return [
+      { source: "/:path*", headers: securityHeaders },
+      // Seule la page publique de vérification peut utiliser la caméra (lecture du QR des tickets)
+      { source: "/verifier", headers: [{ key: "Permissions-Policy", value: "camera=(self), microphone=(), geolocation=()" }] },
+    ];
   },
 };
 export default nextConfig;
